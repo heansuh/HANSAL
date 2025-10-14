@@ -3,7 +3,9 @@ Project HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
 
 ## Background
 Recent advances in AI demand significant computational resources, which presents cost and sustainability barriers for small and medium-sized enterprises (SMEs).
+
 Project HANSAL directly addresses these challenges, offering a framework that balances accuracy, runtime, cost, and energy consumption.
+
 This project is a framework that also is featured in the Master's Thesis @ FH Kiel: Study on Proof-of-Concept Benchmarking Framework for Resource-Optimised AI: Efficient Performance, Cost, and Sustainability for Small-Medium Enterprises (SMEs)
 
 ## Project Scope
