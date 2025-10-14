@@ -1,5 +1,5 @@
 # HANSAR
-**HANSAR** stands for Hybrid AI Navigated System with Affordable RAG, which makes use of LLM and other cost-effective tools and solutions that are integrated together.
+**HANSAL** stands for Hybrid AI Navigated System with Affordable RAG, which makes use of LLM and other cost-effective tools and solutions that are integrated together.
 
 The focus of this project is to explore and test the tools/solutions used as of now, to fit into the SMEs' (Small Medium Enterprises) use cases worldwidely.
 Since most SMEs/freelancers do not have enough costs/resources to incorporate AI solutions in their system, the concept of HANSAR supports their capability to ensure lightweight use of AI solutions.
