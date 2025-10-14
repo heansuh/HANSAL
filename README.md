@@ -1,10 +1,26 @@
-# HANSAR
-**HANSAL** stands for Hybrid AI Navigated System with Affordable RAG, which makes use of LLM and other cost-effective tools and solutions that are integrated together.
+# Project HANSAL
+Project HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
 
-The focus of this project is to explore and test the tools/solutions used as of now, to fit into the SMEs' (Small Medium Enterprises) use cases worldwidely.
-Since most SMEs/freelancers do not have enough costs/resources to incorporate AI solutions in their system, the concept of HANSAR supports their capability to ensure lightweight use of AI solutions.
+## Background
+Recent advances in AI demand significant computational resources, which presents cost and sustainability barriers for small and medium-sized enterprises (SMEs).
+Project HANSAL directly addresses these challenges, offering a framework that balances accuracy, runtime, cost, and energy consumption.
+This project is a framework that also is featured in the Master's Thesis @ FH Kiel: Study on Proof-of-Concept Benchmarking Framework for Resource-Optimised AI: Efficient Performance, Cost, and Sustainability for Small-Medium Enterprises (SMEs)
 
-For this, the data pipelines need to be clearly defined and structured to meet the requirements.
+## Project Scope
+* Exploration and testing of AI benchmarking tools suitable for SMEs.
+* Evaluation of currently available hardware architectures (GPUs, AI accelerators) for affordability and scalability.
+* Implementation of a lightweight benchmarking workflow using open-source libraries (e.g. `CodeCarbon`, `Zeus`, `Perun`).
+* Creation of an open-source repository for replicable benchmarking experiments, supporting business case-specific needs.
+
+## Project Objectives
+* Provide SMEs with the tools and know-how to adopt AI cost-efficiently and sustainably.
+* Serve as both an academic contribution and an actionable industry guide.
+* Structure data pipelines for transparent performance, allowing resource optimization tailored to SMEs.
+
+## Research Timeline
+* Literature Review & Data Collection: Oct 2025 – Dec 2025
+* Benchmarking & PoC Development: Dec 2025 – Jan 2026
+* Thesis Writing & Revision: Feb 2026 – Mar 2026
 
 ## License
 
