@@ -22,7 +22,8 @@ This project is a framework that is also featured in the Master's Thesis @ FH Ki
 ## Research Timeline
 * Literature Review & Data Collection: Oct 2025 – Dec 2025
 * Benchmarking & PoC Development: Dec 2025 – Jan 2026
-* Thesis Writing & Revision: Feb 2026 – Mar 2026
+* Thesis Writing: Jan 2026 - Feb 2026
+* Colloquium: Mar 2026
 
 ## License
 
