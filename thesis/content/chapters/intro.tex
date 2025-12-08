@@ -1,0 +1,92 @@
+% !TEX root = ../../index.tex
+\chapter{Introduction}
+Artificial intelligence (AI) systems have advanced rapidly over the past decade, driven in particular by 
+deep learning models with growing parameter counts and training data scales. These advances have led 
+to substantial increases in computational demand, which translate directly into higher electricity 
+consumption and associated carbon emissions from data centres and specialised hardware such as GPU clusters. 
+Recent analyses show that training and operating modern AI models can consume megawatt-hours (MWh) of energy 
+and contribute non-negligibly to the overall climate impact of information and communication technologies.
+
+\section{Motivation}
+AI systems, particularly modern deep learning models, require large volumes of computation for both training 
+and inference, which directly translates into substantial electricity consumption and hardware demand. 
+Studies show that training and operating contemporary deep learning models can consume MWh of energy, 
+with runtime energy use scaling strongly with model size, data volume, and chosen hardware. As these workloads 
+migrate from individual servers to large GPU clusters, their aggregate impact becomes significant within the overall 
+information and communication technology (ICT) sector, which already accounts for several percent of global electricity 
+use and around 1--2\% of global greenhouse gas emissions.
+
+A growing share of this footprint is concentrated in data centres, whose electricity demand in Europe has been 
+rising steadily and is expected to continue increasing with the expansion of AI and cloud services. 
+Recent scenario analyses project that data-centre energy use and associated emissions could roughly double over 
+the coming decade, driven in part by specialised AI infrastructure and dense GPU farms required for training and 
+serving large models. These trends create tension with climate-policy targets, as uncontrolled growth in AI-related 
+energy demand risks undermining broader decarbonisation efforts in the power sector.
+
+In response, the European Union and its member states have articulated explicit goals to make data centres more energy
+and resource-efficient, including the objective of climate-neutral data centres by 2030 and planned regulatory packages
+focused on data-centre energy efficiency. Policy analyses around the European Green Deal and the AI Act highlight that 
+energy and resource efficiency should become a core design objective for AI systems, not an afterthought, if AI is to support 
+rather than hinder the energy transition. Against this backdrop, “green AI” and resource-aware AI operation—where energy use, 
+cost, and emissions are treated as metrics alongside accuracy and latency—are increasingly important, especially for
+organisations that lack the capacity to absorb uncontrolled increases in computational demand.
+
+\section{Context}
+Small and medium-sized enterprises (SMEs) typically operate under tighter financial and organisational 
+constraints than large technology companies, which limits their access to specialised AI infrastructure
+such as dedicated GPU servers, high-performance storage, and professional MLOps teams. 
+Instead, many SMEs rely on a small number of on-premise machines, shared virtual private servers, 
+or pay-as-you-go cloud instances, making it difficult to experiment broadly with different hardware 
+configurations or large-scale models without incurring prohibitive costs.
+
+At the same time, SMEs increasingly view AI as a key lever for maintaining competitiveness, 
+for example through predictive maintenance, demand forecasting, or customer analytics, and thus 
+face pressure to integrate AI into their products and processes. However, they often lack practical 
+guidance on how different combinations of models, frameworks, hardware, and cloud offerings translate 
+into concrete trade-offs between accuracy, runtime, energy use, and monetary cost for their own 
+workloads. This uncertainty can result in suboptimal choices—either overprovisioning expensive 
+infrastructure or underinvesting in AI capabilities—and creates a barrier to energy-aware, 
+cost-efficient adoption of AI in the SME context.
+
+\section{Problem Statement}
+Many established AI benchmarks and leaderboards concentrate primarily on model accuracy, and in 
+some cases latency, while assuming access to substantial computational resources such as multi-GPU 
+servers or large cloud clusters. These benchmarks provide valuable insights for model comparison at 
+scale, but they rarely expose energy consumption, monetary cost, or carbon footprint in a form that 
+smaller organisations with limited hardware and budgets can readily apply to their own environments. 
+As a result, SMEs have little empirical support for deciding whether a given model, framework, or 
+deployment option offers an acceptable balance between performance and resource usage on realistic, 
+resource-constrained setups.
+
+In parallel, several specialised tools have emerged that enable more detailed measurement of AI energy
+use and emissions, including CodeCarbon for estimating carbon footprint from power and grid-intensity 
+data, as well as Zeus and Perun for fine-grained, hardware-level energy profiling of deep learning and 
+high-performance computing workloads. While powerful, these tools are often presented as independent 
+projects or research prototypes, and there is currently no unified, SME-oriented benchmarking framework
+that integrates them into a coherent workflow which jointly reports accuracy, runtime, cost, and energy
+consumption for typical AI workloads. This gap makes it difficult for SMEs to systematically compare 
+alternative AI configurations and to incorporate energy- and cost-awareness into everyday model and 
+infrastructure decisions.
+
+\section{Research Objectives}
+This thesis develops and evaluates a Proof-of-Concept (PoC) benchmarking framework, Project HANSAL, 
+that enables systematic assessment of AI workloads along four key dimensions: 
+accuracy, runtime, cost, and energy consumption on realistically constrained 
+hardware. The goal is to provide SMEs with a practical, reproducible basis for making informed decisions
+about AI models, infrastructure, and deployment options under resource and budget limitations.
+
+The research is guided with the following questions:
+
+\begin{enumerate}
+    \item How can SMEs systematically compare AI workloads across 
+    accuracy, runtime, cost, and energy consumption using a unified 
+    benchmarking framework?
+    \item To what extent do existing measurement tools such as 
+    CodeCarbon, Zeus, and Perun support reliable and interpretable 
+    comparisons of AI workloads on modest, SME-typical hardware and 
+    infrastructure?
+    \item What trade-offs between model performance and resource usage 
+    emerge in representative workloads when evaluated with this framework,
+    and how can these trade-offs inform energy-aware, cost-efficient AI 
+    adoption in SMEs?
+\end{enumerate}

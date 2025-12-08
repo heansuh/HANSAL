@@ -1,0 +1,74 @@
+PMID- 38022395
+OWN - NLM
+STAT- PubMed-not-MEDLINE
+LR  - 20250530
+IS  - 2515-7620 (Electronic)
+IS  - 2515-7620 (Linking)
+VI  - 5
+IP  - 11
+DP  - 2023 Nov 1
+TI  - How to estimate carbon footprint when training deep learning models? A guide and 
+      review.
+PG  - 115014
+LID - 10.1088/2515-7620/acf81b [doi]
+LID - 115014
+AB  - Machine learning and deep learning models have become essential in the recent 
+      fast development of artificial intelligence in many sectors of the society. It is 
+      now widely acknowledge that the development of these models has an environmental 
+      cost that has been analyzed in many studies. Several online and software tools 
+      have been developed to track energy consumption while training machine learning 
+      models. In this paper, we propose a comprehensive introduction and comparison of 
+      these tools for AI practitioners wishing to start estimating the environmental 
+      impact of their work. We review the specific vocabulary, the technical 
+      requirements for each tool. We compare the energy consumption estimated by each 
+      tool on two deep neural networks for image processing and on different types of 
+      servers. From these experiments, we provide some advice for better choosing the 
+      right tool and infrastructure.
+CI  - © 2023 The Author(s). Published by IOP Publishing Ltd.
+FAU - Bouza, Lucía
+AU  - Bouza L
+AD  - Université Paris Cité, CNRS, MAP5 UMR 8145, 75006, Paris, France.
+FAU - Bugeau, Aurélie
+AU  - Bugeau A
+AUID- ORCID: 0000-0002-4858-4944
+AD  - Univ. Bordeaux, Bordeaux INP, CNRS, LaBRI, Talence, France.
+AD  - IUF, France.
+FAU - Lannelongue, Loïc
+AU  - Lannelongue L
+AD  - Cambridge Baker Systems Genomics Initiative, Department of Public Health and 
+      Primary Care, University of Cambridge, Cambridge, United Kingdom.
+AD  - British Heart Foundation Cardiovascular Epidemiology Unit, Department of Public 
+      Health and Primary Care, University of Cambridge, Cambridge, United Kingdom.
+AD  - Victor Phillip Dahdaleh Heart and Lung Research Institute, University of 
+      Cambridge, Cambridge, United Kingdom.
+AD  - Health Data Research UK Cambridge, Wellcome Genome Campus and University of 
+      Cambridge, Cambridge, United Kingdom.
+LA  - eng
+GR  - CH/12/2/29428/BHF_/British Heart Foundation/United Kingdom
+PT  - Journal Article
+DEP - 20231121
+PL  - England
+TA  - Environ Res Commun
+JT  - Environmental research communications
+JID - 101771925
+PMC - PMC10661046
+OTO - NOTNLM
+OT  - AI carbon footprint
+OT  - environmental impacts of deep learning
+OT  - measuring electrical consumption of AI
+EDAT- 2023/11/29 18:43
+MHDA- 2023/11/29 18:44
+PMCR- 2023/11/21
+CRDT- 2023/11/29 15:22
+PHST- 2023/06/27 00:00 [received]
+PHST- 2023/08/23 00:00 [revised]
+PHST- 2023/09/08 00:00 [accepted]
+PHST- 2023/11/29 18:44 [medline]
+PHST- 2023/11/29 18:43 [pubmed]
+PHST- 2023/11/29 15:22 [entrez]
+PHST- 2023/11/21 00:00 [pmc-release]
+AID - ercacf81b [pii]
+AID - 10.1088/2515-7620/acf81b [doi]
+PST - ppublish
+SO  - Environ Res Commun. 2023 Nov 1;5(11):115014. doi: 10.1088/2515-7620/acf81b. Epub 
+      2023 Nov 21.

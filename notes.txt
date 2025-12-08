@@ -1,0 +1,16 @@
+Motivation
+https://iopscience.iop.org/article/10.1088/2515-7620/acf81b
+https://arxiv.org/html/2402.13640v1
+https://www.sciencedirect.com/science/article/abs/pii/S0308596123002124
+https://dl.acm.org/doi/10.1145/3644815.3644967
+https://www.europarl.europa.eu/RegData/etudes/STUD/2021/662906/IPOL_STU(2021)662906_EN.pdf
+
+Context
+https://www.europarl.europa.eu/RegData/etudes/BRIE/2025/775859/EPRS_BRI(2025)775859_EN.pdf
+https://blog.izm.fraunhofer.de/ict-study/
+https://www.whitecase.com/insight-alert/data-centres-and-energy-consumption-evolving-eu-regulatory-landscape-and-outlook-2026
+
+Problem statement
+https://www.oecd.org/content/dam/oecd/en/publications/reports/2022/11/measuring-the-environmental-impacts-of-artificial-intelligence-compute-and-applications_3dddded5/7babf571-en.pdf
+https://www.sciencedirect.com/science/article/pii/S0925231224008671
+
