@@ -1,6 +1,5 @@
-% !TEX root = ../../index.tex
-
 \chapter{Introduction}
+
 Artificial intelligence (AI) systems have advanced rapidly over the past decade, driven in particular by 
 deep learning models with growing parameter counts and training data scales. These advances have led 
 to substantial increases in computational demand, which translate directly into higher electricity 
@@ -9,6 +8,7 @@ Recent analyses show that training and operating modern AI models can consume me
 and contribute non-negligibly to the overall climate impact of information and communication technologies.
 
 \section{Motivation}
+
 AI systems, particularly modern deep learning models, require large volumes of computation for both training 
 and inference, which directly translates into substantial electricity consumption and hardware demand. 
 Studies show that training and operating contemporary deep learning models can consume MWh of energy, 
@@ -33,6 +33,7 @@ cost, and emissions are treated as metrics alongside accuracy and latency—are 
 organisations that lack the capacity to absorb uncontrolled increases in computational demand.
 
 \section{Context}
+
 Small and medium-sized enterprises (SMEs) typically operate under tighter financial and organisational 
 constraints than large technology companies, which limits their access to specialised AI infrastructure
 such as dedicated GPU servers, high-performance storage, and professional MLOps teams. 
@@ -50,6 +51,7 @@ infrastructure or underinvesting in AI capabilities—and creates a barrier to e
 cost-efficient adoption of AI in the SME context.
 
 \section{Problem Statement}
+
 Many established AI benchmarks and leaderboards concentrate primarily on model accuracy, and in 
 some cases latency, while assuming access to substantial computational resources such as multi-GPU 
 servers or large cloud clusters. These benchmarks provide valuable insights for model comparison at 
@@ -70,22 +72,24 @@ alternative AI configurations and to incorporate energy- and cost-awareness into
 infrastructure decisions.
 
 \section{Research Objectives}
+
 This thesis develops and evaluates a Proof-of-Concept (PoC) benchmarking framework, Project HANSAL, 
 that enables systematic assessment of AI workloads along four key dimensions: 
 accuracy, runtime, cost, and energy consumption on realistically constrained 
 hardware. The goal is to provide SMEs with a practical, reproducible basis for making informed decisions
-about AI models, infrastructure, and deployment options under resource and budget limitations.
-
-The research is guided with the following questions:
+about AI models, infrastructure, and deployment options under resource and budget limitations.  
+  
+The research is guided with the following questions:  
 
 \begin{enumerate}
     \item How can SMEs systematically compare AI workloads across 
     accuracy, runtime, cost, and energy consumption using a unified 
-    benchmarking framework?
-    \item To what extent do existing measurement tools such as 
-    CodeCarbon, Zeus, and Perun support reliable and interpretable 
-    comparisons of AI workloads on modest, SME-typical hardware and 
-    infrastructure?
+    benchmarking framework, and what are the key design considerations?
+    \item To what extent do existing measurement tools support reliable
+    and interpretable comparisons of AI workloads on modest, SME-typical
+    hardware and infrastructure? What is the current state-of-the-art, and where are the gaps?
+    \item In terms of granularity and metrics, what levels of detail are expected
+    and useful for SMEs when evaluating AI workloads for energy and cost efficiency?
     \item What trade-offs between model performance and resource usage 
     emerge in representative workloads when evaluated with this framework,
     and how can these trade-offs inform energy-aware, cost-efficient AI 

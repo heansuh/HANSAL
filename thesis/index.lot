@@ -1,5 +1,10 @@
 \babel@toc {english}{}\relax 
 \addvspace {10\p@ }
 \addvspace {10\p@ }
+\contentsline {table}{\numberline {2.1}{\ignorespaces NVIDIA Datacenter GPU Generations (H100 $\to $ Blackwell)}}{14}{table.2.1}%
+\contentsline {table}{\numberline {2.2}{\ignorespaces AI Chip Challengers}}{14}{table.2.2}%
+\contentsline {table}{\numberline {2.3}{\ignorespaces On-Device vs Datacenter AI Chips}}{15}{table.2.3}%
+\addvspace {10\p@ }
+\contentsline {table}{\numberline {3.1}{\ignorespaces Code-Level Energy Tools}}{21}{table.3.1}%
 \def \@chapapp {\appendixname }
 \providecommand \tocbasic@end@toc@file {}\tocbasic@end@toc@file 

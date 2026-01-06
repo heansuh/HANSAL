@@ -16,5 +16,111 @@
   {}
 \endgroup
 
+
+\refsection{0}
+  \datalist[entry]{none/global//global/global/global}
+    \entry{IEA4E2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=94bbec863536f2ffa26fa7dcf69a0f1c}{%
+           family={{IEA-4E}},
+           familyi={I\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {IEA-4E}%
+      }
+      \strng{namehash}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{fullhash}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{fullhashraw}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{bibnamehash}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{authorbibnamehash}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{authornamehash}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{authorfullhash}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \strng{authorfullhashraw}{94bbec863536f2ffa26fa7dcf69a0f1c}
+      \field{sortinit}{1}
+      \field{sortinithash}{4f6aaa89bab872aa0999fec09ff8e98a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{[Online; accessed 25-Dec-2025]}
+      \field{title}{Data Centre Energy Use: Critical Review of Models and Results}
+      \field{type}{techreport}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://www.iea-4e.org/wp-content/uploads/2025/05/Data-Centre-Energy-Use-Critical-Review-of-Models-and-Results.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.iea-4e.org/wp-content/uploads/2025/05/Data-Centre-Energy-Use-Critical-Review-of-Models-and-Results.pdf
+      \endverb
+    \endentry
+    \entry{Wuerzburg2025}{report}{}{}
+      \name{author}{1}{}{%
+        {{hash=55d4d20078ac351feb779f80d2a31eea}{%
+           family={{University of Würzburg}},
+           familyi={U\bibinitperiod}}}%
+      }
+      \list{institution}{1}{%
+        {University of Würzburg}%
+      }
+      \strng{namehash}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{fullhash}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{fullhashraw}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{bibnamehash}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{authorbibnamehash}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{authornamehash}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{authorfullhash}{55d4d20078ac351feb779f80d2a31eea}
+      \strng{authorfullhashraw}{55d4d20078ac351feb779f80d2a31eea}
+      \field{sortinit}{2}
+      \field{sortinithash}{8b555b3791beccb63322c22f3320aa9a}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Energy Use in Data Centers: Current Figures and Trends}
+      \field{type}{techreport}
+      \field{year}{2025}
+      \verb{urlraw}
+      \verb https://opus.bibliothek.uni-wuerzburg.de/files/41670/energyUse-dataCenters-20250701.pdf
+      \endverb
+      \verb{url}
+      \verb https://opus.bibliothek.uni-wuerzburg.de/files/41670/energyUse-dataCenters-20250701.pdf
+      \endverb
+    \endentry
+    \entry{arXiv2509_07218}{article}{}{}
+      \name{author}{2}{}{%
+        {{hash=42053e2a658ac9f50e1156541ea2db5f}{%
+           family={AuthorLast},
+           familyi={A\bibinitperiod},
+           given={First},
+           giveni={F\bibinitperiod}}}%
+        {{hash=41d232a144a939e91e9b061079c6e334}{%
+           family={CoAuthorLast},
+           familyi={C\bibinitperiod},
+           given={First},
+           giveni={F\bibinitperiod}}}%
+      }
+      \strng{namehash}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{fullhash}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{fullhashraw}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{bibnamehash}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{authorbibnamehash}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{authornamehash}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{authorfullhash}{ec475f29585dbb66af3e824b6d7bf9de}
+      \strng{authorfullhashraw}{ec475f29585dbb66af3e824b6d7bf9de}
+      \field{sortinit}{3}
+      \field{sortinithash}{ad6fe7482ffbd7b9f99c9e8b5dccd3d7}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{journaltitle}{arXiv preprint arXiv:2509.07218}
+      \field{title}{Electricity Demand and Grid Impacts of {AI} Data Centers}
+      \field{year}{2025}
+      \verb{doi}
+      \verb 10.48550/arXiv.2509.07218
+      \endverb
+      \verb{urlraw}
+      \verb https://arxiv.org/abs/2509.07218
+      \endverb
+      \verb{url}
+      \verb https://arxiv.org/abs/2509.07218
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
 \endinput
 

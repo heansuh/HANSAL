@@ -1,6 +1,33 @@
 \documentclass[12pt,twoside,headsepline]{scrreprt}
+\usepackage[utf8]{inputenc}
 \usepackage{csquotes}
 \usepackage[a4paper,width=150mm,top=25mm,bottom=25mm,bindingoffset=6mm]{geometry}
+\usepackage{listings}
+\usepackage{xcolor}
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  breakatwhitespace=true,
+  frame=single,
+  columns=flexible,
+  keywordstyle=\color{blue},
+  commentstyle=\color{green!60!black},
+  stringstyle=\color{red}
+}
+\lstdefinelanguage{PromQL}{
+  keywords={sum,rate,by,container_energy_joules_total,namespace},
+  keywordstyle=\color{blue},
+  basicstyle=\ttfamily\footnotesize,
+  literate={ai-bench}{{ai-bench}}1 {pod}{{pod}}1
+}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{tabularx}
+\usepackage{adjustbox}
+\usepackage{siunitx}  % For nice numbers
+\usepackage{float}
+\floatplacement{table}{htbp}  % Auto-fixes [h] → [htbp] everywhere
+\floatplacement{figure}{htbp}
 
 %%%%%%%%%%%%%Variables and Commands
 \input{lib/settings/language}
