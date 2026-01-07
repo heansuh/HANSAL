@@ -49,7 +49,7 @@
 \contentsline {section}{\numberline {3.2}Monorepo Architecture and Repository Structure}{18}{section.3.2}%
 \contentsline {subsection}{\numberline {3.2.1}Monorepo Benefits (Industry Examples)}{18}{subsection.3.2.1}%
 \contentsline {subsection}{\numberline {3.2.2}PoC Structure}{18}{subsection.3.2.2}%
-\contentsline {subsection}{\numberline {3.2.3}Per-Use-Case YAML Configuration}{19}{subsection.3.2.3}%
+\contentsline {subsection}{\numberline {3.2.3}Per-Use-Case YAML Configuration}{18}{subsection.3.2.3}%
 \contentsline {subsection}{\numberline {3.2.4}Git Workflow and Agile Practices}{19}{subsection.3.2.4}%
 \contentsline {subsection}{\numberline {3.2.5}Agile Scaling Benefits}{19}{subsection.3.2.5}%
 \contentsline {section}{\numberline {3.3}CI/CD Pipeline with GitHub Actions}{20}{section.3.3}%
