@@ -1,0 +1,50 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\heans> cd E:
+PS E:\> cd Thesis
+PS E:\Thesis> cd HANSAL
+PS E:\Thesis\HANSAL> helm repo add kepler https://sustainable-computing-io.github.io/kepler-helm-chart
+"kepler" has been added to your repositories
+PS E:\Thesis\HANSAL> helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "kepler" chart repository
+Update Complete. ⎈Happy Helming!⎈
+PS E:\Thesis\HANSAL> helm install kepler kepler/kepler --namespace kepler --create-namespace --set serviceMonitor.enabled=false
+NAME: kepler
+LAST DEPLOYED: Mon Jan 19 16:46:36 2026
+NAMESPACE: kepler
+STATUS: deployed
+REVISION: 1
+DESCRIPTION: Install complete
+TEST SUITE: None
+PS E:\Thesis\HANSAL> kubectl get pods -n kepler
+NAME           READY   STATUS    RESTARTS   AGE
+kepler-gxq9v   0/1     Running   0          24s
+PS E:\Thesis\HANSAL> kubectl port-forward -n kepler service/kepler 9102:9102
+Forwarding from 127.0.0.1:9102 -> 9102
+Forwarding from [::1]:9102 -> 9102
+Handling connection for 9102
+Handling connection for 9102
+Handling connection for 9102
+Handling connection for 9102
+Handling connection for 9102
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
