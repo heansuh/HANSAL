@@ -1,0 +1,2796 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\heans> ssh -i "C:\Users\heans\.ssh\hansal-ssh.pem" ubuntu@149.222.209.90
+Welcome to Ubuntu 24.04.3 LTS (GNU/Linux 6.8.0-90-generic x86_64)
+
+ * Documentation:  https://help.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Tue Jan 20 11:55:49 UTC 2026
+
+  System load:  0.0                Processes:             845
+  Usage of /:   5.6% of 386.42GB   Users logged in:       1
+  Memory usage: 2%                 IPv4 address for ens3: 192.168.10.87
+  Swap usage:   0%
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+4 updates can be applied immediately.
+To see these additional updates run: apt list --upgradable
+
+1 additional security update can be applied with ESM Apps.
+Learn more about enabling ESM Apps service at https://ubuntu.com/esm
+
+Last login: Thu Jan  8 06:12:52 2026 from 149.222.4.26
+ubuntu@hansal:~$ cd repo
+ubuntu@hansal:~/repo$ cd hansal
+-bash: cd: hansal: No such file or directory
+ubuntu@hansal:~/repo$ cd HANSAL
+ubuntu@hansal:~/repo/HANSAL$ git checkout
+Your branch is up to date with 'origin/feature/test-branch'.
+ubuntu@hansal:~/repo/HANSAL$ sudo apt-get update
+Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Hit:2 http://nova.clouds.archive.ubuntu.com/ubuntu noble InRelease
+Get:3 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+Get:4 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:5 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.2 kB]
+Get:6 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Get:7 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Get:8 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Hit:9 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease
+Get:10 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+Get:11 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [381 kB]
+Get:12 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Get:13 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:14 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7284 B]
+Get:15 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+Get:16 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+Get:17 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Fetched 1050 kB in 1s (776 kB/s)
+Reading package lists... Done
+ubuntu@hansal:~/repo/HANSAL$ sudo apt-get install -y ca-certificates curl gnupg
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+ca-certificates is already the newest version (20240203).
+ca-certificates set to manually installed.
+curl is already the newest version (8.5.0-2ubuntu10.6).
+curl set to manually installed.
+gnupg is already the newest version (2.4.4-2ubuntu17.4).
+gnupg set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+ubuntu@hansal:~/repo/HANSAL$ sudo install -m 0755 -d /etc/apt/keyrings
+ubuntu@hansal:~/repo/HANSAL$ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+ubuntu@hansal:~/repo/HANSAL$ sudo chmod a+r /etc/apt/keyrings/docker.gpg
+ubuntu@hansal:~/repo/HANSAL$ echo \ "deb [arch="$(dpkg --print-architecture)" signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \ "$(. /etc/os-release && echo "$VERSION_CODENAME")" stable" | \ sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+Command ' sudo' not found, did you mean:
+  command 'sudo' from deb sudo (1.9.15p5-3ubuntu5.24.04.1)
+  command 'sudo' from deb sudo-ldap (1.9.15p5-3ubuntu5.24.04.1)
+Try: sudo apt install <deb name>
+ubuntu@hansal:~/repo/HANSAL$ echo "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+ubuntu@hansal:~/repo/HANSAL$ sudo apt-get update
+Get:1 https://download.docker.com/linux/ubuntu noble InRelease [48.5 kB]
+Hit:2 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:3 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease
+Hit:4 http://nova.clouds.archive.ubuntu.com/ubuntu noble InRelease
+Hit:5 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:6 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports InRelease
+Get:7 https://download.docker.com/linux/ubuntu noble/stable amd64 Packages [42.5 kB]
+Fetched 91.0 kB in 1s (85.6 kB/s)
+Reading package lists... Done
+ubuntu@hansal:~/repo/HANSAL$ sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  docker-ce-rootless-extras libslirp0 pigz slirp4netns
+Suggested packages:
+  cgroupfs-mount | cgroup-lite docker-model-plugin
+The following NEW packages will be installed:
+  containerd.io docker-buildx-plugin docker-ce docker-ce-cli docker-ce-rootless-extras docker-compose-plugin libslirp0
+  pigz slirp4netns
+0 upgraded, 9 newly installed, 0 to remove and 4 not upgraded.
+Need to get 91.3 MB of archives.
+After this operation, 364 MB of additional disk space will be used.
+Get:1 https://download.docker.com/linux/ubuntu noble/stable amd64 containerd.io amd64 2.2.1-1~ubuntu.24.04~noble [23.4 MB]
+Get:2 http://nova.clouds.archive.ubuntu.com/ubuntu noble/universe amd64 pigz amd64 2.8-1 [65.6 kB]
+Get:3 http://nova.clouds.archive.ubuntu.com/ubuntu noble/main amd64 libslirp0 amd64 4.7.0-1ubuntu3 [63.8 kB]
+Get:4 http://nova.clouds.archive.ubuntu.com/ubuntu noble/universe amd64 slirp4netns amd64 1.2.1-1build2 [34.9 kB]
+Get:5 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce-cli amd64 5:29.1.5-1~ubuntu.24.04~noble [16.3 MB]
+Get:6 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce amd64 5:29.1.5-1~ubuntu.24.04~noble [21.0 MB]
+Get:7 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-buildx-plugin amd64 0.30.1-1~ubuntu.24.04~noble [16.4 MB]
+Get:8 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-ce-rootless-extras amd64 5:29.1.5-1~ubuntu.24.04~noble [6385 kB]
+Get:9 https://download.docker.com/linux/ubuntu noble/stable amd64 docker-compose-plugin amd64 5.0.1-1~ubuntu.24.04~noble [7713 kB]
+Fetched 91.3 MB in 1s (130 MB/s)
+Selecting previously unselected package containerd.io.
+(Reading database ... 169173 files and directories currently installed.)
+Preparing to unpack .../0-containerd.io_2.2.1-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking containerd.io (2.2.1-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-ce-cli.
+Preparing to unpack .../1-docker-ce-cli_5%3a29.1.5-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-ce-cli (5:29.1.5-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-ce.
+Preparing to unpack .../2-docker-ce_5%3a29.1.5-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-ce (5:29.1.5-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package pigz.
+Preparing to unpack .../3-pigz_2.8-1_amd64.deb ...
+Unpacking pigz (2.8-1) ...
+Selecting previously unselected package docker-buildx-plugin.
+Preparing to unpack .../4-docker-buildx-plugin_0.30.1-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-buildx-plugin (0.30.1-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-ce-rootless-extras.
+Preparing to unpack .../5-docker-ce-rootless-extras_5%3a29.1.5-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-ce-rootless-extras (5:29.1.5-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package docker-compose-plugin.
+Preparing to unpack .../6-docker-compose-plugin_5.0.1-1~ubuntu.24.04~noble_amd64.deb ...
+Unpacking docker-compose-plugin (5.0.1-1~ubuntu.24.04~noble) ...
+Selecting previously unselected package libslirp0:amd64.
+Preparing to unpack .../7-libslirp0_4.7.0-1ubuntu3_amd64.deb ...
+Unpacking libslirp0:amd64 (4.7.0-1ubuntu3) ...
+Selecting previously unselected package slirp4netns.
+Preparing to unpack .../8-slirp4netns_1.2.1-1build2_amd64.deb ...
+Unpacking slirp4netns (1.2.1-1build2) ...
+Setting up docker-buildx-plugin (0.30.1-1~ubuntu.24.04~noble) ...
+Setting up containerd.io (2.2.1-1~ubuntu.24.04~noble) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/containerd.service → /usr/lib/systemd/system/containerd.service.
+Setting up docker-compose-plugin (5.0.1-1~ubuntu.24.04~noble) ...
+Setting up docker-ce-cli (5:29.1.5-1~ubuntu.24.04~noble) ...
+Setting up libslirp0:amd64 (4.7.0-1ubuntu3) ...
+Setting up pigz (2.8-1) ...
+Setting up docker-ce-rootless-extras (5:29.1.5-1~ubuntu.24.04~noble) ...
+Setting up slirp4netns (1.2.1-1build2) ...
+Setting up docker-ce (5:29.1.5-1~ubuntu.24.04~noble) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/docker.service → /usr/lib/systemd/system/docker.service.
+Created symlink /etc/systemd/system/sockets.target.wants/docker.socket → /usr/lib/systemd/system/docker.socket.
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.6) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ ubuntu @ user manager service: bash[73194], jupyter-lab[99470]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@hansal:~/repo/HANSAL$ sudo docker run hello-world
+Unable to find image 'hello-world:latest' locally
+latest: Pulling from library/hello-world
+17eec7bbc9d7: Pull complete
+ea52d2000f90: Download complete
+Digest: sha256:05813aedc15fb7b4d732e1be879d3252c1c9c25d885824f6295cab4538cb85cd
+Status: Downloaded newer image for hello-world:latest
+
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
+
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
+
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+
+ubuntu@hansal:~/repo/HANSAL$ curl -sfL https://get.k3s.io | sh -
+[INFO]  Finding release for channel stable
+[INFO]  Using v1.34.3+k3s1 as release
+[INFO]  Downloading hash https://github.com/k3s-io/k3s/releases/download/v1.34.3+k3s1/sha256sum-amd64.txt
+[INFO]  Downloading binary https://github.com/k3s-io/k3s/releases/download/v1.34.3+k3s1/k3s
+[INFO]  Verifying binary download
+[INFO]  Installing k3s to /usr/local/bin/k3s
+[INFO]  Skipping installation of SELinux RPM
+[INFO]  Creating /usr/local/bin/kubectl symlink to k3s
+[INFO]  Creating /usr/local/bin/crictl symlink to k3s
+[INFO]  Skipping /usr/local/bin/ctr symlink to k3s, command exists in PATH at /usr/bin/ctr
+[INFO]  Creating killall script /usr/local/bin/k3s-killall.sh
+[INFO]  Creating uninstall script /usr/local/bin/k3s-uninstall.sh
+[INFO]  env: Creating environment file /etc/systemd/system/k3s.service.env
+[INFO]  systemd: Creating service file /etc/systemd/system/k3s.service
+[INFO]  systemd: Enabling k3s unit
+Created symlink /etc/systemd/system/multi-user.target.wants/k3s.service → /etc/systemd/system/k3s.service.
+[INFO]  systemd: Starting k3s
+ubuntu@hansal:~/repo/HANSAL$ mkdir -p ~/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown $USER:$USER ~/.kube/config
+echo "export KUBECONFIG=~/.kube/config" >> ~/.bashrc
+source ~/.bashr
+-bash: /home/ubuntu/.bashr: No such file or directory
+ubuntu@hansal:~/repo/HANSAL$ mkdir -p ~/.kube
+sudo cp /etc/rancher/k3s/k3s.yaml ~/.kube/config
+sudo chown $USER:$USER ~/.kube/config
+echo "export KUBECONFIG=~/.kube/config" >> ~/.bashrc
+source ~/.bashrc
+ubuntu@hansal:~/repo/HANSAL$ kubectl get nodes
+NAME     STATUS   ROLES           AGE     VERSION
+hansal   Ready    control-plane   8m48s   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL$ curl https://raw.githubusercontent.com/helm/helm/main/scripts/get-helm-3 | bash
+  % Total    % Received % Xferd  Average Speed   Time    Time     Time  Current
+                                 Dload  Upload   Total   Spent    Left  Speed
+100 11929  100 11929    0     0   119k      0 --:--:-- --:--:-- --:--:--  121k
+Downloading https://get.helm.sh/helm-v3.19.5-linux-amd64.tar.gz
+Verifying checksum... Done.
+Preparing to install helm into /usr/local/bin
+helm installed into /usr/local/bin/helm
+ubuntu@hansal:~/repo/HANSAL$ # Add the Kepler repo
+helm repo add kepler https://sustainable-computing-io.github.io/kepler-helm-chart
+helm repo update
+
+# Install Kepler
+helm install kepler kepler/kepler --namespace kepler --create-namespace --set service.type=NodePort
+"kepler" has been added to your repositories
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "kepler" chart repository
+Update Complete. ⎈Happy Helming!⎈
+NAME: kepler
+LAST DEPLOYED: Tue Jan 20 12:19:51 2026
+NAMESPACE: kepler
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+ubuntu@hansal:~/repo/HANSAL$ nvidia-smi
+Tue Jan 20 12:39:47 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 570.195.03             Driver Version: 570.195.03     CUDA Version: 12.8     |
+|-----------------------------------------+------------------------+----------------------+
+| GPU  Name                 Persistence-M | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA A40                     Off |   00000000:00:05.0 Off |                    0 |
+|  0%   36C    P0             71W /  300W |       0MiB /  46068MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+|   1  NVIDIA A40                     Off |   00000000:00:06.0 Off |                    0 |
+|  0%   37C    P0             77W /  300W |       0MiB /  46068MiB |      2%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|  No running processes found                                                             |
++-----------------------------------------------------------------------------------------+
+ubuntu@hansal:~/repo/HANSAL$ ls
+LICENSE  Logo.png  README.md  apps  infrastructure  logs  notes.txt  share  thesis
+ubuntu@hansal:~/repo/HANSAL$ cd apps
+ubuntu@hansal:~/repo/HANSAL/apps$ cd fashion-mnist
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo docker build -t fashion-mnist-pipeline:v1 .
+[+] Building 648.1s (12/12) FINISHED                                                                     docker:default
+ => [internal] load build definition from Dockerfile                                                               0.2s
+ => => transferring dockerfile: 652B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                 1.9s
+ => [internal] load .dockerignore                                                                                  0.1s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/7] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf  3.8s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf  0.1s
+ => => sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508 251B / 251B                         0.3s
+ => => sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08 13.88MB / 13.88MB                   0.7s
+ => => sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d 1.29MB / 1.29MB                     0.5s
+ => => sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d 29.78MB / 29.78MB                   1.1s
+ => => extracting sha256:38513bd7256313495cdd83b3b0915a633cfa475dc2a07072ab2c8d191020ca5d                          0.8s
+ => => extracting sha256:b3ec39b36ae8c03a3e09854de4ec4aa08381dfed84a9daa075048c2e3df3881d                          0.2s
+ => => extracting sha256:fc74430849022d13b0d44b8969a953f842f59c6e9d1a0c2c83d710affa286c08                          0.7s
+ => => extracting sha256:ea56f685404adf81680322f152d2cfec62115b30dda481c2c450078315beb508                          0.1s
+ => [internal] load build context                                                                                  0.4s
+ => => transferring context: 7.47kB                                                                                0.0s
+ => [2/7] WORKDIR /app                                                                                             0.7s
+ => [3/7] RUN apt-get update && apt-get install -y --no-install-recommends     gcc     libc-dev     && rm -rf /v  26.6s
+ => [4/7] COPY requirements.txt .                                                                                  0.3s
+ => [5/7] RUN pip install --no-cache-dir -r requirements.txt                                                     123.5s
+ => [6/7] COPY src/ src/                                                                                           4.5s
+ => [7/7] RUN mkdir -p data/raw data/processed metrics                                                             0.7s
+ => exporting to image                                                                                           484.6s
+ => => exporting layers                                                                                          445.5s
+ => => exporting manifest sha256:e8eb3338d056d43d59b51887edf0cc5719d2bd588a1e544c2ecd09c67217be8c                  0.1s
+ => => exporting config sha256:3dca6239382d05903c45869c902f076d6713852824eaeb2ddbcc657e76dc2d87                    0.1s
+ => => exporting attestation manifest sha256:095dffa73522ca5fc2f8c5df13dcbd113ee389bb8ce6cff6f8bc66b71fbce381      0.1s
+ => => exporting manifest list sha256:9662bb3272974a6ceac7d53efb411c477ba824722d0d576e4451f73a74af6b4a             0.1s
+ => => naming to docker.io/library/fashion-mnist-pipeline:v1                                                       0.0s
+ => => unpacking to docker.io/library/fashion-mnist-pipeline:v1                                                   38.6s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Create a simple PVC for K3s
+echo "
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: fashion-mnist-pvc
+spec:
+  accessModes:
+    - ReadWriteOnce
+  storageClassName: local-path  # <--- K3s default storage class
+  resources:
+    requests:
+      storage: 1Gi
+" | kubectl apply -f -
+persistentvolumeclaim/fashion-mnist-pvc created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f infrastructure/k3s/job.yaml
+error: the path "infrastructure/k3s/job.yaml" does not exist
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cd ../..
+ubuntu@hansal:~/repo/HANSAL$ kubectl apply -f infrastructure/k3s/job.yaml
+error: the path "infrastructure/k3s/job.yaml" does not exist
+ubuntu@hansal:~/repo/HANSAL$ cd infrastructure
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ cd k3s
+-bash: cd: k3s: No such file or directory
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ kubectl apply job.yaml
+error: Unexpected args: [job.yaml]
+See 'kubectl apply -h' for help and examples
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ cd k3s
+-bash: cd: k3s: No such file or directory
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ kubectl apply job.yaml
+error: Unexpected args: [job.yaml]
+See 'kubectl apply -h' for help and examples
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ kubectl apply -f job.yaml
+error: the path "job.yaml" does not exist
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ mkdir k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure$ cd k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ nano job.yaml
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ nano job.yaml
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl apply -f job.yaml
+job.batch/fashion-mnist-gpu-job created
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -w
+NAME                          READY   STATUS    RESTARTS   AGE
+fashion-mnist-gpu-job-qsssd   0/1     Pending   0          25s
+^Cubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -w
+NAME                          READY   STATUS    RESTARTS   AGE
+fashion-mnist-gpu-job-qsssd   0/1     Pending   0          62s
+^Cubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+fashion-mnist-gpu-job-qsssd   0/1     Pending   0          78s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl describe pod fashion-mnist-gpu-job-qsssd
+Name:             fashion-mnist-gpu-job-qsssd
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             <none>
+Labels:           batch.kubernetes.io/controller-uid=774da589-98c9-4b4a-a8ce-798a85935daf
+                  batch.kubernetes.io/job-name=fashion-mnist-gpu-job
+                  controller-uid=774da589-98c9-4b4a-a8ce-798a85935daf
+                  job-name=fashion-mnist-gpu-job
+                  project=green-mlops-thesis
+Annotations:      <none>
+Status:           Pending
+IP:
+IPs:              <none>
+Controlled By:    Job/fashion-mnist-gpu-job
+Init Containers:
+  etl-step:
+    Image:      fashion-mnist-pipeline:v1
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      python
+      src/etl.py
+    Environment:  <none>
+    Mounts:
+      /app/data from shared-data (rw)
+      /app/metrics from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-v4p2k (ro)
+Containers:
+  train-step:
+    Image:      fashion-mnist-pipeline:v1
+    Port:       <none>
+    Host Port:  <none>
+    Command:
+      python
+      src/train.py
+    Limits:
+      nvidia.com/gpu:  1
+    Requests:
+      nvidia.com/gpu:  1
+    Environment:       <none>
+    Mounts:
+      /app/data from shared-data (rw)
+      /app/metrics from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-v4p2k (ro)
+Conditions:
+  Type           Status
+  PodScheduled   False
+Volumes:
+  shared-data:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  fashion-mnist-pvc
+    ReadOnly:   false
+  kube-api-access-v4p2k:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason            Age   From               Message
+  ----     ------            ----  ----               -------
+  Warning  FailedScheduling  90s   default-scheduler  0/1 nodes are available: 1 Insufficient nvidia.com/gpu. no new claims to deallocate, preemption: 0/1 nodes are available: 1 Preemption is not helpful for scheduling.
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl describe node hansal | grep "nvidia.com/gpu" -B 2 -A 2
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -n nvidia-device-plugin
+No resources found in nvidia-device-plugin namespace.
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ helm repo add nvdp https://nvidia.github.io/k8s-device-plugin
+"nvdp" has been added to your repositories
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ helm repo update
+Hang tight while we grab the latest from your chart repositories...
+...Successfully got an update from the "kepler" chart repository
+...Successfully got an update from the "nvdp" chart repository
+Update Complete. ⎈Happy Helming!⎈
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ helm install nvidia-device-plugin nvdp/nvidia-device-plugin \
+  --namespace nvidia-device-plugin \
+  --create-namespace \
+  --version 0.14.5
+NAME: nvidia-device-plugin
+LAST DEPLOYED: Tue Jan 20 13:09:29 2026
+NAMESPACE: nvidia-device-plugin
+STATUS: deployed
+REVISION: 1
+TEST SUITE: None
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -n nvidia-device-plugin
+NAME                         READY   STATUS              RESTARTS   AGE
+nvidia-device-plugin-vkkhc   0/1     ContainerCreating   0          8s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -n nvidia-device-plugin
+NAME                         READY   STATUS             RESTARTS      AGE
+nvidia-device-plugin-vkkhc   0/1     CrashLoopBackOff   4 (47s ago)   2m31s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl logs -n nvidia-device-plugin nvidia-device-plugin-vkkhc
+I0120 13:12:39.059665       1 main.go:154] Starting FS watcher.
+I0120 13:12:39.059781       1 main.go:161] Starting OS watcher.
+I0120 13:12:39.060488       1 main.go:176] Starting Plugins.
+I0120 13:12:39.060557       1 main.go:234] Loading configuration.
+I0120 13:12:39.061143       1 main.go:242] Updating config with default resource matching patterns.
+I0120 13:12:39.061751       1 main.go:253]
+Running with config:
+{
+  "version": "v1",
+  "flags": {
+    "migStrategy": "none",
+    "failOnInitError": true,
+    "nvidiaDriverRoot": "/",
+    "gdsEnabled": false,
+    "mofedEnabled": false,
+    "plugin": {
+      "passDeviceSpecs": false,
+      "deviceListStrategy": [
+        "envvar"
+      ],
+      "deviceIDStrategy": "uuid",
+      "cdiAnnotationPrefix": "cdi.k8s.io/",
+      "nvidiaCTKPath": "/usr/bin/nvidia-ctk",
+      "containerDriverRoot": "/driver-root"
+    }
+  },
+  "resources": {
+    "gpus": [
+      {
+        "pattern": "*",
+        "name": "nvidia.com/gpu"
+      }
+    ]
+  },
+  "sharing": {
+    "timeSlicing": {}
+  }
+}
+I0120 13:12:39.061791       1 main.go:256] Retreiving plugins.
+W0120 13:12:39.062657       1 factory.go:31] No valid resources detected, creating a null CDI handler
+I0120 13:12:39.062793       1 factory.go:107] Detected non-NVML platform: could not load NVML library: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+I0120 13:12:39.062865       1 factory.go:107] Detected non-Tegra platform: /sys/devices/soc0/family file not found
+E0120 13:12:39.062888       1 factory.go:115] Incompatible platform detected
+E0120 13:12:39.062900       1 factory.go:116] If this is a GPU node, did you configure the NVIDIA Container Toolkit?
+E0120 13:12:39.062912       1 factory.go:117] You can check the prerequisites at: https://github.com/NVIDIA/k8s-device-plugin#prerequisites
+E0120 13:12:39.062934       1 factory.go:118] You can learn how to set the runtime at: https://github.com/NVIDIA/k8s-device-plugin#quick-start
+E0120 13:12:39.062945       1 factory.go:119] If this is not a GPU node, you should set up a toleration or nodeSelector to only deploy this plugin on GPU nodes
+E0120 13:12:39.069348       1 main.go:123] error starting plugins: error creating plugin manager: unable to create plugin manager: platform detection failed
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ curl -fsSL https://nvidia.github.io/libnvidia-container/gpgkey | sudo gpg --dearmor -o /usr/share/keyrings/nvidia-container-toolkit-keyring.gpg \
+  && curl -s -L https://nvidia.github.io/libnvidia-container/stable/deb/nvidia-container-toolkit.list | \
+    sed 's#deb https://#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://#' | \
+    sudo tee /etc/apt/sources.list.d/nvidia-container-toolkit.list
+deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/stable/deb/$(ARCH) /
+#deb [signed-by=/usr/share/keyrings/nvidia-container-toolkit-keyring.gpg] https://nvidia.github.io/libnvidia-container/experimental/deb/$(ARCH) /
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo apt-get update
+sudo apt-get install -y nvidia-container-toolkit
+Get:1 http://security.ubuntu.com/ubuntu noble-security InRelease [126 kB]
+Hit:2 https://download.docker.com/linux/ubuntu noble InRelease
+Get:3 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  InRelease [1477 B]
+Hit:4 http://nova.clouds.archive.ubuntu.com/ubuntu noble InRelease
+Get:5 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates InRelease [126 kB]
+Get:6 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  Packages [23.3 kB]
+Get:7 http://security.ubuntu.com/ubuntu noble-security/main amd64 Components [21.5 kB]
+Get:8 http://security.ubuntu.com/ubuntu noble-security/universe amd64 Components [74.3 kB]
+Get:9 http://security.ubuntu.com/ubuntu noble-security/restricted amd64 Components [212 B]
+Get:10 http://security.ubuntu.com/ubuntu noble-security/multiverse amd64 Components [208 B]
+Get:11 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports InRelease [126 kB]
+Hit:12 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease
+Get:13 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/main amd64 Components [175 kB]
+Get:14 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/universe amd64 Components [380 kB]
+Get:15 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/restricted amd64 Components [212 B]
+Get:16 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/multiverse amd64 Components [940 B]
+Get:17 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/main amd64 Components [7300 B]
+Get:18 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/universe amd64 Components [10.5 kB]
+Get:19 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/restricted amd64 Components [216 B]
+Get:20 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports/multiverse amd64 Components [212 B]
+Fetched 1074 kB in 2s (715 kB/s)
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit-base
+The following NEW packages will be installed:
+  libnvidia-container-tools libnvidia-container1 nvidia-container-toolkit nvidia-container-toolkit-base
+0 upgraded, 4 newly installed, 0 to remove and 4 not upgraded.
+Need to get 7656 kB of archives.
+After this operation, 33.8 MB of additional disk space will be used.
+Get:1 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  libnvidia-container1 1.18.1-1 [926 kB]
+Get:2 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  libnvidia-container-tools 1.18.1-1 [22.1 kB]
+Get:3 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  nvidia-container-toolkit-base 1.18.1-1 [5407 kB]
+Get:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  nvidia-container-toolkit 1.18.1-1 [1300 kB]
+Fetched 7656 kB in 6s (1317 kB/s)
+Selecting previously unselected package libnvidia-container1:amd64.
+(Reading database ... 169422 files and directories currently installed.)
+Preparing to unpack .../libnvidia-container1_1.18.1-1_amd64.deb ...
+Unpacking libnvidia-container1:amd64 (1.18.1-1) ...
+Selecting previously unselected package libnvidia-container-tools.
+Preparing to unpack .../libnvidia-container-tools_1.18.1-1_amd64.deb ...
+Unpacking libnvidia-container-tools (1.18.1-1) ...
+Selecting previously unselected package nvidia-container-toolkit-base.
+Preparing to unpack .../nvidia-container-toolkit-base_1.18.1-1_amd64.deb ...
+Unpacking nvidia-container-toolkit-base (1.18.1-1) ...
+Selecting previously unselected package nvidia-container-toolkit.
+Preparing to unpack .../nvidia-container-toolkit_1.18.1-1_amd64.deb ...
+Unpacking nvidia-container-toolkit (1.18.1-1) ...
+Setting up nvidia-container-toolkit-base (1.18.1-1) ...
+Created symlink /etc/systemd/system/multi-user.target.wants/nvidia-cdi-refresh.path → /etc/systemd/system/nvidia-cdi-refresh.path.
+Created symlink /etc/systemd/system/multi-user.target.wants/nvidia-cdi-refresh.service → /etc/systemd/system/nvidia-cdi-refresh.service.
+Regenerating NVIDIA CDI specification...
+Setting up libnvidia-container1:amd64 (1.18.1-1) ...
+Setting up libnvidia-container-tools (1.18.1-1) ...
+Setting up nvidia-container-toolkit (1.18.1-1) ...
+Processing triggers for libc-bin (2.39-0ubuntu8.6) ...
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ ubuntu @ user manager service: bash[73194], jupyter-lab[99470]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo mkdir -p /var/lib/rancher/k3s/agent/etc/containerd/
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ cat <<EOF | sudo tee /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+[plugins.opt]
+  path = "/var/lib/rancher/k3s/agent/containerd"
+  [plugins.cri]
+    stream_server_address = "127.0.0.1"
+    stream_server_port = "10010"
+    enable_selinux = false
+    sandbox_image = "rancher/mirrored-pause:3.6"
+  [plugins.cri.containerd]
+    disable_snapshot_annotations = true
+    snapshotter = "overlayfs"
+    [plugins.cri.containerd.runtimes.runc]
+      runtime_type = "io.containerd.runc.v2"
+    [plugins.cri.containerd.runtimes.nvidia]
+      privileged_without_host_devices = false
+      runtime_engine = ""
+      runtime_root = ""
+      runtime_type = "io.containerd.runc.v2"
+      [plugins.cri.containerd.runtimes.nvidia.options]
+        BinaryName = "/usr/bin/nvidia-container-runtime"
+EOF
+[plugins.opt]
+  path = "/var/lib/rancher/k3s/agent/containerd"
+  [plugins.cri]
+    stream_server_address = "127.0.0.1"
+    stream_server_port = "10010"
+    enable_selinux = false
+    sandbox_image = "rancher/mirrored-pause:3.6"
+  [plugins.cri.containerd]
+    disable_snapshot_annotations = true
+    snapshotter = "overlayfs"
+    [plugins.cri.containerd.runtimes.runc]
+      runtime_type = "io.containerd.runc.v2"
+    [plugins.cri.containerd.runtimes.nvidia]
+      privileged_without_host_devices = false
+      runtime_engine = ""
+      runtime_root = ""
+      runtime_type = "io.containerd.runc.v2"
+      [plugins.cri.containerd.runtimes.nvidia.options]
+        BinaryName = "/usr/bin/nvidia-container-runtime"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo systemctl restart k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl delete pods -n nvidia-device-plugin --all
+pod "nvidia-device-plugin-vkkhc" deleted from nvidia-device-plugin namespace
+^Cubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS     ROLES           AGE   VERSION
+hansal   NotReady   control-plane   69m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS     ROLES           AGE   VERSION
+hansal   NotReady   control-plane   69m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS     ROLES           AGE   VERSION
+hansal   NotReady   control-plane   71m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo journalctl -u k3s -n 50 --no-pager
+Jan 20 13:21:44 hansal k3s[146676]: E0120 13:21:44.626105  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:44 hansal k3s[146676]: E0120 13:21:44.626327  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:44 hansal k3s[146676]: E0120 13:21:44.626607  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:46 hansal k3s[146676]: E0120 13:21:46.625660  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:46 hansal k3s[146676]: E0120 13:21:46.625921  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:46 hansal k3s[146676]: E0120 13:21:46.626300  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:46 hansal k3s[146676]: E0120 13:21:46.626521  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:46 hansal k3s[146676]: E0120 13:21:46.626745  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:48 hansal k3s[146676]: E0120 13:21:48.625180  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:48 hansal k3s[146676]: E0120 13:21:48.625424  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:48 hansal k3s[146676]: E0120 13:21:48.625927  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:48 hansal k3s[146676]: E0120 13:21:48.626325  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:48 hansal k3s[146676]: E0120 13:21:48.626612  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:48 hansal k3s[146676]: E0120 13:21:48.773995  146676 kubelet.go:3012] "Container runtime network not ready" networkReady="NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized"
+Jan 20 13:21:50 hansal k3s[146676]: E0120 13:21:50.625371  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:50 hansal k3s[146676]: E0120 13:21:50.625631  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:50 hansal k3s[146676]: E0120 13:21:50.625866  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:50 hansal k3s[146676]: E0120 13:21:50.626158  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:50 hansal k3s[146676]: E0120 13:21:50.626434  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:52 hansal k3s[146676]: E0120 13:21:52.625849  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:52 hansal k3s[146676]: E0120 13:21:52.626087  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:52 hansal k3s[146676]: E0120 13:21:52.626206  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:52 hansal k3s[146676]: E0120 13:21:52.626409  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:52 hansal k3s[146676]: E0120 13:21:52.626576  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:53 hansal k3s[146676]: E0120 13:21:53.775378  146676 kubelet.go:3012] "Container runtime network not ready" networkReady="NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized"
+Jan 20 13:21:54 hansal k3s[146676]: E0120 13:21:54.624910  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:54 hansal k3s[146676]: E0120 13:21:54.625126  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:54 hansal k3s[146676]: E0120 13:21:54.625444  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:54 hansal k3s[146676]: E0120 13:21:54.625842  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:54 hansal k3s[146676]: E0120 13:21:54.626085  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:55 hansal k3s[146676]: E0120 13:21:55.627925  146676 log.go:32] "StopPodSandbox from runtime service failed" err="rpc error: code = Unknown desc = failed to destroy network for sandbox \"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba\": cni plugin not initialized" podSandboxID="03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba"
+Jan 20 13:21:55 hansal k3s[146676]: E0120 13:21:55.628038  146676 kuberuntime_manager.go:1665] "Failed to stop sandbox" podSandboxID={"Type":"containerd","ID":"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba"}
+Jan 20 13:21:55 hansal k3s[146676]: E0120 13:21:55.628192  146676 kubelet.go:2150] "Unhandled Error" err="failed to \"KillPodSandbox\" for \"2de54ea8-d527-4645-bb25-97c72cd4c305\" with KillPodSandboxError: \"rpc error: code = Unknown desc = failed to destroy network for sandbox \\\"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba\\\": cni plugin not initialized\""
+Jan 20 13:21:55 hansal k3s[146676]: E0120 13:21:55.628238  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="failed to \"KillPodSandbox\" for \"2de54ea8-d527-4645-bb25-97c72cd4c305\" with KillPodSandboxError: \"rpc error: code = Unknown desc = failed to destroy network for sandbox \\\"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba\\\": cni plugin not initialized\"" pod="nvidia-device-plugin/nvidia-device-plugin-vkkhc" podUID="2de54ea8-d527-4645-bb25-97c72cd4c305"
+Jan 20 13:21:56 hansal k3s[146676]: E0120 13:21:56.625268  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:56 hansal k3s[146676]: E0120 13:21:56.625685  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:56 hansal k3s[146676]: E0120 13:21:56.625867  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:56 hansal k3s[146676]: E0120 13:21:56.626153  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:56 hansal k3s[146676]: E0120 13:21:56.626583  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:58 hansal k3s[146676]: E0120 13:21:58.624933  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:21:58 hansal k3s[146676]: E0120 13:21:58.625297  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:21:58 hansal k3s[146676]: E0120 13:21:58.625699  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:21:58 hansal k3s[146676]: E0120 13:21:58.626070  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:21:58 hansal k3s[146676]: E0120 13:21:58.626343  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:21:58 hansal k3s[146676]: E0120 13:21:58.777645  146676 kubelet.go:3012] "Container runtime network not ready" networkReady="NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized"
+Jan 20 13:22:00 hansal k3s[146676]: E0120 13:22:00.625846  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:22:00 hansal k3s[146676]: E0120 13:22:00.626191  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:22:00 hansal k3s[146676]: E0120 13:22:00.626547  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:22:00 hansal k3s[146676]: E0120 13:22:00.626785  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:22:00 hansal k3s[146676]: E0120 13:22:00.627167  146676 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ # 1. Overwrite the template with the corrected configuration
+cat <<EOF | sudo tee /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+[plugins.opt]
+  path = "/var/lib/rancher/k3s/agent/containerd"
+
+[plugins.cri]
+  stream_server_address = "127.0.0.1"
+  stream_server_port = "10010"
+  enable_selinux = false
+  sandbox_image = "rancher/mirrored-pause:3.6"
+
+[plugins.cri.containerd]
+  disable_snapshot_annotations = true
+  snapshotter = "overlayfs"
+
+[plugins.cri.containerd.runtimes.runc]
+  runtime_type = "io.containerd.runc.v2"
+
+# --- NVIDIA RUNTIME CONFIGURATION ---
+[plugins.cri.containerd.runtimes.nvidia]
+  privileged_without_host_devices = false
+  runtime_engine = ""
+  runtime_root = ""
+  runtime_type = "io.containerd.runc.v2"
+  [plugins.cri.containerd.runtimes.nvidia.options]
+    BinaryName = "/usr/bin/nvidia-container-runtime"
+
+# --- CNI NETWORK CONFIGURATION (This was missing!) ---
+[plugins.cri.cni]
+  bin_dir = "/var/lib/rancher/k3s/data/current/bin"
+  conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d"
+EOF
+[plugins.opt]
+  path = "/var/lib/rancher/k3s/agent/containerd"
+
+[plugins.cri]
+  stream_server_address = "127.0.0.1"
+  stream_server_port = "10010"
+  enable_selinux = false
+  sandbox_image = "rancher/mirrored-pause:3.6"
+
+[plugins.cri.containerd]
+  disable_snapshot_annotations = true
+  snapshotter = "overlayfs"
+
+[plugins.cri.containerd.runtimes.runc]
+  runtime_type = "io.containerd.runc.v2"
+
+# --- NVIDIA RUNTIME CONFIGURATION ---
+[plugins.cri.containerd.runtimes.nvidia]
+  privileged_without_host_devices = false
+  runtime_engine = ""
+  runtime_root = ""
+  runtime_type = "io.containerd.runc.v2"
+  [plugins.cri.containerd.runtimes.nvidia.options]
+    BinaryName = "/usr/bin/nvidia-container-runtime"
+
+# --- CNI NETWORK CONFIGURATION (This was missing!) ---
+[plugins.cri.cni]
+  bin_dir = "/var/lib/rancher/k3s/data/current/bin"
+  conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo systemctl restart k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS     ROLES           AGE   VERSION
+hansal   NotReady   control-plane   72m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS     ROLES           AGE   VERSION
+hansal   NotReady   control-plane   73m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo journalctl -u k3s -n 50 --no-pager
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.954465  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.954750  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.954951  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.955271  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.956469  147646 log.go:32] "StopPodSandbox from runtime service failed" err="rpc error: code = Unknown desc = failed to destroy network for sandbox \"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba\": cni plugin not initialized" podSandboxID="03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba"
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.956559  147646 kuberuntime_manager.go:1665] "Failed to stop sandbox" podSandboxID={"Type":"containerd","ID":"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba"}
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.956678  147646 kubelet.go:2150] "Unhandled Error" err="failed to \"KillPodSandbox\" for \"2de54ea8-d527-4645-bb25-97c72cd4c305\" with KillPodSandboxError: \"rpc error: code = Unknown desc = failed to destroy network for sandbox \\\"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba\\\": cni plugin not initialized\""
+Jan 20 13:23:41 hansal k3s[147646]: E0120 13:23:41.956717  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="failed to \"KillPodSandbox\" for \"2de54ea8-d527-4645-bb25-97c72cd4c305\" with KillPodSandboxError: \"rpc error: code = Unknown desc = failed to destroy network for sandbox \\\"03b2cb81a9cb7ab8e9887480082bded84bc546af36f44c2d4f4439710f3759ba\\\": cni plugin not initialized\"" pod="nvidia-device-plugin/nvidia-device-plugin-vkkhc" podUID="2de54ea8-d527-4645-bb25-97c72cd4c305"
+Jan 20 13:23:42 hansal k3s[147646]: E0120 13:23:42.954542  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:23:43 hansal k3s[147646]: E0120 13:23:43.954584  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:23:43 hansal k3s[147646]: E0120 13:23:43.954828  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:23:43 hansal k3s[147646]: E0120 13:23:43.955246  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:23:43 hansal k3s[147646]: E0120 13:23:43.955562  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:23:44 hansal k3s[147646]: E0120 13:23:44.954509  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.791215  147646 configmap.go:193] Couldn't get configMap kube-system/coredns: object "kube-system"/"coredns" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.791221  147646 configmap.go:193] Couldn't get configMap kube-system/coredns-custom: object "kube-system"/"coredns-custom" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.791352  147646 configmap.go:193] Couldn't get configMap kube-system/local-path-config: object "kube-system"/"local-path-config" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.791390  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/configmap/9622eb00-0836-4d21-9f69-09c7014eb3c9-config-volume podName:9622eb00-0836-4d21-9f69-09c7014eb3c9 nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.791351413 +0000 UTC m=+134.824496208 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "config-volume" (UniqueName: "kubernetes.io/configmap/9622eb00-0836-4d21-9f69-09c7014eb3c9-config-volume") pod "coredns-7f496c8d7d-z4bs6" (UID: "9622eb00-0836-4d21-9f69-09c7014eb3c9") : object "kube-system"/"coredns" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.791668  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/configmap/9622eb00-0836-4d21-9f69-09c7014eb3c9-custom-config-volume podName:9622eb00-0836-4d21-9f69-09c7014eb3c9 nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.791627609 +0000 UTC m=+134.824772405 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "custom-config-volume" (UniqueName: "kubernetes.io/configmap/9622eb00-0836-4d21-9f69-09c7014eb3c9-custom-config-volume") pod "coredns-7f496c8d7d-z4bs6" (UID: "9622eb00-0836-4d21-9f69-09c7014eb3c9") : object "kube-system"/"coredns-custom" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.791704  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/configmap/1ac62890-13d2-4c92-bd39-94e9e1525aec-config-volume podName:1ac62890-13d2-4c92-bd39-94e9e1525aec nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.791683209 +0000 UTC m=+134.824828006 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "config-volume" (UniqueName: "kubernetes.io/configmap/1ac62890-13d2-4c92-bd39-94e9e1525aec-config-volume") pod "local-path-provisioner-578895bd58-nx5gt" (UID: "1ac62890-13d2-4c92-bd39-94e9e1525aec") : object "kube-system"/"local-path-config" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892138  147646 projected.go:291] Couldn't get configMap kube-system/kube-root-ca.crt: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892198  147646 projected.go:196] Error preparing data for projected volume kube-api-access-vrxh9 for pod kube-system/traefik-6f5f87584-mm6xn: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892314  147646 projected.go:291] Couldn't get configMap kube-system/kube-root-ca.crt: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892375  147646 projected.go:196] Error preparing data for projected volume kube-api-access-96sxt for pod kube-system/local-path-provisioner-578895bd58-nx5gt: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892339  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/projected/4c0ece04-c89c-49ca-aa95-23e4a05d8f93-kube-api-access-vrxh9 podName:4c0ece04-c89c-49ca-aa95-23e4a05d8f93 nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.892304291 +0000 UTC m=+134.925449085 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "kube-api-access-vrxh9" (UniqueName: "kubernetes.io/projected/4c0ece04-c89c-49ca-aa95-23e4a05d8f93-kube-api-access-vrxh9") pod "traefik-6f5f87584-mm6xn" (UID: "4c0ece04-c89c-49ca-aa95-23e4a05d8f93") : object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892465  147646 projected.go:291] Couldn't get configMap nvidia-device-plugin/kube-root-ca.crt: object "nvidia-device-plugin"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892507  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/projected/1ac62890-13d2-4c92-bd39-94e9e1525aec-kube-api-access-96sxt podName:1ac62890-13d2-4c92-bd39-94e9e1525aec nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.892472965 +0000 UTC m=+134.925617761 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "kube-api-access-96sxt" (UniqueName: "kubernetes.io/projected/1ac62890-13d2-4c92-bd39-94e9e1525aec-kube-api-access-96sxt") pod "local-path-provisioner-578895bd58-nx5gt" (UID: "1ac62890-13d2-4c92-bd39-94e9e1525aec") : object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892510  147646 projected.go:196] Error preparing data for projected volume kube-api-access-86scf for pod nvidia-device-plugin/nvidia-device-plugin-vkkhc: object "nvidia-device-plugin"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892585  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/projected/2de54ea8-d527-4645-bb25-97c72cd4c305-kube-api-access-86scf podName:2de54ea8-d527-4645-bb25-97c72cd4c305 nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.892558362 +0000 UTC m=+134.925703192 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "kube-api-access-86scf" (UniqueName: "kubernetes.io/projected/2de54ea8-d527-4645-bb25-97c72cd4c305-kube-api-access-86scf") pod "nvidia-device-plugin-vkkhc" (UID: "2de54ea8-d527-4645-bb25-97c72cd4c305") : object "nvidia-device-plugin"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892143  147646 projected.go:291] Couldn't get configMap kube-system/kube-root-ca.crt: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892624  147646 projected.go:196] Error preparing data for projected volume kube-api-access-xzhkz for pod kube-system/coredns-7f496c8d7d-z4bs6: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892657  147646 projected.go:291] Couldn't get configMap kube-system/kube-root-ca.crt: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892681  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/projected/9622eb00-0836-4d21-9f69-09c7014eb3c9-kube-api-access-xzhkz podName:9622eb00-0836-4d21-9f69-09c7014eb3c9 nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.892660707 +0000 UTC m=+134.925805537 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "kube-api-access-xzhkz" (UniqueName: "kubernetes.io/projected/9622eb00-0836-4d21-9f69-09c7014eb3c9-kube-api-access-xzhkz") pod "coredns-7f496c8d7d-z4bs6" (UID: "9622eb00-0836-4d21-9f69-09c7014eb3c9") : object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892684  147646 projected.go:196] Error preparing data for projected volume kube-api-access-b5w5j for pod kube-system/metrics-server-7b9c9c4b9c-6kr55: object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.892779  147646 nestedpendingoperations.go:348] Operation for "{volumeName:kubernetes.io/projected/cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802-kube-api-access-b5w5j podName:cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802 nodeName:}" failed. No retries permitted until 2026-01-20 13:24:49.892756316 +0000 UTC m=+134.925901273 (durationBeforeRetry 1m4s). Error: MountVolume.SetUp failed for volume "kube-api-access-b5w5j" (UniqueName: "kubernetes.io/projected/cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802-kube-api-access-b5w5j") pod "metrics-server-7b9c9c4b9c-6kr55" (UID: "cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802") : object "kube-system"/"kube-root-ca.crt" not registered
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.954098  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.954498  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.954609  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:23:45 hansal k3s[147646]: E0120 13:23:45.954800  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:23:46 hansal k3s[147646]: E0120 13:23:46.954349  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:23:47 hansal k3s[147646]: E0120 13:23:47.954442  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:23:47 hansal k3s[147646]: E0120 13:23:47.954638  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:23:47 hansal k3s[147646]: E0120 13:23:47.954909  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:23:47 hansal k3s[147646]: E0120 13:23:47.955343  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:23:48 hansal k3s[147646]: E0120 13:23:48.954323  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+Jan 20 13:23:49 hansal k3s[147646]: E0120 13:23:49.955037  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/traefik-6f5f87584-mm6xn" podUID="4c0ece04-c89c-49ca-aa95-23e4a05d8f93"
+Jan 20 13:23:49 hansal k3s[147646]: E0120 13:23:49.955504  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/coredns-7f496c8d7d-z4bs6" podUID="9622eb00-0836-4d21-9f69-09c7014eb3c9"
+Jan 20 13:23:49 hansal k3s[147646]: E0120 13:23:49.955737  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/local-path-provisioner-578895bd58-nx5gt" podUID="1ac62890-13d2-4c92-bd39-94e9e1525aec"
+Jan 20 13:23:49 hansal k3s[147646]: E0120 13:23:49.956222  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/svclb-traefik-3322b202-nrltv" podUID="740a25c5-585c-4b6a-a1b7-4d4811e8658e"
+Jan 20 13:23:50 hansal k3s[147646]: E0120 13:23:50.955084  147646 pod_workers.go:1324] "Error syncing pod, skipping" err="network is not ready: container runtime network not ready: NetworkReady=false reason:NetworkPluginNotReady message:Network plugin returns error: cni plugin not initialized" pod="kube-system/metrics-server-7b9c9c4b9c-6kr55" podUID="cb8aa8c4-d7e0-4cde-aee7-43fda0bfe802"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo rm /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo systemctl restart k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS   ROLES           AGE   VERSION
+hansal   Ready    control-plane   74m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo apt-get update
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:3 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  InRelease
+Hit:4 http://nova.clouds.archive.ubuntu.com/ubuntu noble InRelease
+Hit:5 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:6 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:7 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease
+Reading package lists... Done
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo apt-get install -y nvidia-container-toolkit
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+nvidia-container-toolkit is already the newest version (1.18.1-1).
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo cp /var/lib/rancher/k3s/agent/etc/containerd/config.toml /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ cat <<EOF | sudo tee -a /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+
+# --- NVIDIA RUNTIME INJECTION ---
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes."nvidia"]
+  runtime_type = "io.containerd.runc.v2"
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes."nvidia".options]
+  BinaryName = "/usr/bin/nvidia-container-runtime"
+EOF
+
+# --- NVIDIA RUNTIME INJECTION ---
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes."nvidia"]
+  runtime_type = "io.containerd.runc.v2"
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes."nvidia".options]
+  BinaryName = "/usr/bin/nvidia-container-runtime"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo systemctl restart k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get nodes
+NAME     STATUS   ROLES           AGE   VERSION
+hansal   Ready    control-plane   77m   v1.34.3+k3s1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl delete pods -n nvidia-device-plugin --all
+pod "nvidia-device-plugin-wtz7c" deleted from nvidia-device-plugin namespace
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -n nvidia-device-plugin -w
+NAME                         READY   STATUS   RESTARTS      AGE
+nvidia-device-plugin-sqq2d   0/1     Error    1 (15s ago)   16s
+nvidia-device-plugin-sqq2d   0/1     CrashLoopBackOff   1 (15s ago)   17s
+nvidia-device-plugin-sqq2d   0/1     Error              2 (16s ago)   18s
+nvidia-device-plugin-sqq2d   0/1     CrashLoopBackOff   2 (14s ago)   32s
+nvidia-device-plugin-sqq2d   0/1     Error              3 (29s ago)   47s
+nvidia-device-plugin-sqq2d   0/1     CrashLoopBackOff   3 (12s ago)   59s
+^Cubuntu@hansal:~/repo/HANSAL/infrastructure/k3subuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods -n nvidia-device-plugin -w-w
+NAME                         READY   STATUS   RESTARTS      AGE
+nvidia-device-plugin-sqq2d   0/1     Error    1 (15s ago)   16s
+nvidia-device-plugin-sqq2d   0/1     CrashLoopBackOff   1 (15s ago)   17s
+nvidia-device-plugin-sqq2d   0/1     Error              2 (16s ago)   18s
+-bash: ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$: No such file or directory
+NAME: command not found
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+-bash: syntax error near unexpected token `('
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl logs -n nvidia-device-plugin nvidia-device-plugin-sqq2d
+I0120 13:29:25.158971       1 main.go:154] Starting FS watcher.
+I0120 13:29:25.159086       1 main.go:161] Starting OS watcher.
+I0120 13:29:25.159733       1 main.go:176] Starting Plugins.
+I0120 13:29:25.159808       1 main.go:234] Loading configuration.
+I0120 13:29:25.160319       1 main.go:242] Updating config with default resource matching patterns.
+I0120 13:29:25.160931       1 main.go:253]
+Running with config:
+{
+  "version": "v1",
+  "flags": {
+    "migStrategy": "none",
+    "failOnInitError": true,
+    "nvidiaDriverRoot": "/",
+    "gdsEnabled": false,
+    "mofedEnabled": false,
+    "plugin": {
+      "passDeviceSpecs": false,
+      "deviceListStrategy": [
+        "envvar"
+      ],
+      "deviceIDStrategy": "uuid",
+      "cdiAnnotationPrefix": "cdi.k8s.io/",
+      "nvidiaCTKPath": "/usr/bin/nvidia-ctk",
+      "containerDriverRoot": "/driver-root"
+    }
+  },
+  "resources": {
+    "gpus": [
+      {
+        "pattern": "*",
+        "name": "nvidia.com/gpu"
+      }
+    ]
+  },
+  "sharing": {
+    "timeSlicing": {}
+  }
+}
+I0120 13:29:25.160969       1 main.go:256] Retreiving plugins.
+W0120 13:29:25.161871       1 factory.go:31] No valid resources detected, creating a null CDI handler
+I0120 13:29:25.162011       1 factory.go:107] Detected non-NVML platform: could not load NVML library: libnvidia-ml.so.1: cannot open shared object file: No such file or directory
+I0120 13:29:25.162103       1 factory.go:107] Detected non-Tegra platform: /sys/devices/soc0/family file not found
+E0120 13:29:25.162117       1 factory.go:115] Incompatible platform detected
+E0120 13:29:25.162127       1 factory.go:116] If this is a GPU node, did you configure the NVIDIA Container Toolkit?
+E0120 13:29:25.162137       1 factory.go:117] You can check the prerequisites at: https://github.com/NVIDIA/k8s-device-plugin#prerequisites
+E0120 13:29:25.162147       1 factory.go:118] You can learn how to set the runtime at: https://github.com/NVIDIA/k8s-device-plugin#quick-start
+E0120 13:29:25.162158       1 factory.go:119] If this is not a GPU node, you should set up a toleration or nodeSelector to only deploy this plugin on GPU nodes
+E0120 13:29:25.162797       1 main.go:123] error starting plugins: error creating plugin manager: unable to create plugin manager: platform detection failed
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ /sbin/ldconfig -p | grep libnvidia-ml.so.1
+        libnvidia-ml.so.1 (libc6,x86-64) => /lib/x86_64-linux-gnu/libnvidia-ml.so.1
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ cat <<EOF | sudo tee /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+version = 2
+
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    stream_server_address = "127.0.0.1"
+    stream_server_port = "10010"
+    enable_selinux = false
+    sandbox_image = "rancher/mirrored-pause:3.6"
+
+    # 1. NETWORK CONFIGURATION (Keeps Node Ready)
+    [plugins."io.containerd.grpc.v1.cri".cni]
+      bin_dir = "/var/lib/rancher/k3s/data/current/bin"
+      conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d"
+
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      disable_snapshot_annotations = true
+      snapshotter = "overlayfs"
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        # 2. STANDARD RUNTIME (For normal apps)
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+          runtime_type = "io.containerd.runc.v2"
+
+        # 3. NVIDIA RUNTIME (For GPU apps)
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+          privileged_without_host_devices = false
+          runtime_engine = ""
+          runtime_root = ""
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/bin/nvidia-container-runtime"
+EOF
+version = 2
+
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    stream_server_address = "127.0.0.1"
+    stream_server_port = "10010"
+    enable_selinux = false
+    sandbox_image = "rancher/mirrored-pause:3.6"
+
+    # 1. NETWORK CONFIGURATION (Keeps Node Ready)
+    [plugins."io.containerd.grpc.v1.cri".cni]
+      bin_dir = "/var/lib/rancher/k3s/data/current/bin"
+      conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d"
+
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      disable_snapshot_annotations = true
+      snapshotter = "overlayfs"
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        # 2. STANDARD RUNTIME (For normal apps)
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+          runtime_type = "io.containerd.runc.v2"
+
+        # 3. NVIDIA RUNTIME (For GPU apps)
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+          privileged_without_host_devices = false
+          runtime_engine = ""
+          runtime_root = ""
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/bin/nvidia-container-runtime"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo systemctl restart k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ # 1. Delete the crashing pods
+kubectl delete pods -n nvidia-device-plugin --all
+
+# 2. Wait 15 seconds for K3s to relaunch it
+sleep 15
+
+# 3. Check status
+kubectl get pods -n nvidia-device-plugin
+pod "nvidia-device-plugin-sqq2d" deleted from nvidia-device-plugin namespace
+NAME                         READY   STATUS   RESTARTS      AGE
+nvidia-device-plugin-wbffx   0/1     Error    1 (15s ago)   16s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo grep "nvidia" /var/lib/rancher/k3s/agent/etc/containerd/config.toml
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/bin/nvidia-container-runtime"
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ ls -l /usr/bin/nvidia-container-runtime
+-rwxr-xr-x 1 root root 6740024 Nov 24 14:46 /usr/bin/nvidia-container-runtime
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ cat <<EOF | sudo tee /var/lib/rancher/k3s/agent/etc/containerd/config.toml.tmpl
+version = 2
+
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    stream_server_address = "127.0.0.1"
+    stream_server_port = "10010"
+    enable_selinux = false
+    sandbox_image = "rancher/mirrored-pause:3.6"
+
+    [plugins."io.containerd.grpc.v1.cri".cni]
+      bin_dir = "/var/lib/rancher/k3s/data/current/bin"
+      conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d"
+
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      # ------------------------------------------------------
+      # THIS IS THE KEY FIX: MAKE NVIDIA DEFAULT
+      # ------------------------------------------------------
+      default_runtime_name = "nvidia"
+
+      disable_snapshot_annotations = true
+      snapshotter = "overlayfs"
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+          privileged_without_host_devices = false
+          runtime_engine = ""
+          runtime_root = ""
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/bin/nvidia-container-runtime"
+            SystemdCgroup = true
+EOF
+version = 2
+
+[plugins]
+  [plugins."io.containerd.grpc.v1.cri"]
+    stream_server_address = "127.0.0.1"
+    stream_server_port = "10010"
+    enable_selinux = false
+    sandbox_image = "rancher/mirrored-pause:3.6"
+
+    [plugins."io.containerd.grpc.v1.cri".cni]
+      bin_dir = "/var/lib/rancher/k3s/data/current/bin"
+      conf_dir = "/var/lib/rancher/k3s/agent/etc/cni/net.d"
+
+    [plugins."io.containerd.grpc.v1.cri".containerd]
+      # ------------------------------------------------------
+      # THIS IS THE KEY FIX: MAKE NVIDIA DEFAULT
+      # ------------------------------------------------------
+      default_runtime_name = "nvidia"
+
+      disable_snapshot_annotations = true
+      snapshotter = "overlayfs"
+
+      [plugins."io.containerd.grpc.v1.cri".containerd.runtimes]
+        [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia]
+          privileged_without_host_devices = false
+          runtime_engine = ""
+          runtime_root = ""
+          runtime_type = "io.containerd.runc.v2"
+          [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.nvidia.options]
+            BinaryName = "/usr/bin/nvidia-container-runtime"
+            SystemdCgroup = true
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo nvidia-ctk cdi generate --output=/etc/cdi/nvidia.yaml
+INFO[0000] Using /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.570.195.03
+WARN[0000] Ignoring error in locating libnvidia-sandboxutils.so.1: pattern libnvidia-sandboxutils.so.1 not found
+libnvidia-sandboxutils.so.1: not found
+WARN[0000] Failed to init nvsandboxutils: ERROR_LIBRARY_LOAD; ignoring
+INFO[0004] Auto-detected mode as 'nvml'
+INFO[0008] Selecting /dev/nvidia0 as /dev/nvidia0
+INFO[0008] Selecting /dev/dri/card1 as /dev/dri/card1
+INFO[0008] Selecting /dev/dri/renderD129 as /dev/dri/renderD129
+INFO[0008] Selecting /dev/nvidia0 as /dev/nvidia0
+INFO[0008] Selecting /dev/dri/card1 as /dev/dri/card1
+INFO[0008] Selecting /dev/dri/renderD129 as /dev/dri/renderD129
+INFO[0008] Selecting /dev/nvidia1 as /dev/nvidia1
+INFO[0008] Selecting /dev/dri/card2 as /dev/dri/card2
+INFO[0008] Selecting /dev/dri/renderD130 as /dev/dri/renderD130
+INFO[0008] Selecting /dev/nvidia1 as /dev/nvidia1
+INFO[0008] Selecting /dev/dri/card2 as /dev/dri/card2
+INFO[0008] Selecting /dev/dri/renderD130 as /dev/dri/renderD130
+INFO[0009] Using driver version 570.195.03
+INFO[0009] Selecting /dev/nvidia-modeset as /dev/nvidia-modeset
+INFO[0009] Selecting /dev/nvidia-uvm-tools as /dev/nvidia-uvm-tools
+INFO[0009] Selecting /dev/nvidia-uvm as /dev/nvidia-uvm
+INFO[0009] Selecting /dev/nvidiactl as /dev/nvidiactl
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-egl-gbm.so.1.1.2 as /usr/lib/x86_64-linux-gnu/libnvidia-egl-gbm.so.1.1.2
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-egl-wayland.so.1.1.20 as /usr/lib/x86_64-linux-gnu/libnvidia-egl-wayland.so.1.1.20
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-allocator.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-allocator.so.570.195.03
+WARN[0009] Could not locate libnvidia-vulkan-producer.so.570.195.03: pattern libnvidia-vulkan-producer.so.570.195.03 not found
+libnvidia-vulkan-producer.so.570.195.03: not found
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/nvidia/xorg/nvidia_drv.so as /usr/lib/x86_64-linux-gnu/nvidia/xorg/nvidia_drv.so
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/nvidia/xorg/libglxserver_nvidia.so.570.195.03 as /usr/lib/x86_64-linux-gnu/nvidia/xorg/libglxserver_nvidia.so.570.195.03
+INFO[0009] Selecting /usr/share/glvnd/egl_vendor.d/10_nvidia.json as /usr/share/glvnd/egl_vendor.d/10_nvidia.json
+INFO[0009] Selecting /usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json as /usr/share/egl/egl_external_platform.d/15_nvidia_gbm.json
+INFO[0009] Selecting /usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json as /usr/share/egl/egl_external_platform.d/10_nvidia_wayland.json
+INFO[0009] Selecting /usr/share/nvidia/nvoptix.bin as /usr/share/nvidia/nvoptix.bin
+INFO[0009] Selecting /usr/share/X11/xorg.conf.d/10-nvidia.conf as /usr/share/X11/xorg.conf.d/10-nvidia.conf
+WARN[0009] Could not locate X11/xorg.conf.d/nvidia-drm-outputclass.conf: pattern X11/xorg.conf.d/nvidia-drm-outputclass.conf not found
+INFO[0009] Selecting /usr/share/vulkan/icd.d/nvidia_icd.json as /etc/vulkan/icd.d/nvidia_icd.json
+WARN[0009] Could not locate vulkan/icd.d/nvidia_layers.json: pattern vulkan/icd.d/nvidia_layers.json not found
+pattern vulkan/icd.d/nvidia_layers.json not found
+INFO[0009] Selecting /usr/share/vulkan/implicit_layer.d/nvidia_layers.json as /etc/vulkan/implicit_layer.d/nvidia_layers.json
+WARN[0009] Could not locate vulkan/icd.d/nvidia_icd.x86_64.json: pattern vulkan/icd.d/nvidia_icd.x86_64.json not found
+pattern vulkan/icd.d/nvidia_icd.x86_64.json not found
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libEGL_nvidia.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libEGL_nvidia.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libGLESv1_CM_nvidia.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libGLESv1_CM_nvidia.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libGLESv2_nvidia.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libGLESv2_nvidia.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libGLX_nvidia.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libcuda.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libcuda.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libcudadebugger.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libcudadebugger.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvcuvid.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvcuvid.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-allocator.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-allocator.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-cfg.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-cfg.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-eglcore.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-eglcore.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-encode.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-encode.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-fbc.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-fbc.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-glcore.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-glsi.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-glvkspirv.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-glvkspirv.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-gpucomp.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-gpucomp.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-ml.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-ngx.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-ngx.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-nvvm.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-nvvm.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-opencl.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-opencl.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-opticalflow.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-opticalflow.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-pkcs11-openssl3.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-pkcs11-openssl3.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-pkcs11.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-pkcs11.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-ptxjitcompiler.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-rtcore.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-rtcore.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-tls.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-tls.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvidia-vksc-core.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvidia-vksc-core.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/libnvoptix.so.570.195.03 as /usr/lib/x86_64-linux-gnu/libnvoptix.so.570.195.03
+INFO[0009] Selecting /usr/lib/x86_64-linux-gnu/vdpau/libvdpau_nvidia.so.570.195.03 as /usr/lib/x86_64-linux-gnu/vdpau/libvdpau_nvidia.so.570.195.03
+INFO[0009] Selecting /run/nvidia-persistenced/socket as /run/nvidia-persistenced/socket
+WARN[0009] Could not locate /nvidia-fabricmanager/socket: pattern /nvidia-fabricmanager/socket not found
+WARN[0009] Could not locate /tmp/nvidia-mps: pattern /tmp/nvidia-mps not found
+INFO[0009] Selecting /lib/firmware/nvidia/570.195.03/gsp_ga10x.bin as /lib/firmware/nvidia/570.195.03/gsp_ga10x.bin
+INFO[0009] Selecting /lib/firmware/nvidia/570.195.03/gsp_tu10x.bin as /lib/firmware/nvidia/570.195.03/gsp_tu10x.bin
+INFO[0009] Selecting /usr/bin/nvidia-smi as /usr/bin/nvidia-smi
+INFO[0009] Selecting /usr/bin/nvidia-debugdump as /usr/bin/nvidia-debugdump
+INFO[0009] Selecting /usr/bin/nvidia-persistenced as /usr/bin/nvidia-persistenced
+INFO[0009] Selecting /usr/bin/nvidia-cuda-mps-control as /usr/bin/nvidia-cuda-mps-control
+INFO[0009] Selecting /usr/bin/nvidia-cuda-mps-server as /usr/bin/nvidia-cuda-mps-server
+WARN[0009] Could not locate nvidia-imex: pattern nvidia-imex not found
+WARN[0009] Could not locate nvidia-imex-ctl: pattern nvidia-imex-ctl not found
+INFO[0010] Generated CDI spec with version 1.0.0
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo systemctl restart k3s
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ # 1. Delete the old crashing pods
+kubectl delete pods -n nvidia-device-plugin --all
+
+# 2. Watch the status
+kubectl get pods -n nvidia-device-plugin -w
+pod "nvidia-device-plugin-wbffx" deleted from nvidia-device-plugin namespace
+NAME                         READY   STATUS              RESTARTS   AGE
+nvidia-device-plugin-h7h9s   0/1     ContainerCreating   0          0s
+nvidia-device-plugin-h7h9s   1/1     Running             0          11s
+^Cubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-qsssd   0/1     Init:ErrImageNeverPull   0          40m
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ docker save fashion-mnist-gpu:latest -o fashion-mnist.tar
+permission denied while trying to connect to the docker API at unix:///var/run/docker.sock
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ sudo docker save fashion-mnist-gpu:latest -o fashion-mnist.tar
+Error response from daemon: No such image: fashion-mnist-gpu:latest
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ find ~/repo/HANSAL -name "Dockerfile"
+/home/ubuntu/repo/HANSAL/apps/fashion-mnist/Dockerfile
+ubuntu@hansal:~/repo/HANSAL/infrastructure/k3s$ cd /home/ubuntu/repo/HANSAL/apps/fashion-mnist/
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo docker build -t fashion-mnist-gpu:latest .
+[+] Building 2.2s (12/12) FINISHED                                                                       docker:default
+ => [internal] load build definition from Dockerfile                                                               0.1s
+ => => transferring dockerfile: 652B                                                                               0.0s
+ => [internal] load metadata for docker.io/library/python:3.9-slim                                                 1.0s
+ => [internal] load .dockerignore                                                                                  0.0s
+ => => transferring context: 2B                                                                                    0.0s
+ => [1/7] FROM docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf  0.1s
+ => => resolve docker.io/library/python:3.9-slim@sha256:2d97f6910b16bd338d3060f261f53f144965f755599aab1acda1e13cf  0.1s
+ => [internal] load build context                                                                                  0.0s
+ => => transferring context: 122B                                                                                  0.0s
+ => CACHED [2/7] WORKDIR /app                                                                                      0.0s
+ => CACHED [3/7] RUN apt-get update && apt-get install -y --no-install-recommends     gcc     libc-dev     && rm   0.0s
+ => CACHED [4/7] COPY requirements.txt .                                                                           0.0s
+ => CACHED [5/7] RUN pip install --no-cache-dir -r requirements.txt                                                0.0s
+ => CACHED [6/7] COPY src/ src/                                                                                    0.0s
+ => CACHED [7/7] RUN mkdir -p data/raw data/processed metrics                                                      0.0s
+ => exporting to image                                                                                             0.4s
+ => => exporting layers                                                                                            0.0s
+ => => exporting manifest sha256:e8eb3338d056d43d59b51887edf0cc5719d2bd588a1e544c2ecd09c67217be8c                  0.0s
+ => => exporting config sha256:3dca6239382d05903c45869c902f076d6713852824eaeb2ddbcc657e76dc2d87                    0.0s
+ => => exporting attestation manifest sha256:7f74400c2c7f51bc2f4ec5a8a93fc88a07d18fd24a37ed58845a637a82f63a24      0.1s
+ => => exporting manifest list sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c             0.1s
+ => => naming to docker.io/library/fashion-mnist-gpu:latest                                                        0.0s
+ => => unpacking to docker.io/library/fashion-mnist-gpu:latest                                                     0.0s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Save to a file
+sudo docker save fashion-mnist-gpu:latest -o fashion-mnist.tar
+
+# Import into K3s
+sudo k3s ctr images import fashion-mnist.tar
+docker.io/library/fashion mnist gpu:late        saved
+application/vnd.oci.image.index.v1+json sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c
+Importing       elapsed: 134.1s total:   0.0 B  (0.0 B/s)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod fashion-mnist-gpu-job-qsssd
+pod "fashion-mnist-gpu-job-qsssd" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-fwjrx   0/1     Init:ErrImageNeverPull   0          14s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-fwjrx   0/1     Init:ErrImageNeverPull   0          19s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-fwjrx   0/1     Init:ErrImageNeverPull   0          21s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-fwjrx   0/1     Init:ErrImageNeverPull   0          23s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr images ls | grep fashion
+docker.io/library/fashion-mnist-gpu:latest                                                                         application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr images tag docker.io/library/fashion-mnist-gpu:latest fashion-mnist-gpu:latest
+fashion-mnist-gpu:latest
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod fashion-mnist-gpu-job-fwjrx
+pod "fashion-mnist-gpu-job-fwjrx" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-bcj9j   0/1     Init:ErrImageNeverPull   0          75s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl describe pod fashion-mnist-gpu-job-bcj9j
+Name:             fashion-mnist-gpu-job-bcj9j
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             hansal/192.168.10.87
+Start Time:       Tue, 20 Jan 2026 13:59:26 +0000
+Labels:           batch.kubernetes.io/controller-uid=774da589-98c9-4b4a-a8ce-798a85935daf
+                  batch.kubernetes.io/job-name=fashion-mnist-gpu-job
+                  controller-uid=774da589-98c9-4b4a-a8ce-798a85935daf
+                  job-name=fashion-mnist-gpu-job
+                  project=green-mlops-thesis
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.27
+IPs:
+  IP:           10.42.0.27
+Controlled By:  Job/fashion-mnist-gpu-job
+Init Containers:
+  etl-step:
+    Container ID:
+    Image:         fashion-mnist-pipeline:v1
+    Image ID:
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      python
+      src/etl.py
+    State:          Waiting
+      Reason:       ErrImageNeverPull
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /app/data from shared-data (rw)
+      /app/metrics from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-klnrj (ro)
+Containers:
+  train-step:
+    Container ID:
+    Image:         fashion-mnist-pipeline:v1
+    Image ID:
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      python
+      src/train.py
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      nvidia.com/gpu:  1
+    Requests:
+      nvidia.com/gpu:  1
+    Environment:       <none>
+    Mounts:
+      /app/data from shared-data (rw)
+      /app/metrics from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-klnrj (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 False
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  shared-data:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  fashion-mnist-pvc
+    ReadOnly:   false
+  kube-api-access-klnrj:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason             Age                   From               Message
+  ----     ------             ----                  ----               -------
+  Normal   Scheduled          2m37s                 default-scheduler  Successfully assigned default/fashion-mnist-gpu-job-bcj9j to hansal
+  Warning  Failed             22s (x12 over 2m36s)  kubelet            Error: ErrImageNeverPull
+  Warning  ErrImageNeverPull  8s (x13 over 2m36s)   kubelet            Container image "fashion-mnist-pipeline:v1" is not present with pull policy of Never
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr images tag docker.io/library/fashion-mnist-gpu:latest fashion-mnist-pipeline:v1
+fashion-mnist-pipeline:v1
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod fashion-mnist-gpu-job-bcj9j
+pod "fashion-mnist-gpu-job-bcj9j" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Get the new pod name
+kubectl get pods
+
+# Check logs (replace xxxxx)
+kubectl logs -f fashion-mnist-gpu-job-xxxxx
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-d5h59   0/1     Init:ErrImageNeverPull   0          5s
+error: error from server (NotFound): pods "fashion-mnist-gpu-job-xxxxx" not found in namespace "default"
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s image import fashion-mnist.tar
+No help topic for 'image'
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr images import fashion-mnist.tar --namespace k8s.io
+docker.io/library/fashion mnist gpu:late        saved
+application/vnd.oci.image.index.v1+json sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c
+Importing       elapsed: 95.0s  total:   0.0 B  (0.0 B/s)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr images tag --namespace k8s.io docker.io/library/fashion-mnist-gpu:latest fashion-mnist-pipeline:v1
+Incorrect Usage: flag provided but not defined: -namespace
+
+NAME:
+   ctr images tag - Tag an image
+
+USAGE:
+   ctr images tag [command options] [flags] <source_ref> <target_ref> [<target_ref>, ...]
+
+DESCRIPTION:
+   Tag an image for use in containerd.
+
+COMMANDS:
+   help, h  Shows a list of commands or help for one command
+
+OPTIONS:
+   --force                 Force target_ref to be created, regardless if it already exists (default: false)
+   --local                 Run tag locally rather than through transfer API (default: false)
+   --skip-reference-check  Skip the strict check for reference names (default: false)
+   --help, -h              Show help (default: false)
+ctr: flag provided but not defined: -namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr --namespace k8s.io images tag docker.io/library/fashion-mnist-gpu:latest fashion-mnist-pipeline:v1
+fashion-mnist-pipeline:v1
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod fashion-mnist-gpu-job-d5h59
+pod "fashion-mnist-gpu-job-d5h59" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-ksndf   0/1     Init:ErrImageNeverPull   0          6s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-ksndf   0/1     Init:ErrImageNeverPull   0          9s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -f fashion-mnist-gpu-job-ksndf
+Defaulted container "train-step" out of: train-step, etl-step (init)
+Error from server (BadRequest): container "train-step" in pod "fashion-mnist-gpu-job-ksndf" is waiting to start: PodInitializing
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr --namespace k8s.io images ls | grep fashion
+docker.io/library/fashion-mnist-gpu:latest                                                                         application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+fashion-mnist-gpu:latest                                                                                           application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+fashion-mnist-pipeline:v1                                                                                          application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Import properly
+sudo k3s ctr --namespace k8s.io images import fashion-mnist.tar
+
+# 2. Verify it is there now (Check output!)
+sudo k3s ctr --namespace k8s.io images ls | grep fashion
+docker.io/library/fashion mnist gpu:late        saved
+application/vnd.oci.image.index.v1+json sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c
+Importing       elapsed: 94.5s  total:   0.0 B  (0.0 B/s)
+docker.io/library/fashion-mnist-gpu:latest                                                                         application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+fashion-mnist-gpu:latest                                                                                           application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+fashion-mnist-pipeline:v1                                                                                          application/vnd.oci.image.index.v1+json                   sha256:ae2b97870adf53366a9dab96f54bfc27560ea31d73af0131c388db0d6fddbe1c 3.9 GiB   linux/amd64                                                                   io.cri-containerd.image=managed
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod fashion-mnist-gpu-job-ksndf
+pod "fashion-mnist-gpu-job-ksndf" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS                   RESTARTS   AGE
+fashion-mnist-gpu-job-l6kgm   0/1     Init:ErrImageNeverPull   0          8s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -f fashion-mnist-gpu-job-l6kgm
+Defaulted container "train-step" out of: train-step, etl-step (init)
+Error from server (BadRequest): container "train-step" in pod "fashion-mnist-gpu-job-l6kgm" is waiting to start: PodInitializing
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl describe pod fashion-mnist-gpu-job-l6kgm
+Name:             fashion-mnist-gpu-job-l6kgm
+Namespace:        default
+Priority:         0
+Service Account:  default
+Node:             hansal/192.168.10.87
+Start Time:       Tue, 20 Jan 2026 14:17:43 +0000
+Labels:           batch.kubernetes.io/controller-uid=774da589-98c9-4b4a-a8ce-798a85935daf
+                  batch.kubernetes.io/job-name=fashion-mnist-gpu-job
+                  controller-uid=774da589-98c9-4b4a-a8ce-798a85935daf
+                  job-name=fashion-mnist-gpu-job
+                  project=green-mlops-thesis
+Annotations:      <none>
+Status:           Pending
+IP:               10.42.0.30
+IPs:
+  IP:           10.42.0.30
+Controlled By:  Job/fashion-mnist-gpu-job
+Init Containers:
+  etl-step:
+    Container ID:
+    Image:         fashion-mnist-pipeline:v1
+    Image ID:
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      python
+      src/etl.py
+    State:          Waiting
+      Reason:       ErrImageNeverPull
+    Ready:          False
+    Restart Count:  0
+    Environment:    <none>
+    Mounts:
+      /app/data from shared-data (rw)
+      /app/metrics from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sgxzs (ro)
+Containers:
+  train-step:
+    Container ID:
+    Image:         fashion-mnist-pipeline:v1
+    Image ID:
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      python
+      src/train.py
+    State:          Waiting
+      Reason:       PodInitializing
+    Ready:          False
+    Restart Count:  0
+    Limits:
+      nvidia.com/gpu:  1
+    Requests:
+      nvidia.com/gpu:  1
+    Environment:       <none>
+    Mounts:
+      /app/data from shared-data (rw)
+      /app/metrics from shared-data (rw)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-sgxzs (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 False
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  shared-data:
+    Type:       PersistentVolumeClaim (a reference to a PersistentVolumeClaim in the same namespace)
+    ClaimName:  fashion-mnist-pvc
+    ReadOnly:   false
+  kube-api-access-sgxzs:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/not-ready:NoExecute op=Exists for 300s
+                             node.kubernetes.io/unreachable:NoExecute op=Exists for 300s
+Events:
+  Type     Reason             Age               From               Message
+  ----     ------             ----              ----               -------
+  Normal   Scheduled          59s               default-scheduler  Successfully assigned default/fashion-mnist-gpu-job-l6kgm to hansal
+  Warning  ErrImageNeverPull  7s (x6 over 58s)  kubelet            Container image "fashion-mnist-pipeline:v1" is not present with pull policy of Never
+  Warning  Failed             7s (x6 over 58s)  kubelet            Error: ErrImageNeverPull
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Example (Replace 'python:3.9' with the actual name you find in Step 1)
+sudo k3s crictl pull python:3.9
+Image is up to date for sha256:bcd3da5974912584a81ed86fd944ab5fba9093ff1c9a0b0ed18349f9a69e4762
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s ctr --namespace k8s.io images tag docker.io/library/fashion-mnist-gpu:latest docker.io/library/fashion-mnist-pipeline:v1
+docker.io/library/fashion-mnist-pipeline:v1
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s crictl images | grep fashion
+docker.io/library/fashion-mnist-gpu          latest                  3dca6239382d0       4.16GB
+docker.io/library/fashion-mnist-pipeline     v1                      3dca6239382d0       4.16GB
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod fashion-mnist-gpu-job-l6kgm
+pod "fashion-mnist-gpu-job-l6kgm" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -f $(kubectl get pods -o name | grep fashion)
+error: expected 'logs [-f] [-p] (POD | TYPE/NAME) [-c CONTAINER]'.
+POD or TYPE/NAME is a required argument for the logs command
+See 'kubectl logs -h' for help and examples
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+No resources found in default namespace.
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get jobs
+NAME                    STATUS    COMPLETIONS   DURATION   AGE
+fashion-mnist-gpu-job   Running   0/1           75m        75m
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete job fashion-mnist-gpu-job
+job.batch "fashion-mnist-gpu-job" deleted from default namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f job.yaml
+error: the path "job.yaml" does not exist
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete job fashion-mnist-gpu-job
+Error from server (NotFound): jobs.batch "fashion-mnist-gpu-job" not found
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f /home/ubuntu/repo/HANSAL/infrastructure/k3s/job.yaml
+job.batch/fashion-mnist-gpu-job created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get jobs
+NAME                    STATUS    COMPLETIONS   DURATION   AGE
+fashion-mnist-gpu-job   Running   0/1           9s         9s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods
+NAME                          READY   STATUS    RESTARTS   AGE
+fashion-mnist-gpu-job-vd5dr   1/1     Running   0          34s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -f fashion-mnist-gpu-job-vd5dr
+Defaulted container "train-step" out of: train-step, etl-step (init)
+[codecarbon WARNING @ 14:24:20] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 14:24:20] [setup] RAM Tracking...
+[codecarbon INFO @ 14:24:20] [setup] CPU Tracking...
+[codecarbon WARNING @ 14:24:22] We saw that you have a Intel Xeon Processor (Icelake) but we don't know it. Please contact us.
+[codecarbon WARNING @ 14:24:22] We will use the default power consumption of 4 W per thread for your 64 CPU, so 256W.
+[codecarbon WARNING @ 14:24:22] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Linux OS detected: Please ensure RAPL files exist, and are readable, at /sys/class/powercap/intel-rapl/subsystem to measure CPU
+
+[codecarbon INFO @ 14:24:22] CPU Model on constant consumption mode: Intel Xeon Processor (Icelake)
+[codecarbon WARNING @ 14:24:22] No CPU tracking mode found. Falling back on CPU load mode.
+[codecarbon INFO @ 14:24:22] [setup] GPU Tracking...
+[codecarbon INFO @ 14:24:22] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 14:24:22] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: cpu_load
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 14:24:22] >>> Tracker's metadata:
+[codecarbon INFO @ 14:24:22]   Platform system: Linux-6.8.0-90-generic-x86_64-with-glibc2.41
+[codecarbon INFO @ 14:24:22]   Python version: 3.9.25
+[codecarbon INFO @ 14:24:22]   CodeCarbon version: 3.2.1
+[codecarbon INFO @ 14:24:22]   Available RAM : 98.212 GB
+[codecarbon INFO @ 14:24:22]   CPU count: 64 thread(s) in 64 physical CPU(s)
+[codecarbon INFO @ 14:24:22]   CPU model: Intel Xeon Processor (Icelake)
+[codecarbon INFO @ 14:24:22]   GPU count: 1
+[codecarbon INFO @ 14:24:22]   GPU model: 1 x NVIDIA A40
+[codecarbon INFO @ 14:24:24] Emissions data (if any) will be saved to file /app/metrics/emissions_train.csv
+[codecarbon INFO @ 14:24:39] Energy consumed for RAM : 0.000164 kWh. RAM Power : 38.0 W
+[codecarbon INFO @ 14:24:40] Delta energy consumed for CPU with cpu_load : 0.007063 kWh, power : 1639.2378695680006 W
+[codecarbon INFO @ 14:24:40] Energy consumed for All CPU : 0.007063 kWh
+[codecarbon INFO @ 14:24:40] Energy consumed for all GPUs : 0.000331 kWh. Total GPU Power : 74.36035133804273 W
+[codecarbon INFO @ 14:24:40] 0.007557 kWh of electricity and 0.000000 L of water were used since the beginning.
+[codecarbon INFO @ 14:24:54] Energy consumed for RAM : 0.000317 kWh. RAM Power : 38.0 W
+[codecarbon INFO @ 14:24:55] Delta energy consumed for CPU with cpu_load : 0.006597 kWh, power : 1638.7238013952 W
+[codecarbon INFO @ 14:24:55] Energy consumed for All CPU : 0.013660 kWh
+[codecarbon INFO @ 14:24:55] Energy consumed for all GPUs : 0.000671 kWh. Total GPU Power : 81.62872094883764 W
+[codecarbon INFO @ 14:24:55] 0.014648 kWh of electricity and 0.000000 L of water were used since the beginning.
+[codecarbon INFO @ 14:25:09] Energy consumed for RAM : 0.000470 kWh. RAM Power : 38.0 W
+[codecarbon INFO @ 14:25:10] Delta energy consumed for CPU with cpu_load : 0.006597 kWh, power : 1638.9305964544003 W
+[codecarbon INFO @ 14:25:10] Energy consumed for All CPU : 0.020257 kWh
+[codecarbon INFO @ 14:25:10] Energy consumed for all GPUs : 0.001009 kWh. Total GPU Power : 81.23768844022501 W
+[codecarbon INFO @ 14:25:10] 0.021736 kWh of electricity and 0.000000 L of water were used since the beginning.
+[codecarbon INFO @ 14:25:22] Energy consumed for RAM : 0.000603 kWh. RAM Power : 38.0 W
+[codecarbon INFO @ 14:25:23] Delta energy consumed for CPU with cpu_load : 0.005744 kWh, power : 1638.86069383168 W
+[codecarbon INFO @ 14:25:23] Energy consumed for All CPU : 0.026002 kWh
+[codecarbon INFO @ 14:25:23] Energy consumed for all GPUs : 0.001306 kWh. Total GPU Power : 81.46776759864977 W
+[codecarbon INFO @ 14:25:23] 0.027910 kWh of electricity and 0.000000 L of water were used since the beginning.
+--- [Step 2] Starting Training Pipeline (Monitored) ---
+📂 Loading data: training_2026-01-20_14-24-01.pt
+Training on device: cuda
+Epoch 1/20 | Loss: 0.4081
+Epoch 2/20 | Loss: 0.2916
+Epoch 3/20 | Loss: 0.2600
+Epoch 4/20 | Loss: 0.2379
+Epoch 5/20 | Loss: 0.2237
+Epoch 6/20 | Loss: 0.2094
+Epoch 7/20 | Loss: 0.1971
+Epoch 8/20 | Loss: 0.1869
+Epoch 9/20 | Loss: 0.1775
+Epoch 10/20 | Loss: 0.1701
+Epoch 11/20 | Loss: 0.1605
+Epoch 12/20 | Loss: 0.1548
+Epoch 13/20 | Loss: 0.1491
+Epoch 14/20 | Loss: 0.1441
+Epoch 15/20 | Loss: 0.1367
+Epoch 16/20 | Loss: 0.1312
+Epoch 17/20 | Loss: 0.1285
+Epoch 18/20 | Loss: 0.1233
+Epoch 19/20 | Loss: 0.1209
+Epoch 20/20 | Loss: 0.1154
+✅ Training Finished in 56.26s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f https://github.com/sustainable-computing-io/kepler/releases/download/v0.7.10/kepler.yaml
+error: unable to read URL "https://github.com/sustainable-computing-io/kepler/releases/download/v0.7.10/kepler.yaml", server reported 404 Not Found, status code=404
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f https://github.com/sustainable-computing-io/kepler/releases/download/v0.7.10/kepler.yaml
+error: unable to read URL "https://github.com/sustainable-computing-io/kepler/releases/download/v0.7.10/kepler.yaml", server reported 404 Not Found, status code=404
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -k https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3
+Warning: resource namespaces/kepler is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+namespace/kepler configured
+Warning: resource serviceaccounts/kepler is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+serviceaccount/kepler configured
+role.rbac.authorization.k8s.io/prom-kepler created
+clusterrole.rbac.authorization.k8s.io/kepler created
+rolebinding.rbac.authorization.k8s.io/prom-kepler created
+clusterrolebinding.rbac.authorization.k8s.io/kepler created
+configmap/kepler created
+Warning: resource services/kepler is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: resource daemonsets/kepler is missing the kubectl.kubernetes.io/last-applied-configuration annotation which is required by kubectl apply. kubectl apply should only be used on resources created declaratively by either kubectl create --save-config or kubectl apply. The missing annotation will be patched automatically.
+Warning: spec.template.spec.containers[1].ports[0]: duplicate port name "http" with spec.template.spec.containers[0].ports[0], services and probes that select ports by name will use spec.template.spec.containers[0].ports[0]
+daemonset.apps/kepler configured
+resource mapping not found for name: "kepler" namespace: "kepler" from "https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3": no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
+ensure CRDs are installed first
+Error from server (Invalid): error when applying patch:
+{"metadata":{"annotations":{"kubectl.kubernetes.io/last-applied-configuration":"{\"apiVersion\":\"v1\",\"kind\":\"Service\",\"metadata\":{\"annotations\":{},\"labels\":{\"app.kubernetes.io/name\":\"kepler\",\"app.kubernetes.io/part-of\":\"kepler\"},\"name\":\"kepler\",\"namespace\":\"kepler\"},\"spec\":{\"ports\":[{\"name\":\"http\",\"port\":28282,\"protocol\":\"TCP\",\"targetPort\":\"http\"}],\"selector\":{\"app.kubernetes.io/name\":\"kepler\",\"app.kubernetes.io/part-of\":\"kepler\"},\"type\":\"ClusterIP\"}}\n"},"labels":{"app.kubernetes.io/part-of":"kepler"}},"spec":{"$setElementOrder/ports":[{"port":28282}],"ports":[{"name":"http","port":28282,"protocol":"TCP","targetPort":"http"}],"selector":{"app.kubernetes.io/part-of":"kepler"},"type":"ClusterIP"}}
+to:
+Resource: "/v1, Resource=services", GroupVersionKind: "/v1, Kind=Service"
+Name: "kepler", Namespace: "kepler"
+for: "https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3": error when patching "https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3": Service "kepler" is invalid: spec.ports[1].name: Duplicate value: "http"
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS             RESTARTS   AGE
+kepler-5pcrb   0/2     InvalidImageName   0          14s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete namespace kepler
+namespace "kepler" deleted
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f https://raw.githubusercontent.com/sustainable-computing-io/kepler/main/manifests/k8s/kepler.yaml
+error: unable to read URL "https://raw.githubusercontent.com/sustainable-computing-io/kepler/main/manifests/k8s/kepler.yaml", server reported 404 Not Found, status code=404
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete namespace kepler
+Error from server (NotFound): namespaces "kepler" not found
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl kustomize https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3 | \
+sed 's|<KEPLER_IMAGE>|quay.io/sustainable_computing_io/kepler:latest|g' | \
+kubectl apply -f -
+namespace/kepler created
+serviceaccount/kepler created
+role.rbac.authorization.k8s.io/prom-kepler created
+clusterrole.rbac.authorization.k8s.io/kepler unchanged
+rolebinding.rbac.authorization.k8s.io/prom-kepler created
+clusterrolebinding.rbac.authorization.k8s.io/kepler unchanged
+configmap/kepler created
+service/kepler created
+daemonset.apps/kepler created
+error: resource mapping not found for name: "kepler" namespace: "kepler" from "STDIN": no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
+ensure CRDs are installed first
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -k https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3
+namespace/kepler unchanged
+serviceaccount/kepler unchanged
+role.rbac.authorization.k8s.io/prom-kepler unchanged
+clusterrole.rbac.authorization.k8s.io/kepler unchanged
+rolebinding.rbac.authorization.k8s.io/prom-kepler unchanged
+clusterrolebinding.rbac.authorization.k8s.io/kepler unchanged
+configmap/kepler unchanged
+service/kepler unchanged
+daemonset.apps/kepler configured
+error: resource mapping not found for name: "kepler" namespace: "kepler" from "https://github.com/sustainable-computing-io/kepler/manifests/k8s?ref=v0.11.3": no matches for kind "ServiceMonitor" in version "monitoring.coreos.com/v1"
+ensure CRDs are installed first
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl set image daemonset/kepler -n kepler kepler=quay.io/sustainable_computing_io/kepler:v0.11.3
+daemonset.apps/kepler image updated
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl set image daemonset/kepler -n kepler kepler=quay.io/sustainable_computing_io/kepler:v0.11.3
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod -n kepler -l app.kubernetes.io/name=kepler
+pod "kepler-hjdzg" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS   RESTARTS     AGE
+kepler-5288p   0/1     Error    1 (1s ago)   3s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS             RESTARTS      AGE
+kepler-5288p   0/1     CrashLoopBackOff   1 (14s ago)   16s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-5288p --previous
+unable to retrieve container logs for containerd://fee0c78408fef3edd835fdcb559f56343573b8abf943f782968ad8990ab30e2eubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl describe pod -n kepler kepler-5288p
+Name:             kepler-5288p
+Namespace:        kepler
+Priority:         0
+Service Account:  kepler
+Node:             hansal/192.168.10.87
+Start Time:       Tue, 20 Jan 2026 14:35:13 +0000
+Labels:           app.kubernetes.io/name=kepler
+                  app.kubernetes.io/part-of=kepler
+                  controller-revision-hash=65967bf9b
+                  pod-template-generation=3
+Annotations:      <none>
+Status:           Running
+IP:               10.42.0.35
+IPs:
+  IP:           10.42.0.35
+Controlled By:  DaemonSet/kepler
+Containers:
+  kepler:
+    Container ID:  containerd://56cacd012f3692ee45e5d367360a0157ec217cf42a5d269823629d19dc491d5e
+    Image:         quay.io/sustainable_computing_io/kepler:v0.11.3
+    Image ID:      quay.io/sustainable_computing_io/kepler@sha256:e37ed4197a9ec700eefd07e43faa0a5ed86f0fd6f86cc63a2bc464402fc5b44e
+    Port:          28282/TCP (http)
+    Host Port:     0/TCP (http)
+    Command:
+      /usr/bin/kepler
+    Args:
+      --config.file=/etc/kepler/config.yaml
+      --kube.enable
+      --kube.node-name=$(NODE_NAME)
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       Error
+      Exit Code:    1
+      Started:      Tue, 20 Jan 2026 14:35:59 +0000
+      Finished:     Tue, 20 Jan 2026 14:35:59 +0000
+    Ready:          False
+    Restart Count:  3
+    Liveness:       http-get http://:http/metrics delay=10s timeout=1s period=60s #success=1 #failure=3
+    Environment:
+      NODE_NAME:   (v1:spec.nodeName)
+    Mounts:
+      /etc/kepler/config.yaml from cfm (ro,path="config.yaml")
+      /host/proc from procfs (ro)
+      /host/sys from sysfs (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-d7p2m (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  sysfs:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys
+    HostPathType:
+  procfs:
+    Type:          HostPath (bare host directory volume)
+    Path:          /proc
+    HostPathType:
+  cfm:
+    Type:      ConfigMap (a volume populated by a ConfigMap)
+    Name:      kepler
+    Optional:  false
+  kube-api-access-d7p2m:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node-role.kubernetes.io/control-plane:NoSchedule op=Exists
+                             node-role.kubernetes.io/master:NoSchedule op=Exists
+                             node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  76s                default-scheduler  Successfully assigned kepler/kepler-5288p to hansal
+  Normal   Pulled     31s (x4 over 76s)  kubelet            Container image "quay.io/sustainable_computing_io/kepler:v0.11.3" already present on machine
+  Normal   Created    31s (x4 over 76s)  kubelet            Created container: kepler
+  Normal   Started    31s (x4 over 76s)  kubelet            Started container kepler
+  Warning  BackOff    4s (x7 over 74s)   kubelet            Back-off restarting failed container kepler in pod kepler-5288p_kepler(31b072bc-0923-468a-ac34-55bf01846325)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl patch ds kepler -n kepler -p '{"spec":{"template":{"spec":{"containers":[{"name":"kepler","securityContext":{"privileged":true}}]}}}}'
+daemonset.apps/kepler patched (no change)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Delete the crashing pod
+kubectl delete pod -n kepler kepler-5288p
+pod "kepler-5288p" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler -w
+NAME           READY   STATUS             RESTARTS     AGE
+kepler-snr42   0/1     CrashLoopBackOff   1 (5s ago)   7s
+kepler-snr42   0/1     Error              2 (14s ago)   16s
+sudo k3s crictl ps -a | grep kepler^Cubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s crictl ps -a | grep kepler
+d452515c37b34       5a2694779737f       6 seconds ago       Exited              kepler                     2                   548cc58616da3       kepler-snr42                              kepler
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo k3s crictl logs d452515c37b34
+E0120 14:38:09.317298  172134 log.go:32] "ContainerStatus from runtime service failed" err="rpc error: code = NotFound desc = an error occurred when try to find container \"d452515c37b34\": not found" containerID="d452515c37b34"
+FATA[0000] rpc error: code = NotFound desc = an error occurred when try to find container "d452515c37b34": not found
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Update list
+sudo apt-get update
+
+# 2. Install the specific headers for your kernel
+sudo apt-get install -y linux-headers-$(uname -r)
+Hit:1 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:2 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:3 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  InRelease
+Hit:4 http://nova.clouds.archive.ubuntu.com/ubuntu noble InRelease
+Hit:5 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:6 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports InRelease
+Hit:7 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+linux-headers-6.8.0-90-generic is already the newest version (6.8.0-90.91).
+linux-headers-6.8.0-90-generic set to manually installed.
+0 upgraded, 0 newly installed, 0 to remove and 4 not upgraded.
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl patch ds kepler -n kepler --type='json' -p='[{"op": "replace", "path": "/spec/template/spec/containers/0/command", "value": ["sleep", "infinity"]}]'
+daemonset.apps/kepler patched
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod -n kepler -l app.kubernetes.io/name=kepler
+pod "kepler-fq8gp" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Get the pod name
+export KEPLER_POD=$(kubectl get pods -n kepler -l app.kubernetes.io/name=kepler -o name)
+
+# Jump inside
+kubectl exec -it -n kepler $KEPLER_POD -- /bin/bash
+error: Internal error occurred: unable to upgrade connection: container not found ("kepler")
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete ds kepler -n kepler
+daemonset.apps "kepler" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl apply -f - <<EOF
+apiVersion: v1
+kind: Pod
+metadata:
+  name: kepler-debug
+  namespace: kepler
+spec:
+  hostNetwork: true
+  containers:
+  - name: kepler-debug
+    image: quay.io/sustainable_computing_io/kepler:v0.11.3
+    command: ["/bin/bash", "-c", "sleep infinity"]
+    securityContext:
+      privileged: true
+    volumeMounts:
+    - mountPath: /lib/modules
+      name: lib-modules
+      readOnly: true
+    - mountPath: /usr/src
+      name: usr-src
+      readOnly: true
+  volumes:
+  - name: lib-modules
+    hostPath:
+      path: /lib/modules
+  - name: usr-src
+    hostPath:
+      path: /usr/src
+EOF
+pod/kepler-debug created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl wait --for=condition=Ready pod/kepler-debug -n kepler --timeout=60s
+pod/kepler-debug condition met
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl exec -it -n kepler kepler-debug -- /bin/bash
+[root@hansal /]# # Run the Kepler binary
+/usr/bin/kepler
+time=2026-01-20T14:46:08.833Z level=INFO source=cmd/kepler/main.go:71 msg="Kepler version information" version=v0.11.3 buildTime=2025-11-24_13:40:11 gitBranch=HEAD gitCommit=e9c80364 goVersion=go1.24.10 goOS=linux goArch=amd64
+
+Configuration
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+log:
+    level: info
+    format: text
+host:
+    sysfs: /sys
+    procfs: /proc
+monitor:
+    interval: 5s
+    staleness: 500ms
+    maxTerminated: 500
+    minTerminatedEnergyThreshold: 10
+rapl:
+    zones: []
+exporter:
+    stdout:
+        enabled: false
+    prometheus:
+        enabled: true
+        debugCollectors:
+            - go
+        metricsLevel:
+            - node
+            - process
+            - container
+            - vm
+            - pod
+web:
+    configFile: ""
+    listenAddresses:
+        - :28282
+debug:
+    pprof:
+        enabled: false
+dev:
+    fake-cpu-meter:
+        enabled: false
+        zones: []
+kube:
+    enabled: false
+    config: ""
+    nodeName: ""
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+time=2026-01-20T14:46:08.833Z level=INFO source=internal/service/initializer.go:31 msg="Initializing service" service=resource-informer
+time=2026-01-20T14:46:08.833Z level=INFO source=internal/resource/informer.go:162 msg="Resource informer initialized successfully" service=resource-informer
+time=2026-01-20T14:46:08.833Z level=INFO source=internal/service/initializer.go:31 msg="Initializing service" service=rapl
+time=2026-01-20T14:46:08.833Z level=INFO source=internal/service/initializer.go:43 msg="Shutting down initialized services"
+time=2026-01-20T14:46:08.833Z level=ERROR source=cmd/kepler/main.go:56 msg="failed to initialize services" error="failed to initialize service rapl: no RAPL zones found"
+[root@hansal /]# lsmod | grep rapl
+bash: lsmod: command not found
+[root@hansal /]# exit
+exit
+command terminated with exit code 1
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ lsmod | grep rapl
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo modprobe intel_rapl_common
+sudo modprobe intel_rapl_msr
+modprobe: FATAL: Module intel_rapl_common not found in directory /lib/modules/6.8.0-90-generic
+modprobe: FATAL: Module intel_rapl_msr not found in directory /lib/modules/6.8.0-90-generic
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo apt-get update
+sudo apt-get install -y linux-modules-extra-$(uname -r)
+Hit:1 https://download.docker.com/linux/ubuntu noble InRelease
+Hit:2 https://nvidia.github.io/libnvidia-container/stable/deb/amd64  InRelease
+Hit:3 http://security.ubuntu.com/ubuntu noble-security InRelease
+Hit:4 https://developer.download.nvidia.com/compute/cuda/repos/ubuntu2404/x86_64  InRelease
+Hit:5 http://nova.clouds.archive.ubuntu.com/ubuntu noble InRelease
+Hit:6 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates InRelease
+Hit:7 http://nova.clouds.archive.ubuntu.com/ubuntu noble-backports InRelease
+Reading package lists... Done
+Reading package lists... Done
+Building dependency tree... Done
+Reading state information... Done
+The following additional packages will be installed:
+  wireless-regdb
+The following NEW packages will be installed:
+  linux-modules-extra-6.8.0-90-generic wireless-regdb
+0 upgraded, 2 newly installed, 0 to remove and 4 not upgraded.
+Need to get 113 MB of archives.
+After this operation, 112 MB of additional disk space will be used.
+Get:1 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/main amd64 wireless-regdb all 2025.07.10-0ubuntu1~24.04.1 [7502 B]
+Get:2 http://nova.clouds.archive.ubuntu.com/ubuntu noble-updates/main amd64 linux-modules-extra-6.8.0-90-generic amd64 6.8.0-90.91 [113 MB]
+Fetched 113 MB in 4s (29.0 MB/s)
+Selecting previously unselected package wireless-regdb.
+(Reading database ... 169450 files and directories currently installed.)
+Preparing to unpack .../wireless-regdb_2025.07.10-0ubuntu1~24.04.1_all.deb ...
+Unpacking wireless-regdb (2025.07.10-0ubuntu1~24.04.1) ...
+Selecting previously unselected package linux-modules-extra-6.8.0-90-generic.
+Preparing to unpack .../linux-modules-extra-6.8.0-90-generic_6.8.0-90.91_amd64.deb ...
+Unpacking linux-modules-extra-6.8.0-90-generic (6.8.0-90.91) ...
+Setting up wireless-regdb (2025.07.10-0ubuntu1~24.04.1) ...
+Setting up linux-modules-extra-6.8.0-90-generic (6.8.0-90.91) ...
+Processing triggers for man-db (2.12.0-4build2) ...
+Processing triggers for linux-image-6.8.0-90-generic (6.8.0-90.91) ...
+/etc/kernel/postinst.d/initramfs-tools:
+update-initramfs: Generating /boot/initrd.img-6.8.0-90-generic
+/etc/kernel/postinst.d/zz-update-grub:
+Sourcing file `/etc/default/grub'
+Sourcing file `/etc/default/grub.d/50-cloudimg-settings.cfg'
+Generating grub configuration file ...
+Found linux image: /boot/vmlinuz-6.8.0-90-generic
+Found initrd image: /boot/initrd.img-6.8.0-90-generic
+Found linux image: /boot/vmlinuz-6.8.0-86-generic
+Found initrd image: /boot/initrd.img-6.8.0-86-generic
+Warning: os-prober will not be executed to detect other bootable partitions.
+Systems on them will not be added to the GRUB boot configuration.
+Check GRUB_DISABLE_OS_PROBER documentation entry.
+Adding boot menu entry for UEFI Firmware Settings ...
+done
+Scanning processes...
+Scanning candidates...
+Scanning linux images...
+
+Running kernel seems to be up-to-date.
+
+Restarting services...
+
+Service restarts being deferred:
+ systemctl restart unattended-upgrades.service
+
+No containers need to be restarted.
+
+User sessions running outdated binaries:
+ ubuntu @ user manager service: bash[73194], jupyter-lab[99470]
+
+No VM guests are running outdated hypervisor (qemu) binaries on this host.
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo modprobe intel_rapl_common
+sudo modprobe intel_rapl_msr
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ ls -l /sys/class/powercap/intel-rapl/
+ls: cannot access '/sys/class/powercap/intel-rapl/': No such file or directory
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ dmesg | grep -i rapl
+dmesg: read kernel buffer failed: Operation not permitted
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ sudo dmesg | grep -i rapl
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cat <<EOF > kepler-gpu-only.yaml
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kepler
+---
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+  labels:
+    app.kubernetes.io/name: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:v0.11.3
+        imagePullPolicy: IfNotPresent
+        command: ["/usr/bin/kepler"]
+        args:
+        - "--v=2"
+        securityContext:
+          privileged: true
+        env:
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: EXPOSE_HARDWARE_COUNTER_METRICS
+          value: "false"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        - name: lib-modules
+          mountPath: /lib/modules
+          readOnly: true
+        - name: tracing
+          mountPath: /sys/kernel/debug/tracing
+          readOnly: true
+EOF targetPort: 9102o/name: kepler.io/v1es"]
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Delete everything old
+kubectl delete ns kepler --ignore-not-found=true
+
+# 2. Apply our custom file
+kubectl apply -f kepler-gpu-only.yaml
+namespace "kepler" deleted
+namespace/kepler created
+daemonset.apps/kepler created
+serviceaccount/kepler created
+clusterrole.rbac.authorization.k8s.io/kepler configured
+clusterrolebinding.rbac.authorization.k8s.io/kepler configured
+service/kepler created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS              RESTARTS     AGE
+kepler-x6pkd   0/1     RunContainerError   1 (3s ago)   4s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS              RESTARTS      AGE
+kepler-x6pkd   0/1     RunContainerError   2 (10s ago)   25s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl describe pod -n kepler kepler-x6pkd
+Name:             kepler-x6pkd
+Namespace:        kepler
+Priority:         0
+Service Account:  kepler
+Node:             hansal/192.168.10.87
+Start Time:       Tue, 20 Jan 2026 14:53:44 +0000
+Labels:           app.kubernetes.io/name=kepler
+                  controller-revision-hash=78f67487f
+                  pod-template-generation=1
+Annotations:      <none>
+Status:           Running
+IP:               192.168.10.87
+IPs:
+  IP:           192.168.10.87
+Controlled By:  DaemonSet/kepler
+Containers:
+  kepler:
+    Container ID:  containerd://1ecae09a0cc1d6ad38a49c5172415eec7d86f691d369a122c431716d536ab128
+    Image:         quay.io/sustainable_computing_io/kepler:v0.11.3
+    Image ID:      quay.io/sustainable_computing_io/kepler@sha256:e37ed4197a9ec700eefd07e43faa0a5ed86f0fd6f86cc63a2bc464402fc5b44e
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /usr/bin/kepler
+    Args:
+      --v=2
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       StartError
+      Message:      failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/sys/kernel/debug/tracing" to rootfs at "/sys/kernel/debug/tracing": create mountpoint for /sys/kernel/debug/tracing mount: make mountpoint "/sys/kernel/debug/tracing": mkdirat /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/1ecae09a0cc1d6ad38a49c5172415eec7d86f691d369a122c431716d536ab128/rootfs/sys/kernel/debug/tracing: no such file or directory
+      Exit Code:    128
+      Started:      Thu, 01 Jan 1970 00:00:00 +0000
+      Finished:     Tue, 20 Jan 2026 14:54:26 +0000
+    Ready:          False
+    Restart Count:  3
+    Environment:
+      ENABLE_RAPL:                      false
+      EXPOSE_HARDWARE_COUNTER_METRICS:  false
+      NODE_NAME:                         (v1:spec.nodeName)
+    Mounts:
+      /lib/modules from lib-modules (ro)
+      /sys/kernel/debug/tracing from tracing (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-th5zq (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  lib-modules:
+    Type:          HostPath (bare host directory volume)
+    Path:          /lib/modules
+    HostPathType:
+  tracing:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys/kernel/debug/tracing
+    HostPathType:
+  kube-api-access-th5zq:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type     Reason     Age                From               Message
+  ----     ------     ----               ----               -------
+  Normal   Scheduled  64s                default-scheduler  Successfully assigned kepler/kepler-x6pkd to hansal
+  Normal   Pulled     23s (x4 over 65s)  kubelet            Container image "quay.io/sustainable_computing_io/kepler:v0.11.3" already present on machine
+  Normal   Created    23s (x4 over 64s)  kubelet            Created container: kepler
+  Warning  Failed     23s (x4 over 64s)  kubelet            Error: failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/sys/kernel/debug/tracing" to rootfs at "/sys/kernel/debug/tracing": create mountpoint for /sys/kernel/debug/tracing mount: make mountpoint "/sys/kernel/debug/tracing": mkdirat /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/kepler/rootfs/sys/kernel/debug/tracing: no such file or directory
+  Warning  BackOff    10s (x5 over 63s)  kubelet            Back-off restarting failed container kepler in pod kepler-x6pkd_kepler(c8fe42ae-1dbd-4875-ac8f-99a9ac14146e)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:v0.11.3
+        command: ["/usr/bin/kepler"]
+        args:
+        - "--v=2"
+        # PRIVILEGED is still needed for GPU access
+        securityContext:
+          privileged: true
+        env:
+        # Disable CPU Hardware Counters (RAPL)
+        - name: ENABLE_RAPL
+          value: "false"
+        # Disable Kernel Tracing (eBPF) to prevent mount errors
+        - name: ENABLE_EBPF
+          value: "false"
+        - name: EXPOSE_HARDWARE_COUNTER_METRICS
+          value: "false"
+EOF
+daemonset.apps/kepler configured
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod -n kepler -l app.kubernetes.io/name=kepler
+pod "kepler-28d65" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler -w
+NAME           READY   STATUS   RESTARTS   AGE
+kepler-gpwlk   0/1     Error    1          4s
+kepler-gpwlk   0/1     CrashLoopBackOff   1 (12s ago)   14s
+kepler-gpwlk   0/1     Error              2 (13s ago)   15s
+^Cubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-gpwlk
+kepler: error: unknown long flag '--v', try --help
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kepler: error: unknown long flag '--v', try --help
+kepler:: command not found
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kepler: error: unknown long flag '--v', try --help
+kepler:: command not found
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kepler: error: unknown long flag '--v', try --help
+kepler:: command not found
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-gpwlk
+kepler: error: unknown long flag '--v', try --help
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-gpwlk
+kepler: error: unknown long flag '--v', try --help
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl patch ds kepler -n kepler --type='json' -p='[{"op": "remove", "path": "/spec/template/spec/containers/0/args"}]'
+daemonset.apps/kepler patched
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete pod -n kepler -l app.kubernetes.io/name=kepler
+pod "kepler-q7m8t" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler -w
+NAME           READY   STATUS   RESTARTS     AGE
+kepler-x6gbh   0/1     Error    1 (5s ago)   6s
+kepler-x6gbh   0/1     CrashLoopBackOff   1 (14s ago)   16s
+kepler-x6gbh   1/1     Running            2 (14s ago)   16s
+kepler-x6gbh   0/1     Error              2 (15s ago)   17s
+kepler-x6gbh   0/1     CrashLoopBackOff   2 (15s ago)   31s
+kepler-x6gbh   0/1     Error              3 (30s ago)   46s
+kepler-x6gbh   0/1     CrashLoopBackOff   3 (12s ago)   58s
+^Cubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-x6gbh
+time=2026-01-20T14:57:11.489Z level=INFO source=cmd/kepler/main.go:71 msg="Kepler version information" version=v0.11.3 buildTime=2025-11-24_13:40:11 gitBranch=HEAD gitCommit=e9c80364 goVersion=go1.24.10 goOS=linux goArch=amd64
+
+Configuration
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+log:
+    level: info
+    format: text
+host:
+    sysfs: /sys
+    procfs: /proc
+monitor:
+    interval: 5s
+    staleness: 500ms
+    maxTerminated: 500
+    minTerminatedEnergyThreshold: 10
+rapl:
+    zones: []
+exporter:
+    stdout:
+        enabled: false
+    prometheus:
+        enabled: true
+        debugCollectors:
+            - go
+        metricsLevel:
+            - node
+            - process
+            - container
+            - vm
+            - pod
+web:
+    configFile: ""
+    listenAddresses:
+        - :28282
+debug:
+    pprof:
+        enabled: false
+dev:
+    fake-cpu-meter:
+        enabled: false
+        zones: []
+kube:
+    enabled: false
+    config: ""
+    nodeName: ""
+
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+time=2026-01-20T14:57:11.490Z level=INFO source=internal/service/initializer.go:31 msg="Initializing service" service=resource-informer
+time=2026-01-20T14:57:11.490Z level=INFO source=internal/resource/informer.go:162 msg="Resource informer initialized successfully" service=resource-informer
+time=2026-01-20T14:57:11.490Z level=INFO source=internal/service/initializer.go:31 msg="Initializing service" service=rapl
+time=2026-01-20T14:57:11.490Z level=INFO source=internal/service/initializer.go:43 msg="Shutting down initialized services"
+time=2026-01-20T14:57:11.490Z level=ERROR source=cmd/kepler/main.go:56 msg="failed to initialize services" error="failed to initialize service rapl: no RAPL zones found"
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl delete ds kepler -n kepler --ignore-not-found=true
+daemonset.apps "kepler" deleted from kepler namespace
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+  labels:
+    app.kubernetes.io/name: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      # 1. CREATE THE FAKE SENSOR
+      initContainers:
+      - name: rapl-faker
+        image: busybox
+        command: ["/bin/sh", "-c"]
+        args:
+          - |
+            mkdir -p /tmp/fake-rapl/intel-rapl/intel-rapl:0
+            echo "1000000" > /tmp/fake-rapl/intel-rapl/intel-rapl:0/energy_uj
+            echo "fake-cpu" > /tmp/fake-rapl/intel-rapl/intel-rapl:0/name
+            echo "1000000000" > /tmp/fake-rapl/intel-rapl/intel-rapl:0/max_energy_range_uj
+            echo "0" > /tmp/fake-rapl/intel-rapl/intel-rapl:0/enabled
+        volumeMounts:
+        - name: fake-rapl
+          mountPath: /tmp/fake-rapl
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:v0.11.3
+        command: ["/usr/bin/kepler"]
+        securityContext:
+          privileged: true
+        env:
+        # K3s Socket
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+EOF       path: /sys/kernel/debug/tracinginerd.sock.sock
+daemonset.apps/kepler created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler -w
+NAME           READY   STATUS             RESTARTS     AGE
+kepler-ssw7k   0/1     CrashLoopBackOff   1 (2s ago)   8s
+kepler-ssw7k   0/1     RunContainerError   2 (0s ago)   20s
+kepler-ssw7k   0/1     CrashLoopBackOff    2 (15s ago)   35s
+kepler-ssw7k   0/1     RunContainerError   3 (0s ago)    49s
+^Cubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-ssw7k
+Defaulted container "kepler" out of: kepler, rapl-faker (init)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Update the image to 'latest' (contains the fix for missing RAPL)
+kubectl set image ds/kepler kepler=quay.io/sustainable_computing_io/kepler:latest -n kepler
+
+# 2. Reset the volume mounts (Remove the "Fake RAPL" hack if it didn't work)
+# We go back to the clean K3s config but with the NEW image.
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:latest
+        command: ["/usr/bin/kepler"]
+        # Explicitly tell it to ignore hardware counters
+        args: ["--expose-hardware-counter-metrics=false"]
+        securityContext:
+          privileged: true
+        env:
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        - name: k3s-sock
+          mountPath: /run/k3s/containerd/containerd.sock
+          readOnly: true
+        - name: lib-modules
+          mountPath: /lib/modules
+          readOnly: true
+        - name: tracing
+          mountPath: /sys/kernel/debug/tracing
+          readOnly: true
+EOF       path: /sys/kernel/debug/tracinginerd.sock
+daemonset.apps/kepler image updated
+daemonset.apps/kepler configured
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl logs -n kepler kepler-ssw7k -c rapl-faker
+error: error from server (NotFound): pods "kepler-ssw7k" not found in namespace "kepler"
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Delete the old installation to prevent conflicts
+kubectl delete ds kepler -n kepler --ignore-not-found=true
+
+# 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+  labels:
+    app.kubernetes.io/name: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        # KEY CHANGE: Use 'latest' to fix the RAPL crash
+        image: quay.io/sustainable_computing_io/kepler:latest
+        imagePullPolicy: Always
+        command: ["/usr/bin/kepler"]
+        # Tell it strictly: Do not look for hardware counters
+        args: ["--expose-hardware-counter-metrics=false"]
+        securityContext:
+          privileged: true
+        env:
+        # K3s Socket Location
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        # Explicitly disable RAPL (CPU Power)
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        # Note: We purposely do NOT mount /sys/class/powercap
+        - name: k3s-sock
+          mountPath: /run/k3s/containerd/containerd.sock
+          readOnly: true
+        - name: tracingeb/modules
+daemonset.apps "kepler" deleted from kepler namespace
+>
+> ^C
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Delete the old installation to prevent conflicts
+kubectl delete ds kepler -n kepler --ignore-not-found=true
+
+# 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+  labels:
+    app.kubernetes.io/name: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        # KEY CHANGE: Use 'latest' to fix the RAPL crash
+        image: quay.io/sustainable_computing_io/kepler:latest
+        imagePullPolicy: Always
+        command: ["/usr/bin/kepler"]
+        # Tell it strictly: Do not look for hardware counters
+        args: ["--expose-hardware-counter-metrics=false"]
+        securityContext:
+          privileged: true
+        env:
+        # K3s Socket Location
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        # Explicitly disable RAPL (CPU Power)
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        # Note: We purposely do NOT mount /sys/class/powercap
+        - name: k3s-sock
+          mountPath: /run/k3s/containerd/containerd.sock
+          readOnly: true
+        - name: tracingeb/modules
+> ^C
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Delete the old installation to prevent conflicts
+kubectl delete ds kepler -n kepler --ignore-not-found=true
+
+# 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+  labels:
+    app.kubernetes.io/name: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        # KEY CHANGE: Use 'latest' to fix the RAPL crash
+        image: quay.io/sustainable_computing_io/kepler:latest
+        imagePullPolicy: Always
+        command: ["/usr/bin/kepler"]
+        # Tell it strictly: Do not look for hardware counters
+        args: ["--expose-hardware-counter-metrics=false"]
+        securityContext:
+          privileged: true
+        env:
+        # K3s Socket Location
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        # Explicitly disable RAPL (CPU Power)
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        # Note: We purposely do NOT mount /sys/class/powercap
+        - name: k3s-sock
+          mountPath: /run/k3s/containerd/containerd.sock
+          readOnly: true
+EOF       path: /sys/kernel/debug/tracinginerd.sock
+daemonset.apps/kepler created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Delete the old installation to prevent conflicts
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1                             # 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+                                                cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+                                                cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1                             # 1. Delete the old installation to prevent conflicts
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1                             # 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+                                                cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1                             # 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+                                                # 2. Apply the "Robust" configuration (Latest Image + K3s Socket + GPU Only)
+                                                cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1                             # We go back to the clean K3s config but with the NEW image.
+                                                cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1                             kubectl delete ds kepler -n kepler --ignore-not-found=true
+
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # This finds the current pod name for you and checks logs
+kubectl logs -n kepler $(kubectl get pods -n kepler -l app.kubernetes.io/name=kepler -o jsonpath='{.items[0].metadata.name}') | grep -iE "gpu|accelerator"
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS             RESTARTS      AGE
+kepler-gnnsj   0/1     CrashLoopBackOff   3 (45s ago)   94s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # Get the full logs of the current pod
+kubectl logs -n kepler -l app.kubernetes.io/name=kepler --tail=50
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl describe pod -n kepler kepler-gnnsj
+Name:             kepler-gnnsj
+Namespace:        kepler
+Priority:         0
+Service Account:  kepler
+Node:             hansal/192.168.10.87
+Start Time:       Tue, 20 Jan 2026 15:01:12 +0000
+Labels:           app.kubernetes.io/name=kepler
+                  controller-revision-hash=59fd4c487
+                  pod-template-generation=1
+Annotations:      <none>
+Status:           Running
+IP:               192.168.10.87
+IPs:
+  IP:           192.168.10.87
+Controlled By:  DaemonSet/kepler
+Containers:
+  kepler:
+    Container ID:  containerd://d0873bc09c67a36d80b54b92cbbb075d338ff3ac9f8c9acd7585cbd8fd246a96
+    Image:         quay.io/sustainable_computing_io/kepler:latest
+    Image ID:      quay.io/sustainable_computing_io/kepler@sha256:08676376aacdfa834d5c3c926c8786618474a4f57bddebc0bf7aad4d775e15d0
+    Port:          <none>
+    Host Port:     <none>
+    Command:
+      /usr/bin/kepler
+    Args:
+      --expose-hardware-counter-metrics=false
+    State:          Waiting
+      Reason:       CrashLoopBackOff
+    Last State:     Terminated
+      Reason:       StartError
+      Message:      failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/sys/kernel/debug/tracing" to rootfs at "/sys/kernel/debug/tracing": create mountpoint for /sys/kernel/debug/tracing mount: make mountpoint "/sys/kernel/debug/tracing": mkdirat /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/d0873bc09c67a36d80b54b92cbbb075d338ff3ac9f8c9acd7585cbd8fd246a96/rootfs/sys/kernel/debug/tracing: no such file or directory
+      Exit Code:    128
+      Started:      Thu, 01 Jan 1970 00:00:00 +0000
+      Finished:     Tue, 20 Jan 2026 15:02:52 +0000
+    Ready:          False
+    Restart Count:  4
+    Environment:
+      CONTAINER_RUNTIME_ENDPOINT:  unix:///run/k3s/containerd/containerd.sock
+      ENABLE_RAPL:                 false
+      NODE_NAME:                    (v1:spec.nodeName)
+    Mounts:
+      /lib/modules from lib-modules (ro)
+      /run/k3s/containerd/containerd.sock from k3s-sock (ro)
+      /sys/kernel/debug/tracing from tracing (ro)
+      /var/run/secrets/kubernetes.io/serviceaccount from kube-api-access-p7lfh (ro)
+Conditions:
+  Type                        Status
+  PodReadyToStartContainers   True
+  Initialized                 True
+  Ready                       False
+  ContainersReady             False
+  PodScheduled                True
+Volumes:
+  k3s-sock:
+    Type:          HostPath (bare host directory volume)
+    Path:          /run/k3s/containerd/containerd.sock
+    HostPathType:  Socket
+  lib-modules:
+    Type:          HostPath (bare host directory volume)
+    Path:          /lib/modules
+    HostPathType:
+  tracing:
+    Type:          HostPath (bare host directory volume)
+    Path:          /sys/kernel/debug/tracing
+    HostPathType:
+  kube-api-access-p7lfh:
+    Type:                    Projected (a volume that contains injected data from multiple sources)
+    TokenExpirationSeconds:  3607
+    ConfigMapName:           kube-root-ca.crt
+    Optional:                false
+    DownwardAPI:             true
+QoS Class:                   BestEffort
+Node-Selectors:              <none>
+Tolerations:                 node.kubernetes.io/disk-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/memory-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/network-unavailable:NoSchedule op=Exists
+                             node.kubernetes.io/not-ready:NoExecute op=Exists
+                             node.kubernetes.io/pid-pressure:NoSchedule op=Exists
+                             node.kubernetes.io/unreachable:NoExecute op=Exists
+                             node.kubernetes.io/unschedulable:NoSchedule op=Exists
+Events:
+  Type     Reason     Age                  From               Message
+  ----     ------     ----                 ----               -------
+  Normal   Scheduled  2m50s                default-scheduler  Successfully assigned kepler/kepler-gnnsj to hansal
+  Normal   Pulled     2m48s                kubelet            Successfully pulled image "quay.io/sustainable_computing_io/kepler:latest" in 704ms (704ms including waiting). Image size: 91895961 bytes.
+  Normal   Pulled     2m47s                kubelet            Successfully pulled image "quay.io/sustainable_computing_io/kepler:latest" in 644ms (644ms including waiting). Image size: 91895961 bytes.
+  Normal   Pulled     2m32s                kubelet            Successfully pulled image "quay.io/sustainable_computing_io/kepler:latest" in 643ms (643ms including waiting). Image size: 91895961 bytes.
+  Normal   Pulled     2m2s                 kubelet            Successfully pulled image "quay.io/sustainable_computing_io/kepler:latest" in 713ms (713ms including waiting). Image size: 91895961 bytes.
+  Normal   Pulling    71s (x5 over 2m49s)  kubelet            Pulling image "quay.io/sustainable_computing_io/kepler:latest"
+  Normal   Created    71s (x5 over 2m48s)  kubelet            Created container: kepler
+  Normal   Pulled     71s                  kubelet            Successfully pulled image "quay.io/sustainable_computing_io/kepler:latest" in 767ms (767ms including waiting). Image size: 91895961 bytes.
+  Warning  Failed     70s (x5 over 2m48s)  kubelet            Error: failed to create containerd task: failed to create shim task: OCI runtime create failed: runc create failed: unable to start container process: error during container init: error mounting "/sys/kernel/debug/tracing" to rootfs at "/sys/kernel/debug/tracing": create mountpoint for /sys/kernel/debug/tracing mount: make mountpoint "/sys/kernel/debug/tracing": mkdirat /run/k3s/containerd/io.containerd.runtime.v2.task/k8s.io/kepler/rootfs/sys/kernel/debug/tracing: no such file or directory
+  Warning  BackOff    1s (x14 over 2m46s)  kubelet            Back-off restarting failed container kepler in pod kepler-gnnsj_kepler(df2db26f-daae-42bc-9bcb-a778e5d415ed)
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:latest
+        imagePullPolicy: Always
+        command: ["/usr/bin/kepler"]
+        # REMOVED all hardware counter args to prevent kernel panics
+        securityContext:
+          privileged: true
+        env:
+        - name: ENABLE_EBPF
+          value: "false"
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        # Only use the NVIDIA GPU collector
+        - name: ENABLE_GPU
+          value: "true"
+        volumeMounts:
+        - name: k3s-sock
+          mountPath: /run/k3s/containerd/containerd.sock
+          readOnly: true
+        # We only mount the lib/modules for the NVIDIA driver access
+        - name: lib-modules
+          mountPath: /lib/modules
+          readOnly: true
+      volumes:
+      - name: k3s-sock
+        hostPath:
+          path: /run/k3s/containerd/containerd.sock
+          type: Socket
+      - name: lib-modules
+EOF       path: /lib/modules
+daemonset.apps/kepler configured
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Clear the stuck DaemonSet
+kubectl delete ds kepler -n kepler --ignore-not-found=true
+
+# 2. Deploy the "Safe-Mount" version
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:latest
+        imagePullPolicy: Always
+        command: ["/usr/bin/kepler"]
+        # Disable hardware counters to prevent the mount requirement
+        args: ["--expose-hardware-counter-metrics=false"]
+        securityContext:
+          privileged: true
+        env:
+        - name: CONTAINER_RUNTIME_ENDPOINT
+          value: "unix:///run/k3s/containerd/containerd.sock"
+        - name: ENABLE_EBPF
+          value: "false"
+        - name: ENABLE_RAPL
+          value: "false"
+        - name: NODE_NAME
+          valueFrom:
+            fieldRef:
+              fieldPath: spec.nodeName
+        volumeMounts:
+        - name: k3s-sock
+          mountPath: /run/k3s/containerd/containerd.sock
+          readOnly: true
+        - name: lib-modules
+          mountPath: /lib/modules
+          readOnly: true
+        # We mount ONLY /sys (read-only) instead of specific subfolders
+EOF       path: /sys/modulestainerd/containerd.sock
+daemonset.apps "kepler" deleted from kepler namespace
+daemonset.apps/kepler created
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS             RESTARTS     AGE
+kepler-qwlmq   0/1     CrashLoopBackOff   1 (3s ago)   6s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ # 1. Wipe the slate
+kubectl delete ns kepler --ignore-not-found=true
+kubectl create ns kepler
+
+# 2. Create the ConfigMap that overrides the crash-prone settings
+cat <<EOF | kubectl apply -f -
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: kepler-cfm
+  namespace: kepler
+data:
+  KEPLER_CONFIG: |
+    # Disable the crashing hardware services
+    ENABLE_RAPL=false
+    ENABLE_EBPF=false
+    EXPOSE_HARDWARE_COUNTER_METRICS=false
+    # Enable the GPU and basic metrics
+    ENABLE_GPU=true
+    PROMETHEUS_METRICS_PORT=9102
+EOF
+
+# 3. Deploy Kepler using this ConfigMap
+cat <<EOF | kubectl apply -f -
+apiVersion: apps/v1
+kind: DaemonSet
+metadata:
+  name: kepler
+  namespace: kepler
+spec:
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: kepler
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: kepler
+    spec:
+      hostNetwork: true
+      serviceAccountName: kepler
+      containers:
+      - name: kepler
+        image: quay.io/sustainable_computing_io/kepler:latest
+        imagePullPolicy: Always
+        # We use envFrom to force our custom config into the app
+        envFrom:
+        - configMapRef:
+            name: kepler-cfm
+        env:
+EOFpiGroup: rbac.authorization.k8s.io/v1es"]rd.sock.sock
+namespace "kepler" deleted
+namespace/kepler created
+configmap/kepler-cfm created
+daemonset.apps/kepler created
+serviceaccount/kepler created
+clusterrole.rbac.authorization.k8s.io/kepler unchanged
+clusterrolebinding.rbac.authorization.k8s.io/kepler unchanged
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ kubectl get pods -n kepler
+NAME           READY   STATUS   RESTARTS   AGE
+kepler-fdt8j   0/1     Error    0          4s
+ubuntu@hansal:~/repo/HANSAL/apps/fashion-mnist$ client_loop: send disconnect: Connection reset
+PS C:\Users\heans>
