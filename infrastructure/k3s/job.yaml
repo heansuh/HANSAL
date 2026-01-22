@@ -1,0 +1,56 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fashion-mnist-gpu-job
+  labels:
+    project: green-mlops-thesis
+spec:
+  template:
+    metadata:
+      labels:
+        project: green-mlops-thesis
+    spec:
+      restartPolicy: Never
+
+      # ---------------------------------------------------------
+      # SHARED STORAGE (Keeps data between ETL and Train)
+      # ---------------------------------------------------------
+      volumes:
+      - name: shared-data
+        persistentVolumeClaim:
+          claimName: fashion-mnist-pvc  # <--- Make sure you create this PVC first!
+
+      # ---------------------------------------------------------
+      # STEP 1: ETL (CPU Only - Prepares the Data)
+      # ---------------------------------------------------------
+      initContainers:
+      - name: etl-step
+        image: fashion-mnist-pipeline:v1  # <--- Updated image name
+        imagePullPolicy: Never
+        command: ["python", "src/etl.py"]
+        volumeMounts:
+        - name: shared-data
+          mountPath: /app/data
+        - name: shared-data
+          mountPath: /app/metrics
+
+      # ---------------------------------------------------------
+      # STEP 2: TRAINING (GPU Accelerated)
+      # ---------------------------------------------------------
+      containers:
+      - name: train-step
+        image: fashion-mnist-pipeline:v1  # <--- Same image
+        imagePullPolicy: Never
+        command: ["python", "src/train.py"]
+
+        # GPU CONFIGURATION IS HERE vvv
+        resources:
+          limits:
+            nvidia.com/gpu: 1             # <--- This connects the NVIDIA A40
+        # ^^^ -----------------------
+
+        volumeMounts:
+        - name: shared-data
+          mountPath: /app/data
+        - name: shared-data
+          mountPath: /app/metrics
