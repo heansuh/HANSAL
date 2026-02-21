@@ -87,10 +87,10 @@ def main():
         
         data_file = get_latest_valid_dataset(PROCESSED_PATH, cutoff_date)
         if not data_file:
-            print(f"❌ No dataset found! Run etl.py first.")
+            print(f"No dataset found! Run etl.py first.")
             return
 
-        print(f"📂 Loading data: {os.path.basename(data_file)}")
+        print(f"Loading data: {os.path.basename(data_file)}")
         inputs, labels = torch.load(data_file)
         
         trainset = data_utils.TensorDataset(inputs, labels)
@@ -117,7 +117,7 @@ def main():
                 running_loss += loss.item()
             print(f"Epoch {epoch+1}/{EPOCHS} | Loss: {running_loss/len(trainloader):.4f}")
 
-        print(f"✅ Training Finished in {time.time() - start_time:.2f}s")
+        print(f"Training Finished in {time.time() - start_time:.2f}s")
         
     finally:
         tracker.stop()

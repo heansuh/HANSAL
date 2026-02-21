@@ -48,7 +48,7 @@ def main():
     
     # Determine the "Virtual" Current Time
     current_time = get_simulation_time(args.from_date)
-    print(f"🕒 Simulation Time: {current_time}")
+    print(f"Simulation Time: {current_time}")
 
     # 1. Setup Energy Tracker
     os.makedirs(METRICS_DIR, exist_ok=True)
@@ -81,7 +81,7 @@ def main():
         filename = f"training_{timestamp_str}.pt"
         save_path = os.path.join(PROCESSED_PATH, filename)
         
-        print(f"💾 Saving versioned dataset: {filename}")
+        print(f"Saving versioned dataset: {filename}")
         torch.save((all_images, all_labels), save_path)
         
     finally:
