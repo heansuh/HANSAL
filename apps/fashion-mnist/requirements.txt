@@ -1,6 +1,9 @@
 torch
 torchvision
-numpy
-pandas
 codecarbon
+zeus-ml
+perun[nvidia]
+pandas
 python-dateutil
+thop
+scikit-learn

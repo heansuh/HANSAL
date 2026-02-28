@@ -1,0 +1,17 @@
+PERUN REPORT
+
+App name: etl
+First run: 2026-02-28T21:46:57.059066
+Last run: 2026-02-28T22:05:08.415538
+
+
+RUN ID: 2026-02-28T22:05:08.415538
+
+|   Round # |       Host |   RUNTIME |    ENERGY |   POWER |   CPU_UTIL |   GPU_POWER |   GPU_MEM |   DRAM_MEM |
+|----------:|-----------:|----------:|----------:|--------:|-----------:|------------:|----------:|-----------:|
+|         0 |        All |  53.479 s | 246.990 J | 4.569 W |   11.738 % |     4.569 W |  1.330 GB |  15.191 GB |
+|         0 | Winterdusk |  53.479 s | 246.990 J | 4.569 W |   11.738 % |     4.569 W |  1.330 GB |  15.191 GB |
+
+Application Summary
+
+The application has been run 5 times. In total, it has used 0.000 kWh, released a total of 0.000 kgCO2e into the atmosphere, and you paid 0.00 € in electricity for it.

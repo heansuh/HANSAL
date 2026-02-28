@@ -1,23 +1,20 @@
 # apps/fashion-mnist/Dockerfile
-FROM python:3.9-slim
+FROM pytorch/pytorch:2.2.0-cuda12.1-cudnn8-runtime
 
 WORKDIR /app
 
-# Install system dependencies for CodeCarbon (sometimes needed for CPU tracking)
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc \
-    libc-dev \
-    && rm -rf /var/lib/apt/lists/*
+RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-# Copy requirements
+COPY shared/ ./shared/
+COPY setup.py .
+RUN pip install -e . --quiet
+
 COPY requirements.txt .
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt --quiet
 
-# Copy the source code
-COPY src/ src/
+COPY apps/fashion-mnist/ ./apps/fashion-mnist/
 
-# Create directories for data and metrics so they can be mounted
-RUN mkdir -p data/raw data/processed metrics
+ENV PYTHONPATH=/app/apps/fashion-mnist
 
-# Default command (can be overridden)
-CMD ["python", "src/train.py"]
+ENTRYPOINT ["python", "apps/fashion-mnist/src/main.py"]
+CMD ["etl"]
