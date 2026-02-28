@@ -2,3 +2,4 @@
 *.pt
 **/data/processed/
 *.tar
+*.pth

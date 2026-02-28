@@ -1,0 +1,39 @@
+# apps/fashion-mnist/k8s/job-pipeline.yaml
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: fashion-mnist-pipeline
+spec:
+  template:
+    metadata:
+      labels:
+        app: fashion-mnist
+    spec:
+      containers:
+      - name: fashion-mnist
+        image: ghcr.io/YOUR_USERNAME/REPO/fashion-mnist:latest
+        args: ["etl"]        # change to "train" for training
+        resources:
+          limits:
+            nvidia.com/gpu: 1
+            memory: "8Gi"
+            cpu: "4"
+        volumeMounts:
+        - name: data
+          mountPath: /app/apps/fashion-mnist/data
+        - name: metrics
+          mountPath: /app/apps/fashion-mnist/metrics
+        - name: models
+          mountPath: /app/apps/fashion-mnist/models
+      volumes:
+      - name: data
+        hostPath:
+          path: /mnt/hansal/fashion-mnist/data
+      - name: metrics
+        hostPath:
+          path: /mnt/hansal/fashion-mnist/metrics
+      - name: models
+        hostPath:
+          path: /mnt/hansal/fashion-mnist/models
+      restartPolicy: Never
+  backoffLimit: 0
