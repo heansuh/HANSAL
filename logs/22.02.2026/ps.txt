@@ -1,0 +1,1009 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\heans> cd E:\Thesis\HANSAL\apps\fashion-mnist\src\etl.py
+cd : Cannot find path 'E:\Thesis\HANSAL\apps\fashion-mnist\src\etl.py' because it does not exist.
+At line:1 char:1
++ cd E:\Thesis\HANSAL\apps\fashion-mnist\src\etl.py
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (E:\Thesis\HANSA...nist\src\etl.py:String) [Set-Location], ItemNotFoundE
+   xception
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.SetLocationCommand
+
+PS C:\Users\heans> cd E:\Thesis\HANSAL\apps\fashion-mnist\src
+PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl.py
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\etl.py", line 2, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+PS E:\Thesis\HANSAL\apps\fashion-mnist\src> cd ..
+PS E:\Thesis\HANSAL\apps\fashion-mnist> cd..
+PS E:\Thesis\HANSAL\apps> cd..
+PS E:\Thesis\HANSAL> ls
+
+
+    Directory: E:\Thesis\HANSAL
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         1/19/2026   1:55 PM                apps
+d-----         1/24/2026   5:35 AM                infrastructure
+d-----         1/24/2026   5:35 AM                logs
+d-----         1/24/2026   5:35 AM                share
+d-----         2/22/2026  12:19 AM                thesis
+-a----         1/24/2026   5:35 AM             99 .gitignore
+-a----         1/19/2026   1:07 AM            320 LICENSE
+-a----         1/29/2026   8:38 AM         210721 Logo.png
+-a----         1/25/2026  11:12 AM           1968 README.md
+
+
+PS E:\Thesis\HANSAL> cd ..
+PS E:\Thesis> ls
+
+
+    Directory: E:\Thesis
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/22/2026  12:21 AM                HANSAL
+-a----         1/26/2026   2:57 PM          78617 kepler_log.txt
+-a----         2/16/2026   3:38 PM        6305125 MasterThesis.pptx
+-a----         1/23/2026   2:20 AM         186649 ps.txt
+
+
+PS E:\Thesis> cd HANSAL
+PS E:\Thesis\HANSAL> cd ..
+PS E:\Thesis> python -m venv hansal
+PS E:\Thesis> cd ..
+PS E:\> cd Thesis
+PS E:\Thesis> mkdir venv
+
+
+    Directory: E:\Thesis
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/22/2026  12:34 AM                venv
+
+
+PS E:\Thesis> ls
+
+
+    Directory: E:\Thesis
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/22/2026  12:28 AM                HANSAL
+d-----         2/22/2026  12:34 AM                venv
+-a----         1/26/2026   2:57 PM          78617 kepler_log.txt
+-a----         2/16/2026   3:38 PM        6305125 MasterThesis.pptx
+-a----         1/23/2026   2:20 AM         186649 ps.txt
+
+
+PS E:\Thesis> cd venv
+PS E:\Thesis\venv> python -m venv hansal
+PS E:\Thesis\venv> hansal\scripts\activate
+(hansal) PS E:\Thesis\venv> cd ..
+(hansal) PS E:\Thesis> cd HANSAL
+(hansal) PS E:\Thesis\HANSAL> ls
+
+
+    Directory: E:\Thesis\HANSAL
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         1/19/2026   1:55 PM                apps
+d-----         2/22/2026  12:27 AM                Include
+d-----         1/24/2026   5:35 AM                infrastructure
+d-----         1/24/2026   5:35 AM                logs
+d-----         1/24/2026   5:35 AM                share
+d-----         2/22/2026  12:32 AM                thesis
+-a----         2/22/2026  12:29 AM             99 .gitignore
+-a----         1/19/2026   1:07 AM            320 LICENSE
+-a----         1/29/2026   8:38 AM         210721 Logo.png
+-a----         2/22/2026  12:27 AM            443 pyvenv.cfg
+-a----         1/25/2026  11:12 AM           1968 README.md
+
+
+(hansal) PS E:\Thesis\HANSAL> cd apps
+(hansal) PS E:\Thesis\HANSAL\apps> ls
+
+
+    Directory: E:\Thesis\HANSAL\apps
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         1/24/2026   5:35 AM                fashion-mnist
+
+
+(hansal) PS E:\Thesis\HANSAL\apps> cd fashion-mnist
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist> pip install -r requirements
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+ERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist> pip install -r requirements.txt
+Collecting torch (from -r requirements.txt (line 1))
+  Downloading torch-2.10.0-cp313-cp313-win_amd64.whl.metadata (31 kB)
+Collecting torchvision (from -r requirements.txt (line 2))
+  Downloading torchvision-0.25.0-cp313-cp313-win_amd64.whl.metadata (5.4 kB)
+Collecting numpy (from -r requirements.txt (line 3))
+  Downloading numpy-2.4.2-cp313-cp313-win_amd64.whl.metadata (6.6 kB)
+Collecting pandas (from -r requirements.txt (line 4))
+  Downloading pandas-3.0.1-cp313-cp313-win_amd64.whl.metadata (19 kB)
+Collecting codecarbon (from -r requirements.txt (line 5))
+  Downloading codecarbon-3.2.2-py3-none-any.whl.metadata (11 kB)
+Collecting python-dateutil (from -r requirements.txt (line 6))
+  Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting filelock (from torch->-r requirements.txt (line 1))
+  Downloading filelock-3.24.3-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.10.0 (from torch->-r requirements.txt (line 1))
+  Using cached typing_extensions-4.15.0-py3-none-any.whl.metadata (3.3 kB)
+Collecting sympy>=1.13.3 (from torch->-r requirements.txt (line 1))
+  Using cached sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch->-r requirements.txt (line 1))
+  Using cached networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch->-r requirements.txt (line 1))
+  Using cached jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch->-r requirements.txt (line 1))
+  Downloading fsspec-2026.2.0-py3-none-any.whl.metadata (10 kB)
+Collecting setuptools (from torch->-r requirements.txt (line 1))
+  Downloading setuptools-82.0.0-py3-none-any.whl.metadata (6.6 kB)
+Collecting pillow!=8.3.*,>=5.3.0 (from torchvision->-r requirements.txt (line 2))
+  Downloading pillow-12.1.1-cp313-cp313-win_amd64.whl.metadata (9.0 kB)
+Collecting tzdata (from pandas->-r requirements.txt (line 4))
+  Using cached tzdata-2025.3-py2.py3-none-any.whl.metadata (1.4 kB)
+Collecting arrow (from codecarbon->-r requirements.txt (line 5))
+  Using cached arrow-1.4.0-py3-none-any.whl.metadata (7.7 kB)
+Collecting click (from codecarbon->-r requirements.txt (line 5))
+  Using cached click-8.3.1-py3-none-any.whl.metadata (2.6 kB)
+Collecting fief-client[cli] (from codecarbon->-r requirements.txt (line 5))
+  Using cached fief_client-0.20.0-py3-none-any.whl.metadata (2.1 kB)
+Collecting prometheus_client (from codecarbon->-r requirements.txt (line 5))
+  Using cached prometheus_client-0.24.1-py3-none-any.whl.metadata (2.1 kB)
+Collecting psutil>=6.0.0 (from codecarbon->-r requirements.txt (line 5))
+  Downloading psutil-7.2.2-cp37-abi3-win_amd64.whl.metadata (22 kB)
+Collecting py-cpuinfo (from codecarbon->-r requirements.txt (line 5))
+  Using cached py_cpuinfo-9.0.0-py3-none-any.whl.metadata (794 bytes)
+Collecting pydantic (from codecarbon->-r requirements.txt (line 5))
+  Using cached pydantic-2.12.5-py3-none-any.whl.metadata (90 kB)
+Collecting nvidia-ml-py (from codecarbon->-r requirements.txt (line 5))
+  Downloading nvidia_ml_py-13.590.48-py3-none-any.whl.metadata (9.8 kB)
+Collecting rapidfuzz (from codecarbon->-r requirements.txt (line 5))
+  Using cached rapidfuzz-3.14.3-cp313-cp313-win_amd64.whl.metadata (12 kB)
+Collecting requests (from codecarbon->-r requirements.txt (line 5))
+  Using cached requests-2.32.5-py3-none-any.whl.metadata (4.9 kB)
+Collecting questionary (from codecarbon->-r requirements.txt (line 5))
+  Using cached questionary-2.1.1-py3-none-any.whl.metadata (5.4 kB)
+Collecting rich (from codecarbon->-r requirements.txt (line 5))
+  Downloading rich-14.3.3-py3-none-any.whl.metadata (18 kB)
+Collecting typer (from codecarbon->-r requirements.txt (line 5))
+  Downloading typer-0.24.1-py3-none-any.whl.metadata (16 kB)
+Collecting six>=1.5 (from python-dateutil->-r requirements.txt (line 6))
+  Using cached six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch->-r requirements.txt (line 1))
+  Using cached mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting colorama (from click->codecarbon->-r requirements.txt (line 5))
+  Using cached colorama-0.4.6-py2.py3-none-any.whl.metadata (17 kB)
+Collecting httpx<0.28.0,>=0.21.3 (from fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached httpx-0.27.2-py3-none-any.whl.metadata (7.1 kB)
+Collecting jwcrypto<2.0.0,>=1.4 (from fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached jwcrypto-1.5.6-py3-none-any.whl.metadata (3.1 kB)
+Collecting yaspin (from fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached yaspin-3.4.0-py3-none-any.whl.metadata (15 kB)
+Collecting anyio (from httpx<0.28.0,>=0.21.3->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached anyio-4.12.1-py3-none-any.whl.metadata (4.3 kB)
+Collecting certifi (from httpx<0.28.0,>=0.21.3->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached certifi-2026.1.4-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<0.28.0,>=0.21.3->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<0.28.0,>=0.21.3->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached idna-3.11-py3-none-any.whl.metadata (8.4 kB)
+Collecting sniffio (from httpx<0.28.0,>=0.21.3->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached sniffio-1.3.1-py3-none-any.whl.metadata (3.9 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<0.28.0,>=0.21.3->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting cryptography>=3.4 (from jwcrypto<2.0.0,>=1.4->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Downloading cryptography-46.0.5-cp311-abi3-win_amd64.whl.metadata (5.7 kB)
+Collecting cffi>=2.0.0 (from cryptography>=3.4->jwcrypto<2.0.0,>=1.4->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached cffi-2.0.0-cp313-cp313-win_amd64.whl.metadata (2.6 kB)
+Collecting pycparser (from cffi>=2.0.0->cryptography>=3.4->jwcrypto<2.0.0,>=1.4->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Downloading pycparser-3.0-py3-none-any.whl.metadata (8.2 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch->-r requirements.txt (line 1))
+  Using cached markupsafe-3.0.3-cp313-cp313-win_amd64.whl.metadata (2.8 kB)
+Collecting annotated-types>=0.6.0 (from pydantic->codecarbon->-r requirements.txt (line 5))
+  Using cached annotated_types-0.7.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.41.5 (from pydantic->codecarbon->-r requirements.txt (line 5))
+  Using cached pydantic_core-2.41.5-cp313-cp313-win_amd64.whl.metadata (7.4 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic->codecarbon->-r requirements.txt (line 5))
+  Using cached typing_inspection-0.4.2-py3-none-any.whl.metadata (2.6 kB)
+Collecting prompt_toolkit<4.0,>=2.0 (from questionary->codecarbon->-r requirements.txt (line 5))
+  Using cached prompt_toolkit-3.0.52-py3-none-any.whl.metadata (6.4 kB)
+Collecting wcwidth (from prompt_toolkit<4.0,>=2.0->questionary->codecarbon->-r requirements.txt (line 5))
+  Downloading wcwidth-0.6.0-py3-none-any.whl.metadata (30 kB)
+Collecting charset_normalizer<4,>=2 (from requests->codecarbon->-r requirements.txt (line 5))
+  Using cached charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl.metadata (38 kB)
+Collecting urllib3<3,>=1.21.1 (from requests->codecarbon->-r requirements.txt (line 5))
+  Using cached urllib3-2.6.3-py3-none-any.whl.metadata (6.9 kB)
+Collecting markdown-it-py>=2.2.0 (from rich->codecarbon->-r requirements.txt (line 5))
+  Using cached markdown_it_py-4.0.0-py3-none-any.whl.metadata (7.3 kB)
+Collecting pygments<3.0.0,>=2.13.0 (from rich->codecarbon->-r requirements.txt (line 5))
+  Using cached pygments-2.19.2-py3-none-any.whl.metadata (2.5 kB)
+Collecting mdurl~=0.1 (from markdown-it-py>=2.2.0->rich->codecarbon->-r requirements.txt (line 5))
+  Using cached mdurl-0.1.2-py3-none-any.whl.metadata (1.6 kB)
+Collecting shellingham>=1.3.0 (from typer->codecarbon->-r requirements.txt (line 5))
+  Using cached shellingham-1.5.4-py2.py3-none-any.whl.metadata (3.5 kB)
+Collecting annotated-doc>=0.0.2 (from typer->codecarbon->-r requirements.txt (line 5))
+  Downloading annotated_doc-0.0.4-py3-none-any.whl.metadata (6.6 kB)
+Collecting termcolor<4.0,>=3.2 (from yaspin->fief-client[cli]->codecarbon->-r requirements.txt (line 5))
+  Using cached termcolor-3.3.0-py3-none-any.whl.metadata (6.5 kB)
+Downloading torch-2.10.0-cp313-cp313-win_amd64.whl (113.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 113.8/113.8 MB 40.9 MB/s  0:00:02
+Downloading torchvision-0.25.0-cp313-cp313-win_amd64.whl (4.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.3/4.3 MB 39.9 MB/s  0:00:00
+Downloading numpy-2.4.2-cp313-cp313-win_amd64.whl (12.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.3/12.3 MB 44.9 MB/s  0:00:00
+Downloading pandas-3.0.1-cp313-cp313-win_amd64.whl (9.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 9.7/9.7 MB 40.7 MB/s  0:00:00
+Downloading codecarbon-3.2.2-py3-none-any.whl (359 kB)
+Using cached python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+Downloading fsspec-2026.2.0-py3-none-any.whl (202 kB)
+Using cached networkx-3.6.1-py3-none-any.whl (2.1 MB)
+Downloading pillow-12.1.1-cp313-cp313-win_amd64.whl (7.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 7.0/7.0 MB 36.8 MB/s  0:00:00
+Downloading psutil-7.2.2-cp37-abi3-win_amd64.whl (137 kB)
+Using cached six-1.17.0-py2.py3-none-any.whl (11 kB)
+Using cached sympy-1.14.0-py3-none-any.whl (6.3 MB)
+Using cached mpmath-1.3.0-py3-none-any.whl (536 kB)
+Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Using cached arrow-1.4.0-py3-none-any.whl (68 kB)
+Using cached click-8.3.1-py3-none-any.whl (108 kB)
+Using cached colorama-0.4.6-py2.py3-none-any.whl (25 kB)
+Using cached fief_client-0.20.0-py3-none-any.whl (20 kB)
+Using cached httpx-0.27.2-py3-none-any.whl (76 kB)
+Using cached httpcore-1.0.9-py3-none-any.whl (78 kB)
+Using cached jwcrypto-1.5.6-py3-none-any.whl (92 kB)
+Downloading cryptography-46.0.5-cp311-abi3-win_amd64.whl (3.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.5/3.5 MB 33.0 MB/s  0:00:00
+Using cached cffi-2.0.0-cp313-cp313-win_amd64.whl (183 kB)
+Using cached h11-0.16.0-py3-none-any.whl (37 kB)
+Using cached anyio-4.12.1-py3-none-any.whl (113 kB)
+Using cached idna-3.11-py3-none-any.whl (71 kB)
+Using cached certifi-2026.1.4-py3-none-any.whl (152 kB)
+Downloading filelock-3.24.3-py3-none-any.whl (24 kB)
+Using cached jinja2-3.1.6-py3-none-any.whl (134 kB)
+Using cached markupsafe-3.0.3-cp313-cp313-win_amd64.whl (15 kB)
+Downloading nvidia_ml_py-13.590.48-py3-none-any.whl (50 kB)
+Using cached prometheus_client-0.24.1-py3-none-any.whl (64 kB)
+Using cached py_cpuinfo-9.0.0-py3-none-any.whl (22 kB)
+Downloading pycparser-3.0-py3-none-any.whl (48 kB)
+Using cached pydantic-2.12.5-py3-none-any.whl (463 kB)
+Using cached pydantic_core-2.41.5-cp313-cp313-win_amd64.whl (2.0 MB)
+Using cached annotated_types-0.7.0-py3-none-any.whl (13 kB)
+Using cached typing_inspection-0.4.2-py3-none-any.whl (14 kB)
+Using cached questionary-2.1.1-py3-none-any.whl (36 kB)
+Using cached prompt_toolkit-3.0.52-py3-none-any.whl (391 kB)
+Using cached rapidfuzz-3.14.3-cp313-cp313-win_amd64.whl (1.5 MB)
+Using cached requests-2.32.5-py3-none-any.whl (64 kB)
+Using cached charset_normalizer-3.4.4-cp313-cp313-win_amd64.whl (107 kB)
+Using cached urllib3-2.6.3-py3-none-any.whl (131 kB)
+Downloading rich-14.3.3-py3-none-any.whl (310 kB)
+Using cached pygments-2.19.2-py3-none-any.whl (1.2 MB)
+Using cached markdown_it_py-4.0.0-py3-none-any.whl (87 kB)
+Using cached mdurl-0.1.2-py3-none-any.whl (10.0 kB)
+Downloading setuptools-82.0.0-py3-none-any.whl (1.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.0/1.0 MB 25.0 MB/s  0:00:00
+Using cached sniffio-1.3.1-py3-none-any.whl (10 kB)
+Downloading typer-0.24.1-py3-none-any.whl (56 kB)
+Downloading annotated_doc-0.0.4-py3-none-any.whl (5.3 kB)
+Using cached shellingham-1.5.4-py2.py3-none-any.whl (9.8 kB)
+Using cached tzdata-2025.3-py2.py3-none-any.whl (348 kB)
+Downloading wcwidth-0.6.0-py3-none-any.whl (94 kB)
+Using cached yaspin-3.4.0-py3-none-any.whl (21 kB)
+Using cached termcolor-3.3.0-py3-none-any.whl (7.7 kB)
+Installing collected packages: py-cpuinfo, nvidia-ml-py, mpmath, wcwidth, urllib3, tzdata, typing-extensions, termcolor, sympy, sniffio, six, shellingham, setuptools, rapidfuzz, pygments, pycparser, psutil, prometheus_client, pillow, numpy, networkx, mdurl, MarkupSafe, idna, h11, fsspec, filelock, colorama, charset_normalizer, certifi, annotated-types, annotated-doc, yaspin, typing-inspection, requests, python-dateutil, pydantic-core, prompt_toolkit, markdown-it-py, jinja2, httpcore, click, cffi, anyio, torch, rich, questionary, pydantic, pandas, httpx, cryptography, arrow, typer, torchvision, jwcrypto, fief-client, codecarbon
+Successfully installed MarkupSafe-3.0.3 annotated-doc-0.0.4 annotated-types-0.7.0 anyio-4.12.1 arrow-1.4.0 certifi-2026.1.4 cffi-2.0.0 charset_normalizer-3.4.4 click-8.3.1 codecarbon-3.2.2 colorama-0.4.6 cryptography-46.0.5 fief-client-0.20.0 filelock-3.24.3 fsspec-2026.2.0 h11-0.16.0 httpcore-1.0.9 httpx-0.27.2 idna-3.11 jinja2-3.1.6 jwcrypto-1.5.6 markdown-it-py-4.0.0 mdurl-0.1.2 mpmath-1.3.0 networkx-3.6.1 numpy-2.4.2 nvidia-ml-py-13.590.48 pandas-3.0.1 pillow-12.1.1 prometheus_client-0.24.1 prompt_toolkit-3.0.52 psutil-7.2.2 py-cpuinfo-9.0.0 pycparser-3.0 pydantic-2.12.5 pydantic-core-2.41.5 pygments-2.19.2 python-dateutil-2.9.0.post0 questionary-2.1.1 rapidfuzz-3.14.3 requests-2.32.5 rich-14.3.3 setuptools-82.0.0 shellingham-1.5.4 six-1.17.0 sniffio-1.3.1 sympy-1.14.0 termcolor-3.3.0 torch-2.10.0 torchvision-0.25.0 typer-0.24.1 typing-extensions-4.15.0 typing-inspection-0.4.2 tzdata-2025.3 urllib3-2.6.3 wcwidth-0.6.0 yaspin-3.4.0
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist> ㅣㄴ
+ㅣㄴ : The term 'ㅣㄴ' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ ㅣㄴ
++ ~~
+    + CategoryInfo          : ObjectNotFound: (ㅣㄴ:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist> LS
+
+
+    Directory: E:\Thesis\HANSAL\apps\fashion-mnist
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         1/24/2026   5:35 AM                data
+d-----         1/24/2026   5:35 AM                metrics
+d-----         1/24/2026   5:35 AM                src
+d-----         1/19/2026   1:56 PM                tests
+-a----         1/24/2026   5:35 AM            613 Dockerfile
+-a----         1/24/2026   5:35 AM           2063 kepler-gpu-only.yaml
+-a----         1/24/2026   5:35 AM             62 requirements.txt
+
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist> cd src
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> ls
+
+
+    Directory: E:\Thesis\HANSAL\apps\fashion-mnist\src
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2/22/2026  12:26 AM           2967 etl.py
+-a----         2/22/2026  12:22 AM           4266 train.py
+
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl.py
+Simulation Time: 2026-02-22 00:58:26.714202
+[codecarbon WARNING @ 00:58:26] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 00:58:26] [setup] RAM Tracking...
+[codecarbon INFO @ 00:58:26] [setup] CPU Tracking...
+[codecarbon WARNING @ 00:58:28] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 00:58:28] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 00:58:28] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 00:58:28] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 00:58:28] [setup] GPU Tracking...
+[codecarbon INFO @ 00:58:28] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 00:58:28] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 00:58:28] >>> Tracker's metadata:
+[codecarbon INFO @ 00:58:28]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 00:58:28]   Python version: 3.13.12
+[codecarbon INFO @ 00:58:28]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 00:58:28]   Available RAM : 15.715 GB
+[codecarbon INFO @ 00:58:28]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 00:58:28]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 00:58:28]   GPU count: 1
+[codecarbon INFO @ 00:58:28]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 00:58:29] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_etl.csv
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-22_00-58-26.pt
+[codecarbon INFO @ 00:58:36] Energy consumed for RAM : 0.000019 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 00:58:36] Delta energy consumed for CPU with constant : 0.000079 kWh, power : 42.5 W
+[codecarbon INFO @ 00:58:36] Energy consumed for All CPU : 0.000079 kWh
+[codecarbon INFO @ 00:58:36] Energy consumed for all GPUs : 0.000025 kWh. Total GPU Power : 13.570848678911265 W
+[codecarbon INFO @ 00:58:36] 0.000123 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl.py
+Simulation Time: 2026-02-22 01:00:24.741313
+[codecarbon WARNING @ 01:00:24] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:00:24] [setup] RAM Tracking...
+[codecarbon INFO @ 01:00:24] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:00:26] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:00:26] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:00:26] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:00:26] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:00:26] [setup] GPU Tracking...
+[codecarbon INFO @ 01:00:26] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:00:26] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:00:26] >>> Tracker's metadata:
+[codecarbon INFO @ 01:00:26]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:00:26]   Python version: 3.13.12
+[codecarbon INFO @ 01:00:26]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:00:26]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:00:26]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:00:26]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:00:26]   GPU count: 1
+[codecarbon INFO @ 01:00:26]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:00:26] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_etl.csv
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-22_01-00-24.pt
+[codecarbon INFO @ 01:00:37] Energy consumed for RAM : 0.000030 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:00:37] Delta energy consumed for CPU with constant : 0.000126 kWh, power : 42.5 W
+[codecarbon INFO @ 01:00:37] Energy consumed for All CPU : 0.000126 kWh
+[codecarbon INFO @ 01:00:37] Energy consumed for all GPUs : 0.000043 kWh. Total GPU Power : 14.54357861555301 W
+[codecarbon INFO @ 01:00:37] 0.000199 kWh of electricity and 0.000000 L of water were used since the beginning.
+[codecarbon WARNING @ 01:00:37] graceful shutdown. Exceptions:
+[codecarbon WARNING @ 01:00:37] <class 'Exception'>
+Traceback (most recent call last):
+  File "E:\Thesis\venv\hansal\Lib\site-packages\codecarbon\core\util.py", line 25, in suppress
+    yield
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\contextlib.py", line 85, in inner
+    return func(*args, **kwds)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\codecarbon\emissions_tracker.py", line 731, in stop
+    self._persist_data(
+    ~~~~~~~~~~~~~~~~~~^
+        total_emissions=emissions_data,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        delta_emissions=emissions_data_delta,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        experiment_name=self._experiment_name,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\codecarbon\emissions_tracker.py", line 756, in _persist_data
+    handler.out(total_emissions, delta_emissions)
+    ~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\codecarbon\output_methods\file.py", line 131, in out
+    df.to_csv(self.save_file_path, index=False)
+    ~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\pandas\core\generic.py", line 3988, in to_csv
+    return DataFrameRenderer(formatter).to_csv(
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        path_or_buf,
+        ^^^^^^^^^^^^
+    ...<14 lines>...
+        storage_options=storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\pandas\io\formats\format.py", line 1025, in to_csv
+    csv_formatter.save()
+    ~~~~~~~~~~~~~~~~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\pandas\io\formats\csvs.py", line 251, in save
+    with get_handle(
+         ~~~~~~~~~~^
+        self.filepath_or_buffer,
+        ^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<4 lines>...
+        storage_options=self.storage_options,
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ) as handles:
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\pandas\io\common.py", line 926, in get_handle
+    handle = open(
+        handle,
+    ...<3 lines>...
+        newline="",
+    )
+PermissionError: [Errno 13] Permission denied: 'E:\\Thesis\\HANSAL\\apps\\fashion-mnist\\src\\../metrics\\emissions_etl.csv'
+[codecarbon WARNING @ 01:00:37] stopping.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl.py
+Simulation Time: 2026-02-22 01:01:02.353966
+[codecarbon WARNING @ 01:01:02] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:01:02] [setup] RAM Tracking...
+[codecarbon INFO @ 01:01:02] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:01:04] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:01:04] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:01:04] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:01:04] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:01:04] [setup] GPU Tracking...
+[codecarbon INFO @ 01:01:04] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:01:04] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:01:04] >>> Tracker's metadata:
+[codecarbon INFO @ 01:01:04]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:01:04]   Python version: 3.13.12
+[codecarbon INFO @ 01:01:04]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:01:04]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:01:04]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:01:04]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:01:04]   GPU count: 1
+[codecarbon INFO @ 01:01:04]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:01:04] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_etl.csv
+--- [Step 1] Starting ETL Pipeline ---
+[codecarbon INFO @ 01:01:19] Energy consumed for RAM : 0.000042 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:01:19] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:01:19] Energy consumed for All CPU : 0.000177 kWh
+[codecarbon INFO @ 01:01:19] Energy consumed for all GPUs : 0.000040 kWh. Total GPU Power : 9.550280334825667 W
+[codecarbon INFO @ 01:01:19] 0.000259 kWh of electricity and 0.000000 L of water were used since the beginning.
+Saving versioned dataset: training_2026-02-22_01-01-02.pt
+[codecarbon INFO @ 01:01:29] Energy consumed for RAM : 0.000069 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:01:29] Delta energy consumed for CPU with constant : 0.000118 kWh, power : 42.5 W
+[codecarbon INFO @ 01:01:29] Energy consumed for All CPU : 0.000295 kWh
+[codecarbon INFO @ 01:01:29] Energy consumed for all GPUs : 0.000072 kWh. Total GPU Power : 11.60980916058664 W
+[codecarbon INFO @ 01:01:29] 0.000436 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl.py
+Simulation Time: 2026-02-22 01:01:35.195840
+[codecarbon WARNING @ 01:01:35] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:01:35] [setup] RAM Tracking...
+[codecarbon INFO @ 01:01:35] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:01:36] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:01:36] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:01:36] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:01:36] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:01:36] [setup] GPU Tracking...
+[codecarbon INFO @ 01:01:36] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:01:36] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:01:36] >>> Tracker's metadata:
+[codecarbon INFO @ 01:01:36]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:01:36]   Python version: 3.13.12
+[codecarbon INFO @ 01:01:36]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:01:36]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:01:36]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:01:36]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:01:36]   GPU count: 1
+[codecarbon INFO @ 01:01:36]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:01:37] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_etl.csv
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-22_01-01-35.pt
+[codecarbon INFO @ 01:01:44] Energy consumed for RAM : 0.000020 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:01:44] Delta energy consumed for CPU with constant : 0.000085 kWh, power : 42.5 W
+[codecarbon INFO @ 01:01:44] Energy consumed for All CPU : 0.000085 kWh
+[codecarbon INFO @ 01:01:44] Energy consumed for all GPUs : 0.000024 kWh. Total GPU Power : 12.034363517394674 W
+[codecarbon INFO @ 01:01:44] 0.000129 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> ls
+
+
+    Directory: E:\Thesis\HANSAL\apps\fashion-mnist\src
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         2/22/2026  12:26 AM           2967 etl.py
+-a----         2/22/2026  12:22 AM           4266 train.py
+
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+[codecarbon WARNING @ 01:02:12] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:02:12] [setup] RAM Tracking...
+[codecarbon INFO @ 01:02:12] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:02:13] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:02:13] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:02:13] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:02:13] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:02:13] [setup] GPU Tracking...
+[codecarbon INFO @ 01:02:13] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:02:13] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:02:13] >>> Tracker's metadata:
+[codecarbon INFO @ 01:02:13]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:02:13]   Python version: 3.13.12
+[codecarbon INFO @ 01:02:13]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:02:13]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:02:13]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:02:13]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:02:13]   GPU count: 1
+[codecarbon INFO @ 01:02:13]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:02:14] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_train.csv
+--- [Step 2] Starting Training Pipeline (Monitored) ---
+Loading data: training_2026-02-22_01-01-35.pt
+Training on device: cpu
+[codecarbon INFO @ 01:02:29] Energy consumed for RAM : 0.000042 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:02:29] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:02:29] Energy consumed for All CPU : 0.000177 kWh
+[codecarbon INFO @ 01:02:29] Energy consumed for all GPUs : 0.000062 kWh. Total GPU Power : 14.969487774262857 W
+[codecarbon INFO @ 01:02:29] 0.000281 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 1/20 | Loss: 0.4249
+[codecarbon INFO @ 01:02:44] Energy consumed for RAM : 0.000083 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:02:44] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:02:44] Energy consumed for All CPU : 0.000354 kWh
+[codecarbon INFO @ 01:02:44] Energy consumed for all GPUs : 0.000123 kWh. Total GPU Power : 14.478485431031608 W
+[codecarbon INFO @ 01:02:44] 0.000561 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 2/20 | Loss: 0.3031
+[codecarbon INFO @ 01:02:53] Energy consumed for RAM : 0.000110 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:02:53] Delta energy consumed for CPU with constant : 0.000114 kWh, power : 42.5 W
+[codecarbon INFO @ 01:02:53] Energy consumed for All CPU : 0.000469 kWh
+[codecarbon INFO @ 01:02:53] Energy consumed for all GPUs : 0.000151 kWh. Total GPU Power : 10.610445166918879 W
+[codecarbon INFO @ 01:02:53] 0.000730 kWh of electricity and 0.000000 L of water were used since the beginning.
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 126, in <module>
+    main()
+    ~~~~^^
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 115, in main
+    loss.backward()
+    ~~~~~~~~~~~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_tensor.py", line 630, in backward
+    torch.autograd.backward(
+    ~~~~~~~~~~~~~~~~~~~~~~~^
+        self, gradient, retain_graph, create_graph, inputs=inputs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\autograd\__init__.py", line 364, in backward
+    _engine_run_backward(
+    ~~~~~~~~~~~~~~~~~~~~^
+        tensors,
+        ^^^^^^^^
+    ...<5 lines>...
+        accumulate_grad=True,
+        ^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\autograd\graph.py", line 865, in _engine_run_backward
+    return Variable._execution_engine.run_backward(  # Calls into the C++ engine to run the backward pass
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        t_outputs, *args, **kwargs
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )  # Calls into the C++ engine to run the backward pass
+    ^
+KeyboardInterrupt
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+Looking in indexes: https://download.pytorch.org/whl/cu126
+Requirement already satisfied: torch in e:\thesis\venv\hansal\lib\site-packages (2.10.0)
+Requirement already satisfied: torchvision in e:\thesis\venv\hansal\lib\site-packages (0.25.0)
+Requirement already satisfied: filelock in e:\thesis\venv\hansal\lib\site-packages (from torch) (3.24.3)
+Requirement already satisfied: typing-extensions>=4.10.0 in e:\thesis\venv\hansal\lib\site-packages (from torch) (4.15.0)
+Requirement already satisfied: sympy>=1.13.3 in e:\thesis\venv\hansal\lib\site-packages (from torch) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in e:\thesis\venv\hansal\lib\site-packages (from torch) (3.6.1)
+Requirement already satisfied: jinja2 in e:\thesis\venv\hansal\lib\site-packages (from torch) (3.1.6)
+Requirement already satisfied: fsspec>=0.8.5 in e:\thesis\venv\hansal\lib\site-packages (from torch) (2026.2.0)
+Requirement already satisfied: setuptools in e:\thesis\venv\hansal\lib\site-packages (from torch) (82.0.0)
+Requirement already satisfied: numpy in e:\thesis\venv\hansal\lib\site-packages (from torchvision) (2.4.2)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in e:\thesis\venv\hansal\lib\site-packages (from torchvision) (12.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in e:\thesis\venv\hansal\lib\site-packages (from sympy>=1.13.3->torch) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in e:\thesis\venv\hansal\lib\site-packages (from jinja2->torch) (3.0.3)
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+[codecarbon WARNING @ 01:05:35] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:05:35] [setup] RAM Tracking...
+[codecarbon INFO @ 01:05:35] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:05:37] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:05:37] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:05:37] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:05:37] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:05:37] [setup] GPU Tracking...
+[codecarbon INFO @ 01:05:37] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:05:37] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:05:37] >>> Tracker's metadata:
+[codecarbon INFO @ 01:05:37]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:05:37]   Python version: 3.13.12
+[codecarbon INFO @ 01:05:37]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:05:37]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:05:37]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:05:37]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:05:37]   GPU count: 1
+[codecarbon INFO @ 01:05:37]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:05:37] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_train.csv
+--- [Step 2] Starting Training Pipeline (Monitored) ---
+Loading data: training_2026-02-22_01-01-35.pt
+Training on device: cpu
+[codecarbon INFO @ 01:05:40] Energy consumed for RAM : 0.000008 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:05:40] Delta energy consumed for CPU with constant : 0.000036 kWh, power : 42.5 W
+[codecarbon INFO @ 01:05:40] Energy consumed for All CPU : 0.000036 kWh
+[codecarbon INFO @ 01:05:40] Energy consumed for all GPUs : 0.000012 kWh. Total GPU Power : 14.603786669287855 W
+[codecarbon INFO @ 01:05:40] 0.000056 kWh of electricity and 0.000000 L of water were used since the beginning.
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 126, in <module>
+    main()
+    ~~~~^^
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 113, in main
+    output = model(inputs)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 33, in forward
+    x = self.pool(self.relu(self.conv1(x)))
+                            ~~~~~~~~~~^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\nn\modules\module.py", line 1776, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\nn\modules\module.py", line 1787, in _call_impl
+    return forward_call(*args, **kwargs)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\nn\modules\conv.py", line 553, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\nn\modules\conv.py", line 548, in _conv_forward
+    return F.conv2d(
+           ~~~~~~~~^
+        input, weight, bias, self.stride, self.padding, self.dilation, self.groups
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+KeyboardInterrupt
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> nvidia-smi
+Sun Feb 22 01:06:13 2026
++-----------------------------------------------------------------------------------------+
+| NVIDIA-SMI 581.86                 Driver Version: 581.86         CUDA Version: 13.0     |
++-----------------------------------------+------------------------+----------------------+
+| GPU  Name                  Driver-Model | Bus-Id          Disp.A | Volatile Uncorr. ECC |
+| Fan  Temp   Perf          Pwr:Usage/Cap |           Memory-Usage | GPU-Util  Compute M. |
+|                                         |                        |               MIG M. |
+|=========================================+========================+======================|
+|   0  NVIDIA GeForce RTX 4060 ...  WDDM  |   00000000:01:00.0  On |                  N/A |
+| N/A   48C    P8              2W /   80W |    1078MiB /   8188MiB |      9%      Default |
+|                                         |                        |                  N/A |
++-----------------------------------------+------------------------+----------------------+
+
++-----------------------------------------------------------------------------------------+
+| Processes:                                                                              |
+|  GPU   GI   CI              PID   Type   Process name                        GPU Memory |
+|        ID   ID                                                               Usage      |
+|=========================================================================================|
+|    0   N/A  N/A             400    C+G   ...Telegram Desktop\Telegram.exe      N/A      |
+|    0   N/A  N/A            2284    C+G   ...AcrobatNotificationClient.exe      N/A      |
+|    0   N/A  N/A            4492    C+G   ...t\Edge\Application\msedge.exe      N/A      |
+|    0   N/A  N/A            4496    C+G   ...yb3d8bbwe\WindowsTerminal.exe      N/A      |
+|    0   N/A  N/A            5376    C+G   ..._cw5n1h2txyewy\SearchHost.exe      N/A      |
+|    0   N/A  N/A            5764    C+G   ...64__8wekyb3d8bbwe\Copilot.exe      N/A      |
+|    0   N/A  N/A            6544    C+G   ...em32\ApplicationFrameHost.exe      N/A      |
+|    0   N/A  N/A            6648    C+G   ...8wekyb3d8bbwe\XboxPcAppFT.exe      N/A      |
+|    0   N/A  N/A            6696    C+G   ...IA App\CEF\NVIDIA Overlay.exe      N/A      |
+|    0   N/A  N/A            7156    C+G   ...kyb3d8bbwe\EdgeGameAssist.exe      N/A      |
+|    0   N/A  N/A            7836    C+G   ...0.3719.115\msedgewebview2.exe      N/A      |
+|    0   N/A  N/A           12104    C+G   C:\Windows\explorer.exe               N/A      |
+|    0   N/A  N/A           16076    C+G   ...cw5n1h2txyewy\WidgetBoard.exe      N/A      |
+|    0   N/A  N/A           16136    C+G   ...y\StartMenuExperienceHost.exe      N/A      |
+|    0   N/A  N/A           16608    C+G   ...\cef.win64\steamwebhelper.exe      N/A      |
+|    0   N/A  N/A           16784    C+G   ...1g1gvanyjgm\WhatsApp.Root.exe      N/A      |
+|    0   N/A  N/A           20476    C+G   ...IA App\CEF\NVIDIA Overlay.exe      N/A      |
+|    0   N/A  N/A           21236    C+G   ...8bbwe\PhoneExperienceHost.exe      N/A      |
+|    0   N/A  N/A           21472    C+G   ...5n1h2txyewy\TextInputHost.exe      N/A      |
+|    0   N/A  N/A           23044    C+G   ...ntrolPanel\SystemSettings.exe      N/A      |
+|    0   N/A  N/A           23884    C+G   ...xyewy\ShellExperienceHost.exe      N/A      |
+|    0   N/A  N/A           24100    C+G   ... Files\Total VPN\TotalVPN.exe      N/A      |
+|    0   N/A  N/A           30564    C+G   E:\Microsoft VS Code\Code.exe         N/A      |
++-----------------------------------------------------------------------------------------+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python -c "import torch; print(torch.__version__); print(torch.version.cuda); print(torch.cuda.is_available())"
+2.10.0+cpu
+None
+False
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip uninstall -y torch torchvision torchaudio
+Found existing installation: torch 2.10.0
+Uninstalling torch-2.10.0:
+  Successfully uninstalled torch-2.10.0
+Found existing installation: torchvision 0.25.0
+Uninstalling torchvision-0.25.0:
+  Successfully uninstalled torchvision-0.25.0
+WARNING: Skipping torchaudio as it is not installed.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip3 install torch torchvision --index-url https://download.pytorch.org/whl/cu126
+Looking in indexes: https://download.pytorch.org/whl/cu126
+Collecting torch
+  Downloading https://download.pytorch.org/whl/cu126/torch-2.10.0%2Bcu126-cp313-cp313-win_amd64.whl.metadata (29 kB)
+Collecting torchvision
+  Downloading https://download.pytorch.org/whl/cu126/torchvision-0.25.0%2Bcu126-cp313-cp313-win_amd64.whl.metadata (5.5 kB)
+Requirement already satisfied: filelock in e:\thesis\venv\hansal\lib\site-packages (from torch) (3.24.3)
+Requirement already satisfied: typing-extensions>=4.10.0 in e:\thesis\venv\hansal\lib\site-packages (from torch) (4.15.0)
+Requirement already satisfied: sympy>=1.13.3 in e:\thesis\venv\hansal\lib\site-packages (from torch) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in e:\thesis\venv\hansal\lib\site-packages (from torch) (3.6.1)
+Requirement already satisfied: jinja2 in e:\thesis\venv\hansal\lib\site-packages (from torch) (3.1.6)
+Requirement already satisfied: fsspec>=0.8.5 in e:\thesis\venv\hansal\lib\site-packages (from torch) (2026.2.0)
+Requirement already satisfied: setuptools in e:\thesis\venv\hansal\lib\site-packages (from torch) (82.0.0)
+Requirement already satisfied: numpy in e:\thesis\venv\hansal\lib\site-packages (from torchvision) (2.4.2)
+Requirement already satisfied: pillow!=8.3.*,>=5.3.0 in e:\thesis\venv\hansal\lib\site-packages (from torchvision) (12.1.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in e:\thesis\venv\hansal\lib\site-packages (from sympy>=1.13.3->torch) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in e:\thesis\venv\hansal\lib\site-packages (from jinja2->torch) (3.0.3)
+Downloading https://download.pytorch.org/whl/cu126/torch-2.10.0%2Bcu126-cp313-cp313-win_amd64.whl (2589.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.6/2.6 GB 23.5 MB/s  0:00:42
+Downloading https://download.pytorch.org/whl/cu126/torchvision-0.25.0%2Bcu126-cp313-cp313-win_amd64.whl (8.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.8/8.8 MB 67.9 MB/s  0:00:00
+Installing collected packages: torch, torchvision
+Successfully installed torch-2.10.0+cu126 torchvision-0.25.0+cu126
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+[codecarbon WARNING @ 01:28:31] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:28:31] [setup] RAM Tracking...
+[codecarbon INFO @ 01:28:31] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:28:32] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:28:32] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:28:32] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:28:32] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:28:32] [setup] GPU Tracking...
+[codecarbon INFO @ 01:28:33] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:28:33] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:28:33] >>> Tracker's metadata:
+[codecarbon INFO @ 01:28:33]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:28:33]   Python version: 3.13.12
+[codecarbon INFO @ 01:28:33]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:28:33]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:28:33]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:28:33]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:28:33]   GPU count: 1
+[codecarbon INFO @ 01:28:33]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:28:33] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_train.csv
+--- [Step 2] Starting Training Pipeline (Monitored) ---
+Loading data: training_2026-02-22_01-01-35.pt
+Training on device: cuda
+Epoch 1/20 | Loss: 0.4193
+Epoch 2/20 | Loss: 0.3013
+Epoch 3/20 | Loss: 0.2657
+Epoch 4/20 | Loss: 0.2428
+Epoch 5/20 | Loss: 0.2261
+[codecarbon INFO @ 01:28:48] Energy consumed for RAM : 0.000042 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:28:48] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:28:48] Energy consumed for All CPU : 0.000177 kWh
+[codecarbon INFO @ 01:28:48] Energy consumed for all GPUs : 0.000079 kWh. Total GPU Power : 18.83423857621586 W
+[codecarbon INFO @ 01:28:48] 0.000298 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 6/20 | Loss: 0.2099
+Epoch 7/20 | Loss: 0.1986
+Epoch 8/20 | Loss: 0.1859
+Epoch 9/20 | Loss: 0.1741
+Epoch 10/20 | Loss: 0.1676
+Epoch 11/20 | Loss: 0.1578
+Epoch 12/20 | Loss: 0.1522
+Epoch 13/20 | Loss: 0.1466
+[codecarbon INFO @ 01:29:03] Energy consumed for RAM : 0.000083 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:29:03] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:29:03] Energy consumed for All CPU : 0.000354 kWh
+[codecarbon INFO @ 01:29:03] Energy consumed for all GPUs : 0.000164 kWh. Total GPU Power : 20.57728565630415 W
+[codecarbon INFO @ 01:29:03] 0.000602 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 14/20 | Loss: 0.1405
+Epoch 15/20 | Loss: 0.1344
+Epoch 16/20 | Loss: 0.1293
+Epoch 17/20 | Loss: 0.1241
+Epoch 18/20 | Loss: 0.1204
+Epoch 19/20 | Loss: 0.1179
+Epoch 20/20 | Loss: 0.1131
+Training Finished in 34.69s
+[codecarbon INFO @ 01:29:13] Energy consumed for RAM : 0.000112 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:29:13] Delta energy consumed for CPU with constant : 0.000121 kWh, power : 42.5 W
+[codecarbon INFO @ 01:29:13] Energy consumed for All CPU : 0.000475 kWh
+[codecarbon INFO @ 01:29:13] Energy consumed for all GPUs : 0.000224 kWh. Total GPU Power : 20.990234540377674 W
+[codecarbon INFO @ 01:29:13] 0.000811 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+[codecarbon WARNING @ 01:29:20] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:29:20] [setup] RAM Tracking...
+[codecarbon INFO @ 01:29:20] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:29:22] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:29:22] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:29:22] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:29:22] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:29:22] [setup] GPU Tracking...
+[codecarbon INFO @ 01:29:22] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:29:22] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:29:22] >>> Tracker's metadata:
+[codecarbon INFO @ 01:29:22]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:29:22]   Python version: 3.13.12
+[codecarbon INFO @ 01:29:22]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:29:22]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:29:22]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:29:22]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:29:22]   GPU count: 1
+[codecarbon INFO @ 01:29:22]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:29:22] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_train.csv
+--- [Step 2] Starting Training Pipeline (Monitored) ---
+Loading data: training_2026-02-22_01-01-35.pt
+Training on device: cuda
+Epoch 1/20 | Loss: 0.4196
+Epoch 2/20 | Loss: 0.3015
+Epoch 3/20 | Loss: 0.2676
+Epoch 4/20 | Loss: 0.2466
+Epoch 5/20 | Loss: 0.2292
+Epoch 6/20 | Loss: 0.2145
+[codecarbon INFO @ 01:29:37] Energy consumed for RAM : 0.000042 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:29:37] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:29:37] Energy consumed for All CPU : 0.000177 kWh
+[codecarbon INFO @ 01:29:37] Energy consumed for all GPUs : 0.000088 kWh. Total GPU Power : 20.989071827676124 W
+[codecarbon INFO @ 01:29:37] 0.000307 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 7/20 | Loss: 0.2021
+Epoch 8/20 | Loss: 0.1930
+Epoch 9/20 | Loss: 0.1818
+Epoch 10/20 | Loss: 0.1714
+Epoch 11/20 | Loss: 0.1638
+Epoch 12/20 | Loss: 0.1567
+Epoch 13/20 | Loss: 0.1491
+Epoch 14/20 | Loss: 0.1447
+Epoch 15/20 | Loss: 0.1364
+[codecarbon INFO @ 01:29:52] Energy consumed for RAM : 0.000083 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:29:52] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:29:52] Energy consumed for All CPU : 0.000354 kWh
+[codecarbon INFO @ 01:29:52] Energy consumed for all GPUs : 0.000184 kWh. Total GPU Power : 23.118035805521156 W
+[codecarbon INFO @ 01:29:52] 0.000622 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 16/20 | Loss: 0.1337
+Epoch 17/20 | Loss: 0.1281
+Epoch 18/20 | Loss: 0.1227
+Epoch 19/20 | Loss: 0.1189
+Epoch 20/20 | Loss: 0.1158
+Training Finished in 36.64s
+[codecarbon INFO @ 01:29:59] Energy consumed for RAM : 0.000104 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:29:59] Delta energy consumed for CPU with constant : 0.000088 kWh, power : 42.5 W
+[codecarbon INFO @ 01:29:59] Energy consumed for All CPU : 0.000442 kWh
+[codecarbon INFO @ 01:29:59] Energy consumed for all GPUs : 0.000230 kWh. Total GPU Power : 22.22043979340554 W
+[codecarbon INFO @ 01:29:59] 0.000777 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+[codecarbon WARNING @ 01:30:05] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 01:30:05] [setup] RAM Tracking...
+[codecarbon INFO @ 01:30:05] [setup] CPU Tracking...
+[codecarbon WARNING @ 01:30:07] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 01:30:07] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 01:30:07] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 01:30:07] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 01:30:07] [setup] GPU Tracking...
+[codecarbon INFO @ 01:30:07] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 01:30:07] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 01:30:07] >>> Tracker's metadata:
+[codecarbon INFO @ 01:30:07]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 01:30:07]   Python version: 3.13.12
+[codecarbon INFO @ 01:30:07]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 01:30:07]   Available RAM : 15.715 GB
+[codecarbon INFO @ 01:30:07]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 01:30:07]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 01:30:07]   GPU count: 1
+[codecarbon INFO @ 01:30:07]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 01:30:07] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_train.csv
+--- [Step 2] Starting Training Pipeline (Monitored) ---
+Loading data: training_2026-02-22_01-01-35.pt
+Training on device: cuda
+Epoch 1/20 | Loss: 0.4114
+Epoch 2/20 | Loss: 0.2944
+Epoch 3/20 | Loss: 0.2583
+Epoch 4/20 | Loss: 0.2377
+Epoch 5/20 | Loss: 0.2214
+Epoch 6/20 | Loss: 0.2076
+Epoch 7/20 | Loss: 0.1978
+Epoch 8/20 | Loss: 0.1874
+[codecarbon INFO @ 01:30:22] Energy consumed for RAM : 0.000042 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:30:22] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:30:22] Energy consumed for All CPU : 0.000177 kWh
+[codecarbon INFO @ 01:30:22] Energy consumed for all GPUs : 0.000088 kWh. Total GPU Power : 21.20607839249778 W
+[codecarbon INFO @ 01:30:22] 0.000307 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 9/20 | Loss: 0.1746
+Epoch 10/20 | Loss: 0.1662
+Epoch 11/20 | Loss: 0.1597
+Epoch 12/20 | Loss: 0.1527
+Epoch 13/20 | Loss: 0.1469
+Epoch 14/20 | Loss: 0.1419
+Epoch 15/20 | Loss: 0.1360
+Epoch 16/20 | Loss: 0.1310
+[codecarbon INFO @ 01:30:37] Energy consumed for RAM : 0.000083 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:30:37] Delta energy consumed for CPU with constant : 0.000177 kWh, power : 42.5 W
+[codecarbon INFO @ 01:30:37] Energy consumed for All CPU : 0.000354 kWh
+[codecarbon INFO @ 01:30:37] Energy consumed for all GPUs : 0.000177 kWh. Total GPU Power : 21.26385372237536 W
+[codecarbon INFO @ 01:30:37] 0.000615 kWh of electricity and 0.000000 L of water were used since the beginning.
+Epoch 17/20 | Loss: 0.1266
+Epoch 18/20 | Loss: 0.1230
+Epoch 19/20 | Loss: 0.1167
+Epoch 20/20 | Loss: 0.1151
+Training Finished in 34.27s
+[codecarbon INFO @ 01:30:42] Energy consumed for RAM : 0.000098 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 01:30:42] Delta energy consumed for CPU with constant : 0.000060 kWh, power : 42.5 W
+[codecarbon INFO @ 01:30:42] Energy consumed for All CPU : 0.000414 kWh
+[codecarbon INFO @ 01:30:42] Energy consumed for all GPUs : 0.000210 kWh. Total GPU Power : 23.346991394194607 W
+[codecarbon INFO @ 01:30:42] 0.000722 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src>
