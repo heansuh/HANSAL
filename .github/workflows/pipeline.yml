@@ -20,15 +20,24 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        app: ${{ fromJson(github.event.inputs.app == 'all' && '["fashion-mnist","cifar-10"]' || format('["{0}"]', github.event.inputs.app)) }}
+        app: ${{ fromJson(
+          github.event.inputs.app == null && '["fashion-mnist","cifar-10"]' ||
+          github.event.inputs.app == 'all' && '["fashion-mnist","cifar-10"]' ||
+          format('["{0}"]', github.event.inputs.app)
+        ) }}
+
 
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
       - name: Login to GHCR
-        run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-        shell: powershell
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
 
       - name: Build and push image
         run: |
