@@ -44,4 +44,6 @@ jobs:
 
       - name: Cleanup old images
         if: always()
-        run: docker image prune -f
+        run: |
+          docker rmi ${{ matrix.app }}:${{ github.sha }} || true
+          docker image prune -f
