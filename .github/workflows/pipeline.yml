@@ -36,7 +36,7 @@ jobs:
 
       - name: Smoke test
         run: |
-          docker run --rm ${{ matrix.app }}:latest python -c "
+          docker run --rm --entrypoint python ${{ matrix.app }}:latest -c "
           import torch
           import torchvision
           from src.utils import get_model
