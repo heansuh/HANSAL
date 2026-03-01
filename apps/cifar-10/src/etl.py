@@ -13,8 +13,6 @@ from dateutil import tz
 from codecarbon import EmissionsTracker
 from zeus.monitor import ZeusMonitor
 import perun
-import warnings
-warnings.filterwarnings("ignore", category=VisibleDeprecationWarning)
 
 from config import RAW_PATH, PROCESSED_PATH, METRICS_DIR
 from utils import save_metrics, collect_codecarbon_metrics, get_logger

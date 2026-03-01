@@ -19,7 +19,7 @@ import perun
 from sklearn.metrics import classification_report
 
 from utils import save_metrics, collect_codecarbon_metrics, get_logger, get_model
-from config import PROCESSED_PATH, MODEL_SAVE_PATH, METRICS_DIR, EPOCHS, BATCH_SIZE, LEARNING_RATE
+from config import PROCESSED_PATH, MODEL_SAVE_PATH, METRICS_DIR, EPOCHS, BATCH_SIZE, LEARNING_RATE, MODEL
 
 logger = get_logger()
 
@@ -76,7 +76,7 @@ def evaluate(model, loader, device):
     return all_preds, all_labels
 
 @perun.perun(data_out="train_perun_results", format="json")
-def main(from_date=None, model_name="SimpleCNN", epochs=EPOCHS, batch_size=BATCH_SIZE, lr=LEARNING_RATE):
+def main(from_date=None, model_name=MODEL, epochs=EPOCHS, batch_size=BATCH_SIZE, lr=LEARNING_RATE):
     cutoff_date = get_simulation_time(from_date)
     logger.info(f"Cutoff Date:  {cutoff_date}")
     logger.info(f"Model:        {model_name}")
