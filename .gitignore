@@ -3,3 +3,9 @@
 **/data/processed/
 *.tar
 *.pth
+*.tar.gz
+**/data/
+**/metrics/
+**/models/
+**/src/etl_perun_results/
+**/src/train_perun_results/

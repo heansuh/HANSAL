@@ -1,4 +1,4 @@
-name: ML Pipeline
+name: ML Pipeline (Windows)
 
 on:
   push:
@@ -19,7 +19,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        app: ["fashion-mnist"]
+        app: ["fashion-mnist", "cifar-10"]
       fail-fast: false
 
     steps:

@@ -12,4 +12,3 @@ COPY apps/fashion-mnist/ ./apps/fashion-mnist/
 
 ENV PYTHONPATH=/app/apps/fashion-mnist
 ENTRYPOINT ["python", "apps/fashion-mnist/src/main.py"]
-CMD ["etl"]

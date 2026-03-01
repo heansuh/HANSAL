@@ -1,0 +1,8 @@
+torch
+torchvision
+codecarbon==3.2.2
+zeus==0.15.0
+perun==0.9.1
+pandas==3.0.1
+scikit-learn==1.8.0
+click==8.3.1
