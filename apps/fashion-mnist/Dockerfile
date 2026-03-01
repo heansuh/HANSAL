@@ -5,8 +5,6 @@ WORKDIR /app
 
 RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
-COPY shared/ ./shared/
-COPY setup.py .
 RUN pip install -e . --quiet
 
 COPY requirements.txt .
