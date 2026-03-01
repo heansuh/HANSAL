@@ -1,6 +1,8 @@
 name: ML Pipeline (Linux)
 
 on:
+  pull_request:
+    branches: [main]
   workflow_dispatch:
     inputs:
       app:
@@ -15,7 +17,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        app: ["fashion-mnist", "cifar-10"]
+        app: ${{ fromJson(github.event.inputs.app == 'all' && '["fashion-mnist","cifar-10"]' || format('["{0}"]', github.event.inputs.app)) }}
       fail-fast: false
 
     steps:
