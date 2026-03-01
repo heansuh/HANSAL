@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y git && rm -rf /var/lib/apt/lists/*
 
 RUN pip install -e . --quiet
 
-COPY requirements.txt .
+COPY apps/fashion-mnist/requirements.txt .
 RUN pip install -r requirements.txt --quiet
 
 COPY apps/fashion-mnist/ ./apps/fashion-mnist/

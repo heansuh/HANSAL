@@ -19,7 +19,7 @@ jobs:
     runs-on: self-hosted
     strategy:
       matrix:
-        app: ["fashion-mnist", "cifar-10"]
+        app: ["fashion-mnist"]
       fail-fast: false
 
     steps:
