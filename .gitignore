@@ -9,3 +9,4 @@
 **/models/
 **/src/etl_perun_results/
 **/src/train_perun_results/
+**/__pycache__/
