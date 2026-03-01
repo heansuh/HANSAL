@@ -31,6 +31,7 @@ jobs:
           docker build `
             -t ${{ matrix.app }}:${{ github.sha }} `
             -t ${{ matrix.app }}:latest `
+            --cache-from ${{ matrix.app }}:latest `
             -f apps/${{ matrix.app }}/Dockerfile .
         shell: powershell
 
