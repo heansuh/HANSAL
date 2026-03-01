@@ -7,7 +7,7 @@ import click
 from config import EPOCHS, BATCH_SIZE, LEARNING_RATE, METRICS_DIR
 from utils import extract_perun_metrics_to_csv
 
-VALID_MODELS = ["SimpleCNN", "resnet18", "vgg16", "densenet121"]
+VALID_MODELS = ["SimpleCNN", "resnet18", "densenet121"]
 
 
 @click.group()

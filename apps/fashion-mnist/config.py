@@ -10,7 +10,7 @@ MODEL_SAVE_PATH = os.path.join(BASE_DIR, 'models')
 METRICS_DIR     = os.path.join(BASE_DIR, 'metrics')
 
 # Training
-MODEL          = "resnet18"   # SimpleCNN | resnet18 | vgg16 | densenet121
+MODEL          = "SimpleCNN"   # SimpleCNN | resnet18 | densenet121
 EPOCHS         = 50
 BATCH_SIZE     = 256
 LEARNING_RATE  = 0.001
