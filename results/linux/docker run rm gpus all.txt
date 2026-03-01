@@ -1,0 +1,11 @@
+docker run --rm --gpus all --shm-size=2g \
+  --entrypoint /bin/sh fashion-mnist:gpu \
+  -c "python /app/apps/fashion-mnist/src/main.py etl && python /app/apps/fashion-mnist/src/main.py train"
+
+docker run --rm \
+  --gpus all \
+  --shm-size=2g \
+  -v "$(pwd)/benchmark:/app/apps/fashion-mnist/metrics" \
+  --entrypoint /bin/sh fashion-mnist:latest \
+  -c "python /app/apps/fashion-mnist/src/main.py etl && python /app/apps/fashion-mnist/src/main.py train"
+
