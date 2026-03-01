@@ -5,7 +5,6 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'
 
 import glob
 import time
-import argparse
 import torch
 import torch.nn as nn
 import torch.optim as optim
@@ -16,10 +15,11 @@ from dateutil import parser as date_parser
 from dateutil import tz
 from codecarbon import EmissionsTracker
 from zeus.monitor import ZeusMonitor
+import perun
 from sklearn.metrics import classification_report
 
 from utils import save_metrics, collect_codecarbon_metrics, get_logger, get_model
-from config import PROCESSED_PATH, MODEL_SAVE_PATH, METRICS_DIR, EPOCHS, BATCH_SIZE, LEARNING_RATE, MODEL
+from config import PROCESSED_PATH, MODEL_SAVE_PATH, METRICS_DIR, EPOCHS, BATCH_SIZE, LEARNING_RATE
 
 logger = get_logger()
 
@@ -42,32 +42,11 @@ class SimpleCNN(nn.Module):
         return self.fc1(x)
 
 
-def parse_args():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--from_date", type=str, default=None)
-    return parser.parse_args()
-
-
 def get_simulation_time(date_str):
     if not date_str:
         return datetime.now().replace(tzinfo=tz.UTC)
     dt = date_parser.parse(date_str)
     return dt.replace(tzinfo=tz.UTC) if dt.tzinfo is None else dt
-
-
-def get_latest_file(path, pattern):
-    files = glob.glob(os.path.join(path, pattern))
-    if not files:
-        return None
-    valid = []
-    for f in files:
-        try:
-            time_str = os.path.basename(f).replace(pattern.replace("*.pt", ""), "").replace(".pt", "")
-            file_dt  = datetime.strptime(time_str, "%Y-%m-%d_%H-%M-%S").replace(tzinfo=tz.UTC)
-            valid.append((file_dt, f))
-        except ValueError:
-            continue
-    return sorted(valid, reverse=True)[0][1] if valid else None
 
 
 def get_latest_valid_dataset(path, cutoff_date, prefix):
@@ -96,11 +75,14 @@ def evaluate(model, loader, device):
             all_labels.extend(labels.tolist())
     return all_preds, all_labels
 
-
-def main():
-    args        = parse_args()
-    cutoff_date = get_simulation_time(args.from_date)
-    logger.info(f"Cutoff Date: {cutoff_date}")
+@perun.perun(data_out="train_perun_results", format="json")
+def main(from_date=None, model_name="SimpleCNN", epochs=EPOCHS, batch_size=BATCH_SIZE, lr=LEARNING_RATE):
+    cutoff_date = get_simulation_time(from_date)
+    logger.info(f"Cutoff Date:  {cutoff_date}")
+    logger.info(f"Model:        {model_name}")
+    logger.info(f"Epochs:       {epochs}")
+    logger.info(f"Batch size:   {batch_size}")
+    logger.info(f"LR:           {lr}")
 
     os.makedirs(METRICS_DIR, exist_ok=True)
     os.makedirs(MODEL_SAVE_PATH, exist_ok=True)
@@ -112,42 +94,44 @@ def main():
                                output_dir=METRICS_DIR,
                                output_file=CC_OUTPUT_FILE,
                                log_level="error")
-
     logger.info(f"Training on: {device}")
 
     # ── Load Data ─────────────────────────────────────────────────
     train_file = get_latest_valid_dataset(PROCESSED_PATH, cutoff_date, "training")
     test_file  = get_latest_valid_dataset(PROCESSED_PATH, cutoff_date, "test")
     if not train_file:
-        logger.info("No training dataset found — run etl.py first.")
+        logger.error("No training dataset found — run ETL first.")
         return
 
     train_inputs, train_labels = torch.load(train_file)
     trainloader = data_utils.DataLoader(
         data_utils.TensorDataset(train_inputs, train_labels),
-        batch_size=BATCH_SIZE, shuffle=True
+        batch_size=batch_size, shuffle=True
     )
     testloader = None
     if test_file:
         test_inputs, test_labels = torch.load(test_file)
         testloader = data_utils.DataLoader(
             data_utils.TensorDataset(test_inputs, test_labels),
-            batch_size=BATCH_SIZE, shuffle=False
+            batch_size=batch_size, shuffle=False
         )
     logger.info(f"Train: {os.path.basename(train_file)}")
     logger.info(f"Test:  {os.path.basename(test_file) if test_file else 'not found'}")
 
     # ── Model ─────────────────────────────────────────────────────
-    model = get_model(MODEL).to(device)
-    optimizer = optim.Adam(model.parameters(), lr=LEARNING_RATE)
+    model     = get_model(model_name).to(device)
+    optimizer = optim.Adam(model.parameters(), lr=lr)
     criterion = nn.CrossEntropyLoss()
 
     metrics = {
         "timestamp": datetime.now().isoformat(),
         "dataset":   "FashionMNIST",
         "stage":     "train",
+        "model":     model_name,
         "device":    str(device),
-        "epochs":    EPOCHS,
+        "epochs":    epochs,
+        "batch_size": batch_size,
+        "lr":        lr,
     }
 
     # ── Model Complexity ──────────────────────────────────────────
@@ -171,7 +155,7 @@ def main():
     try:
         logger.info("--- Starting Training ---")
 
-        for epoch in range(EPOCHS):
+        for epoch in range(epochs):
             model.train()
             running_loss = 0.0
             if zeus: zeus.begin_window(f"epoch_{epoch}")
@@ -189,9 +173,9 @@ def main():
 
             if zeus:
                 e_mes = zeus.end_window(f"epoch_{epoch}")
-                logger.info(f"Epoch {epoch+1}/{EPOCHS} | Loss: {avg_loss:.4f} | GPU Energy: {e_mes.total_energy:.2f}J")
+                logger.info(f"Epoch {epoch+1}/{epochs} | Loss: {avg_loss:.4f} | GPU Energy: {e_mes.total_energy:.2f}J")
             else:
-                logger.info(f"Epoch {epoch+1}/{EPOCHS} | Loss: {avg_loss:.4f}")
+                logger.info(f"Epoch {epoch+1}/{epochs} | Loss: {avg_loss:.4f}")
 
         if use_gpu: torch.cuda.synchronize()
         total_time = time.perf_counter() - t0
@@ -212,24 +196,23 @@ def main():
             inf_mes = zeus.end_window("inference")
             metrics["zeus_inference_energy_J"] = round(inf_mes.total_energy, 4)
 
-        # ── Train Accuracy ────────────────────────────────────────
+        # ── Accuracy ─────────────────────────────────────────────
         train_preds, train_true = evaluate(model, trainloader, device)
         train_report = classification_report(train_true, train_preds, output_dict=True, zero_division=0)
 
-        # ── Val Accuracy (test set) ───────────────────────────────
         if testloader:
             val_preds, val_true = evaluate(model, testloader, device)
             val_report = classification_report(val_true, val_preds, output_dict=True, zero_division=0)
 
         # ── Save Model ────────────────────────────────────────────
-        model_filename = f"model_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.pth"
+        model_filename = f"{model_name}_{datetime.now().strftime('%Y-%m-%d_%H-%M-%S')}.pth"
         torch.save(model.state_dict(), os.path.join(MODEL_SAVE_PATH, model_filename))
         logger.info(f"Model saved: {model_filename}")
 
         # ── Metrics ───────────────────────────────────────────────
         metrics.update({
             "total_train_time_s":        round(total_time, 4),
-            "throughput_sps":            round((len(train_inputs) * EPOCHS) / total_time, 2),
+            "throughput_sps":            round((len(train_inputs) * epochs) / total_time, 2),
             "final_loss":                round(epoch_losses[-1], 6),
             "best_loss":                 round(min(epoch_losses), 6),
             "best_epoch":                int(epoch_losses.index(min(epoch_losses))) + 1,
@@ -237,19 +220,18 @@ def main():
             "epoch_losses":              str(epoch_losses),
             "inference_latency_mean_ms": round(sum(latencies) / len(latencies), 4),
             "inference_latency_std_ms":  round(pd.Series(latencies).std(), 4),
-            # train metrics
             "train_accuracy":            round(train_report["accuracy"], 4),
             "train_macro_f1":            round(train_report["macro avg"]["f1-score"], 4),
             "train_weighted_f1":         round(train_report["weighted avg"]["f1-score"], 4),
         })
         if testloader:
             metrics.update({
-                "val_accuracy":    round(val_report["accuracy"], 4),
-                "val_macro_f1":    round(val_report["macro avg"]["f1-score"], 4),
-                "val_weighted_f1": round(val_report["weighted avg"]["f1-score"], 4),
-                "val_macro_prec":  round(val_report["macro avg"]["precision"], 4),
-                "val_macro_recall":round(val_report["macro avg"]["recall"], 4),
-                "val_error_rate":  round(1 - val_report["accuracy"], 4),
+                "val_accuracy":     round(val_report["accuracy"], 4),
+                "val_macro_f1":     round(val_report["macro avg"]["f1-score"], 4),
+                "val_weighted_f1":  round(val_report["weighted avg"]["f1-score"], 4),
+                "val_macro_prec":   round(val_report["macro avg"]["precision"], 4),
+                "val_macro_recall": round(val_report["macro avg"]["recall"], 4),
+                "val_error_rate":   round(1 - val_report["accuracy"], 4),
             })
         if use_gpu:
             metrics["peak_gpu_memory_mb"] = round(torch.cuda.max_memory_allocated() / 1e6, 3)
@@ -266,12 +248,12 @@ def main():
         metrics.update(collect_codecarbon_metrics(os.path.join(METRICS_DIR, CC_OUTPUT_FILE)))
 
         run_config = {
-            "model":          "SimpleCNN",
-            "epochs":         EPOCHS,
-            "batch_size":     BATCH_SIZE,
-            "learning_rate":  LEARNING_RATE,
-            "device":         str(device),
-            "from_date":      args.from_date,
+            "model":         model_name,
+            "epochs":        epochs,
+            "batch_size":    batch_size,
+            "learning_rate": lr,
+            "device":        str(device),
+            "from_date":     from_date,
         }
         save_metrics(metrics, "train_benchmark", run_config=run_config)
 
