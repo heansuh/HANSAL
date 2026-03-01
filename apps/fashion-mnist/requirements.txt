@@ -2,8 +2,9 @@ torch
 torchvision
 codecarbon
 zeus-ml
-perun[nvidia]
+perun
 pandas
 python-dateutil
 thop
 scikit-learn
+click>=8.0
