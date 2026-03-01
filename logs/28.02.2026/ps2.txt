@@ -1,0 +1,788 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\heans> wsl --install -d Ubuntu
+Downloading: Ubuntu
+Installing: Ubuntu
+Distribution successfully installed. It can be launched via 'wsl.exe -d Ubuntu'
+Launching Ubuntu...
+Provisioning the new WSL instance Ubuntu
+This might take a while...
+Create a default Unix user account: Winterdusk
+Invalid username. A valid username must start with a lowercase letter or underscore, and can contain lowercase letters, digits, underscores, and dashes.
+Create a default Unix user account: winterdusk
+New password:
+Retype new password:
+passwd: password updated successfully
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+winterdusk@Winterdusk:/mnt/c/Users/heans$ cd ..
+winterdusk@Winterdusk:/mnt/c/Users$ cd ..
+winterdusk@Winterdusk:/mnt/c$ q
+q: command not found
+winterdusk@Winterdusk:/mnt/c$ quit
+quit: command not found
+winterdusk@Winterdusk:/mnt/c$ exit
+exit
+PS C:\Users\heans> wsl --list --verbose
+  NAME              STATE           VERSION
+* docker-desktop    Running         2
+  Ubuntu            Stopped         2
+PS C:\Users\heans> wsl --unregister Ubuntu
+Unregistering.
+The operation completed successfully.
+
+PS C:\Users\heans> wsl --list --verbose
+  NAME              STATE           VERSION
+* docker-desktop    Running         2
+PS C:\Users\heans> cd E:/
+PS E:\> wsl --install -d Ubuntu
+Downloading: Ubuntu
+Installing: Ubuntu
+Distribution successfully installed. It can be launched via 'wsl.exe -d Ubuntu'
+Launching Ubuntu...
+Provisioning the new WSL instance Ubuntu
+This might take a while...
+Create a default Unix user account: winterdusk
+New password:
+Retype new password:
+passwd: password updated successfully
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+winterdusk@Winterdusk:/mnt/e$ wsl --export Ubuntu E:\WSL\ubuntu.tar
+wsl: command not found
+winterdusk@Winterdusk:/mnt/e$ exit
+exit
+PS E:\> wsl --export Ubuntu E:\WSL\ubuntu.tar
+The system cannot find the path specified.
+Error code: Wsl/ERROR_PATH_NOT_FOUND
+PS E:\> wsl --list --verbose
+  NAME              STATE           VERSION
+* docker-desktop    Running         2
+  Ubuntu            Running         2
+PS E:\> # Check where the vhdx file is located
+PS E:\> Get-ChildItem "E:\WSL\Ubuntu\"
+Get-ChildItem : Cannot find path 'E:\WSL\Ubuntu\' because it does not exist.
+At line:1 char:1
++ Get-ChildItem "E:\WSL\Ubuntu\"
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : ObjectNotFound: (E:\WSL\Ubuntu\:String) [Get-ChildItem], ItemNotFoundException
+    + FullyQualifiedErrorId : PathNotFound,Microsoft.PowerShell.Commands.GetChildItemCommand
+
+PS E:\> # See if it's still on C:
+PS E:\> Get-ChildItem "$env:LOCALAPPDATA\Packages" | Where-Object { $_.Name -like "*Ubuntu*" }
+PS E:\> # See if it's still on C:
+PS E:\> Get-ChildItem "$env:LOCALAPPDATA\Packages" | Where-Object { $_.Name -like "*Ubuntu*" }
+PS E:\> Get-ChildItem "$env:LOCALAPPDATA\Packages" | Where-Object { $_.Name -like "*Ubuntu*" }
+PS E:\> Get-ChildItem -Path E:\ -Filter "ext4.vhdx" -Recurse -ErrorAction SilentlyContinue
+PS E:\> Get-ChildItem -Path C:\ -Filter "ext4.vhdx" -Recurse -ErrorAction SilentlyContinue
+
+
+    Directory: C:\Program Files\Docker\Docker\resources\wsl
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+-a----         11/9/2025  11:22 PM      100663296 ext4.vhdx
+
+
+PS E:\> (Get-ChildItem "HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss" | ForEach-Object { Get-ItemProperty $_.PSPath }) | Select-Object DistributionName, BasePath
+
+DistributionName BasePath
+---------------- --------
+Ubuntu           C:\Users\heans\AppData\Local\wsl\{09419c06-48e5-4f42-b210-62d4cef51dbc}
+docker-desktop   \\?\C:\Users\heans\AppData\Local\Docker\wsl\main
+
+
+PS E:\> mkdir E:\WSL
+
+
+    Directory: E:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/28/2026   8:54 PM                WSL
+
+
+PS E:\> wsl --export Ubuntu E:\WSL\ubuntu.tar
+Export in progress, this may take a few minutes. (1222 MB)
+
+The operation completed successfully.
+PS E:\> wsl --unregister Ubuntu
+Unregistering.
+The operation completed successfully.
+
+PS E:\> mkdir E:\WSL\Ubuntu
+
+
+    Directory: E:\WSL
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/28/2026   8:55 PM                Ubuntu
+
+
+PS E:\> wsl --import Ubuntu E:\WSL\Ubuntu E:\WSL\ubuntu.tar
+The operation completed successfully.
+PS E:\> ubuntu config --default-user winterdusk
+ubuntu : The term 'ubuntu' is not recognized as the name of a cmdlet, function, script file, or operable program.
+Check the spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ ubuntu config --default-user winterdusk
++ ~~~~~~
+    + CategoryInfo          : ObjectNotFound: (ubuntu:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+PS E:\> del E:\WSL\ubuntu.tar
+PS E:\> wsl -d Ubuntu -u root bash -c "echo -e '[user]\ndefault=winterdusk' > /etc/wsl.conf"
+PS E:\> wsl --shutdown
+PS E:\> wsl -d Ubuntu
+To run a command as administrator (user "root"), use "sudo <command>".
+See "man sudo_root" for details.
+
+winterdusk@Winterdusk:/mnt/e$ exit
+logout
+PS E:\> cd E:\Thesis\HANSAL\apps\fashion-mnist\src
+PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 2, in <module>
+    import torch
+ModuleNotFoundError: No module named 'torch'
+PS E:\Thesis\HANSAL\apps\fashion-mnist\src> cd E:/Thesis
+PS E:\Thesis> cd venv
+PS E:\Thesis\venv> hansal\scripts\activate
+(hansal) PS E:\Thesis\venv> cd E:\Thesis\HANSAL\apps\fashion-mnist\src
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+Cutoff Date: 2026-02-28 20:59:51.436687+00:00
+[codecarbon WARNING @ 20:59:51] Multiple instances of codecarbon are allowed to run at the same time.
+Training on: cuda
+Loading: training_2026-02-28_08-36-15.pt
+--- [Step 2] Starting Training ---
+Epoch 1/20 | Loss: 0.4177 | GPU Energy: 95.64J
+Epoch 2/20 | Loss: 0.2973 | GPU Energy: 104.98J
+Epoch 3/20 | Loss: 0.2612 | GPU Energy: 103.63J
+Epoch 4/20 | Loss: 0.2395 | GPU Energy: 92.57J
+Epoch 5/20 | Loss: 0.2218 | GPU Energy: 100.44J
+Epoch 6/20 | Loss: 0.2089 | GPU Energy: 107.58J
+Epoch 7/20 | Loss: 0.1963 | GPU Energy: 104.88J
+Epoch 8/20 | Loss: 0.1874 | GPU Energy: 84.15J
+Epoch 9/20 | Loss: 0.1754 | GPU Energy: 92.44J
+Epoch 10/20 | Loss: 0.1692 | GPU Energy: 127.48J
+Epoch 11/20 | Loss: 0.1604 | GPU Energy: 102.45J
+Epoch 12/20 | Loss: 0.1544 | GPU Energy: 102.17J
+Epoch 13/20 | Loss: 0.1478 | GPU Energy: 117.42J
+Epoch 14/20 | Loss: 0.1419 | GPU Energy: 72.32J
+Epoch 15/20 | Loss: 0.1359 | GPU Energy: 42.51J
+Epoch 16/20 | Loss: 0.1316 | GPU Energy: 58.20J
+Epoch 17/20 | Loss: 0.1280 | GPU Energy: 75.01J
+Epoch 18/20 | Loss: 0.1228 | GPU Energy: 58.67J
+Epoch 19/20 | Loss: 0.1181 | GPU Energy: 51.78J
+Epoch 20/20 | Loss: 0.1169 | GPU Energy: 58.77J
+Model saved: model_2026-02-28_21-01-48.pth
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\train_benchmark.csv
+                                                    0
+timestamp                  2026-02-28T20:59:54.089055
+dataset                                  FashionMNIST
+stage                                           train
+device                                           cuda
+epochs                                             20
+zeus_inference_energy_J                         4.547
+total_train_time_s                           100.0084
+throughput_sps                               11998.99
+final_loss                                   0.116925
+train_accuracy                                 0.9667
+inference_latency_mean_ms                      0.4136
+inference_latency_std_ms                       0.0744
+peak_gpu_memory_mb                             38.569
+zeus_gpu_energy_J                            1784.495
+zeus_wall_time_s                             101.3445
+codecarbon_co2_kg                            0.000752
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python train.py
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\train.py", line 16, in <module>
+    import config
+ModuleNotFoundError: No module named 'config'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install config
+Collecting config
+  Downloading config-0.5.1-py2.py3-none-any.whl.metadata (1.4 kB)
+Downloading config-0.5.1-py2.py3-none-any.whl (20 kB)
+Installing collected packages: config
+Successfully installed config-0.5.1
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl.py
+Simulation Time: 2026-02-28 21:13:02.812021
+[codecarbon WARNING @ 21:13:02] Multiple instances of codecarbon are allowed to run at the same time.
+[codecarbon INFO @ 21:13:02] [setup] RAM Tracking...
+[codecarbon INFO @ 21:13:02] [setup] CPU Tracking...
+[codecarbon WARNING @ 21:13:04] We saw that you have a 12th Gen Intel(R) Core(TM) i5-12450HX but we don't know it. Please contact us.
+[codecarbon WARNING @ 21:13:04] No CPU tracking mode found. Falling back on estimation based on TDP for CPU.
+ Windows OS detected: Please install Intel Power Gadget to measure CPU
+
+[codecarbon INFO @ 21:13:04] CPU Model on constant consumption mode: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon WARNING @ 21:13:04] No CPU tracking mode found. Falling back on CPU constant mode.
+[codecarbon INFO @ 21:13:04] [setup] GPU Tracking...
+[codecarbon INFO @ 21:13:04] Tracking Nvidia GPU via pynvml
+[codecarbon INFO @ 21:13:04] The below tracking methods have been set up:
+                RAM Tracking Method: RAM power estimation model
+                CPU Tracking Method: global constant
+                GPU Tracking Method: pynvml
+
+[codecarbon INFO @ 21:13:04] >>> Tracker's metadata:
+[codecarbon INFO @ 21:13:04]   Platform system: Windows-11-10.0.26200-SP0
+[codecarbon INFO @ 21:13:04]   Python version: 3.13.12
+[codecarbon INFO @ 21:13:04]   CodeCarbon version: 3.2.2
+[codecarbon INFO @ 21:13:04]   Available RAM : 15.715 GB
+[codecarbon INFO @ 21:13:04]   CPU count: 12 thread(s) in 12 physical CPU(s)
+[codecarbon INFO @ 21:13:04]   CPU model: 12th Gen Intel(R) Core(TM) i5-12450HX
+[codecarbon INFO @ 21:13:04]   GPU count: 1
+[codecarbon INFO @ 21:13:04]   GPU model: 1 x NVIDIA GeForce RTX 4060 Laptop GPU
+[codecarbon INFO @ 21:13:04] Emissions data (if any) will be saved to file E:\Thesis\HANSAL\apps\fashion-mnist\metrics\emissions_etl.csv
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_21-13-02.pt
+[codecarbon INFO @ 21:13:13] Energy consumed for RAM : 0.000025 kWh. RAM Power : 10.0 W
+[codecarbon INFO @ 21:13:13] Delta energy consumed for CPU with constant : 0.000104 kWh, power : 42.5 W
+[codecarbon INFO @ 21:13:13] Energy consumed for All CPU : 0.000104 kWh
+[codecarbon INFO @ 21:13:13] Energy consumed for all GPUs : 0.000030 kWh. Total GPU Power : 12.040282486692844 W
+[codecarbon INFO @ 21:13:13] 0.000158 kWh of electricity and 0.000000 L of water were used since the beginning.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl_full.py
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\etl_full.py", line 19, in <module>
+    from config import (
+    ...<2 lines>...
+    )
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\..\config.py", line 2, in <module>
+    RAW_PATH       = os.path.join(BASE_DIR, 'data/raw')
+                     ^^
+NameError: name 'os' is not defined. Did you forget to import 'os'?
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl_full.py
+Simulation Time: 2026-02-28 21:14:19.168356
+[codecarbon WARNING @ 21:14:19] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_21-14-19.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+                                              0                           1                           2                           3                           4                           5                           6                           7                                       8
+timestamp            2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413  2026-02-28T08:09:53.098905  2026-02-28T08:16:23.452092  2026-02-28T08:28:11.797902  2026-02-28T08:36:15.458318              2026-02-28T21:14:19.168356
+dataset                            FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                            FashionMNIST
+stage                                       etl                         etl                         etl                         etl                         etl                         etl                         etl                         etl                                     etl
+total_etl_time_s                        14.1445                     13.3486                     20.4748                     10.7573                     10.3642                     24.4137                     11.3157                     13.3968                                 14.8718
+data_load_time_s                        13.6311                     12.9699                     19.9416                     10.3666                     10.0071                     23.9703                     10.8763                     12.9776                                 14.5095
+save_time_s                              0.3814                      0.3353                      0.4938                      0.3463                      0.3131                       0.374                      0.3314                      0.3141                                  0.3203
+n_samples                                 60000                       60000                       60000                       60000                       60000                       60000                       60000                       60000                                   60000
+throughput_sps                          4241.94                     4494.85                     2930.43                     5577.62                     5789.17                     2457.64                     5302.38                     4478.69                                 4034.49
+image_shape                         (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                             (1, 28, 28)
+dataset_size_mb                          188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16                                  188.16
+peak_gpu_memory_mb                          0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                                     0.0
+zeus_gpu_energy_J                       202.722                     213.626                     296.992                     178.615                       173.0                     280.207                     177.322                     191.231                                 216.591
+zeus_wall_time_s                        14.1955                     13.3626                     20.5076                     10.7846                     10.3842                     24.4408                     11.3486                     13.4166                                 14.8885
+codecarbon_co2_kg                      0.000001                     0.00011                    0.000166                    0.000091                    0.000087                    0.000189                    0.000094                    0.000109                                     NaN
+cc_cpu_energy_kWh                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000177
+cc_gpu_energy_kWh                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000062
+cc_ram_energy_kWh                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000042
+cc_total_energy_kWh                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                 0.00028
+cc_cpu_power_W                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                    42.5
+cc_gpu_power_W                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                               14.787388
+cc_ram_power_W                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                    10.0
+cc_emissions_kg                             NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000107
+cc_emissions_rate                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000007
+cc_duration_s                               NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                               15.000776
+cc_cpu_model                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN   12th Gen Intel(R) Core(TM) i5-12450HX
+cc_cpu_count                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                    12.0
+cc_gpu_model                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN  1 x NVIDIA GeForce RTX 4060 Laptop GPU
+cc_gpu_count                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     1.0
+cc_ram_total_gb                             NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                               15.714714
+cc_country_iso                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     DEU
+cc_region                                   NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                      schleswig-holstein
+cc_cloud_provider                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     NaN
+cc_cloud_region                             NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     NaN
+cc_os                                       NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN               Windows-11-10.0.26200-SP0
+cc_python_version                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                 3.13.12
+cc_tracking_mode                            NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                 machine
+cc_on_cloud                                 NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                       N
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 21:15:31,124][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:15:31,125][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:15:31,155][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:15:31,155][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Process Process-1:
+Traceback (most recent call last):
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\process.py", line 313, in _bootstrap
+    self.run()
+    ~~~~~~~~^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\process.py", line 108, in run
+    self._target(*self._args, **self._kwargs)
+    ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\monitoring\subprocess.py", line 260, in perunSubprocess
+    _monitoringLoop(
+    ~~~~~~~~~~~~~~~^
+        lSensors,
+        ^^^^^^^^^
+    ...<3 lines>...
+        callbacks,
+        ^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\monitoring\subprocess.py", line 85, in _monitoringLoop
+    while not stopCondition(delta):
+              ~~~~~~~~~~~~~^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\monitoring\subprocess.py", line 264, in <lambda>
+    lambda delta: stop_event.wait(sampling_period - delta),
+                  ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\synchronize.py", line 356, in wait
+    self._cond.wait(timeout)
+    ~~~~~~~~~~~~~~~^^^^^^^^^
+  File "C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.3312.0_x64__qbz5n2kfra8p0\Lib\multiprocessing\synchronize.py", line 268, in wait
+    return self._wait_semaphore.acquire(True, timeout)
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+KeyboardInterrupt
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 255, in cli
+    args.func(args)
+    ~~~~~~~~~^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 376, in monitor
+    perun.monitor_application(app)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 350, in monitor_application
+    status, runNode, last_result = self._monitor.run_application(
+                                   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^
+        str(i), record=True
+        ^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\monitoring\monitor.py", line 219, in run_application
+    return self._run_python_app(run_id)
+           ~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\monitoring\monitor.py", line 264, in _run_python_app
+    app_result = self._app.run()
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\monitoring\application.py", line 138, in run
+    exec(
+    ~~~~^
+        self._scriptFile,
+        ^^^^^^^^^^^^^^^^^
+        {"__name__": "__main__", "__file__": self.name},
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "<string>", line 2, in <module>
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\__init__.py", line 2785, in <module>
+    from torch import _meta_registrations
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_meta_registrations.py", line 12, in <module>
+    from torch._decomp import (
+    ...<4 lines>...
+    )
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_decomp\__init__.py", line 277, in <module>
+    import torch._decomp.decompositions
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_decomp\decompositions.py", line 3691, in <module>
+    @register_decomposition(aten.lstm.input)
+                            ^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_ops.py", line 1330, in __getattr__
+    opoverloadpacket = OpOverloadPacket(
+        qualified_op_name, op_name, op, overload_names
+    )
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_ops.py", line 1113, in __init__
+    self._has_torchbind_op_overload = any(
+                                      ~~~^
+        _has_script_object_arg(schema) for schema in self._schemas.values()
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_ops.py", line 1114, in <genexpr>
+    _has_script_object_arg(schema) for schema in self._schemas.values()
+    ~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_ops.py", line 1091, in _has_script_object_arg
+    return any(isinstance(arg.type, torch.ClassType) for arg in schema.arguments)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\torch\_ops.py", line 1091, in <genexpr>
+    return any(isinstance(arg.type, torch.ClassType) for arg in schema.arguments)
+
+KeyboardInterrupt
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 21:15:41,410][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:15:41,410][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:15:41,429][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:15:41,429][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 21:15:47.654772
+[codecarbon WARNING @ 21:15:47] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_21-15-47.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+                                              0                           1                           2                           3                           4                           5                           6                           7                                       8                                       9
+timestamp            2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413  2026-02-28T08:09:53.098905  2026-02-28T08:16:23.452092  2026-02-28T08:28:11.797902  2026-02-28T08:36:15.458318              2026-02-28T21:14:19.168356              2026-02-28T21:15:47.654772
+dataset                            FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                            FashionMNIST                            FashionMNIST
+stage                                       etl                         etl                         etl                         etl                         etl                         etl                         etl                         etl                                     etl                                     etl
+total_etl_time_s                        14.1445                     13.3486                     20.4748                     10.7573                     10.3642                     24.4137                     11.3157                     13.3968                                 14.8718                                 13.1873
+data_load_time_s                        13.6311                     12.9699                     19.9416                     10.3666                     10.0071                     23.9703                     10.8763                     12.9776                                 14.5095                                 12.7938
+save_time_s                              0.3814                      0.3353                      0.4938                      0.3463                      0.3131                       0.374                      0.3314                      0.3141                                  0.3203                                   0.351
+n_samples                                 60000                       60000                       60000                       60000                       60000                       60000                       60000                       60000                                   60000                                   60000
+throughput_sps                          4241.94                     4494.85                     2930.43                     5577.62                     5789.17                     2457.64                     5302.38                     4478.69                                 4034.49                                 4549.83
+image_shape                         (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                             (1, 28, 28)                             (1, 28, 28)
+dataset_size_mb                          188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16                                  188.16                                  188.16
+peak_gpu_memory_mb                          0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                                     0.0                                     0.0
+zeus_gpu_energy_J                       202.722                     213.626                     296.992                     178.615                       173.0                     280.207                     177.322                     191.231                                 216.591                                 200.451
+zeus_wall_time_s                        14.1955                     13.3626                     20.5076                     10.7846                     10.3842                     24.4408                     11.3486                     13.4166                                 14.8885                                 13.2107
+codecarbon_co2_kg                      0.000001                     0.00011                    0.000166                    0.000091                    0.000087                    0.000189                    0.000094                    0.000109                                     NaN                                     NaN
+cc_cpu_energy_kWh                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000177                                0.000157
+cc_gpu_energy_kWh                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000062                                0.000059
+cc_ram_energy_kWh                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000042                                0.000037
+cc_total_energy_kWh                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                 0.00028                                0.000253
+cc_cpu_power_W                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                    42.5                                    42.5
+cc_gpu_power_W                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                               14.787388                               16.013773
+cc_ram_power_W                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                    10.0                                    10.0
+cc_emissions_kg                             NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000107                                0.000096
+cc_emissions_rate                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                0.000007                                0.000007
+cc_duration_s                               NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                               15.000776                               13.294685
+cc_cpu_model                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN   12th Gen Intel(R) Core(TM) i5-12450HX   12th Gen Intel(R) Core(TM) i5-12450HX
+cc_cpu_count                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                    12.0                                    12.0
+cc_gpu_model                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN  1 x NVIDIA GeForce RTX 4060 Laptop GPU  1 x NVIDIA GeForce RTX 4060 Laptop GPU
+cc_gpu_count                                NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     1.0                                     1.0
+cc_ram_total_gb                             NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                               15.714714                               15.714714
+cc_country_iso                              NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     DEU                                     DEU
+cc_region                                   NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                      schleswig-holstein                      schleswig-holstein
+cc_cloud_provider                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     NaN                                     NaN
+cc_cloud_region                             NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                     NaN                                     NaN
+cc_os                                       NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN               Windows-11-10.0.26200-SP0               Windows-11-10.0.26200-SP0
+cc_python_version                           NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                 3.13.12                                 3.13.12
+cc_tracking_mode                            NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN                                 machine                                 machine
+cc_on_cloud                                 NaN                         NaN                         NaN                         NaN                         NaN                         NaN                         NaN              perun monitor train.py                               N                                       N
+[2026-02-28 21:26:04,933][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:26:04,934][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:26:04,956][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:26:04,956][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Cutoff Date: 2026-02-28 21:26:13.142604+00:00
+[codecarbon WARNING @ 21:26:13] Multiple instances of codecarbon are allowed to run at the same time.
+Training on: cuda
+Loading: training_2026-02-28_21-15-47.pt
+--- [Step 2] Starting Training ---
+Epoch 1/20 | Loss: 0.4169 | GPU Energy: 95.64J
+Epoch 2/20 | Loss: 0.2944 | GPU Energy: 69.27J
+Epoch 3/20 | Loss: 0.2612 | GPU Energy: 46.60J
+Epoch 4/20 | Loss: 0.2384 | GPU Energy: 48.69J
+Epoch 5/20 | Loss: 0.2204 | GPU Energy: 59.27J
+Epoch 6/20 | Loss: 0.2071 | GPU Energy: 39.85J
+Epoch 7/20 | Loss: 0.1954 | GPU Energy: 48.83J
+Epoch 8/20 | Loss: 0.1834 | GPU Energy: 49.43J
+Epoch 9/20 | Loss: 0.1744 | GPU Energy: 41.80J
+Epoch 10/20 | Loss: 0.1659 | GPU Energy: 57.51J
+Epoch 11/20 | Loss: 0.1596 | GPU Energy: 47.66J
+Epoch 12/20 | Loss: 0.1523 | GPU Energy: 46.43J
+Epoch 13/20 | Loss: 0.1439 | GPU Energy: 57.73J
+Epoch 14/20 | Loss: 0.1387 | GPU Energy: 45.51J
+Epoch 15/20 | Loss: 0.1330 | GPU Energy: 36.71J
+Epoch 16/20 | Loss: 0.1273 | GPU Energy: 54.24J
+Epoch 17/20 | Loss: 0.1226 | GPU Energy: 50.14J
+Epoch 18/20 | Loss: 0.1203 | GPU Energy: 54.44J
+Epoch 19/20 | Loss: 0.1136 | GPU Energy: 60.22J
+Epoch 20/20 | Loss: 0.1107 | GPU Energy: 40.78J
+Model saved: model_2026-02-28_21-27-09.pth
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\train_benchmark.csv
+                                                                0
+timestamp                              2026-02-28T21:26:15.432743
+dataset                                              FashionMNIST
+stage                                                       train
+device                                                       cuda
+epochs                                                         20
+zeus_inference_energy_J                                    13.423
+total_train_time_s                                        51.0875
+throughput_sps                                           23489.09
+final_loss                                               0.110708
+train_accuracy                                             0.9668
+inference_latency_mean_ms                                  0.4717
+inference_latency_std_ms                                   0.1174
+peak_gpu_memory_mb                                         38.569
+zeus_gpu_energy_J                                        1094.259
+zeus_wall_time_s                                          52.5298
+cc_cpu_energy_kWh                                         0.00062
+cc_gpu_energy_kWh                                        0.000304
+cc_ram_energy_kWh                                        0.000146
+cc_total_energy_kWh                                       0.00107
+cc_cpu_power_W                                               42.5
+cc_gpu_power_W                                          21.015734
+cc_ram_power_W                                               10.0
+cc_emissions_kg                                          0.000407
+cc_emissions_rate                                        0.000008
+cc_duration_s                                           52.504692
+cc_cpu_model                12th Gen Intel(R) Core(TM) i5-12450HX
+cc_cpu_count                                                   12
+cc_gpu_model               1 x NVIDIA GeForce RTX 4060 Laptop GPU
+cc_gpu_count                                                  1.0
+cc_ram_total_gb                                         15.714714
+cc_country_iso                                                DEU
+cc_region                                      schleswig-holstein
+cc_cloud_provider                                             NaN
+cc_cloud_region                                               NaN
+cc_os                                   Windows-11-10.0.26200-SP0
+cc_python_version                                         3.13.12
+cc_tracking_mode                                          machine
+cc_on_cloud                                                     N
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 21:46:57,017][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:46:57,018][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:46:57,058][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:46:57,058][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 21:47:05.125438
+[codecarbon WARNING @ 21:47:05] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saved: training_2026-02-28_21-47-05.pt
+Saved: test_2026-02-28_21-47-05.pt
+[Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+[Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 21:49:38,897][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:49:38,898][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:49:38,920][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:49:38,921][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 21:49:46 | INFO | Simulation Time: 2026-02-28 21:49:46.131070
+[codecarbon WARNING @ 21:49:46] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 21:49:48 | INFO | --- [Step 1] Starting ETL Pipeline ---
+2026-02-28 21:50:32 | INFO | Saved: training_2026-02-28_21-49-46.pt
+2026-02-28 21:50:43 | INFO | Saved: test_2026-02-28_21-49-46.pt
+[Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+[Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 21:51:10,284][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:51:10,284][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:51:10,303][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:51:10,303][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 21:51:16 | INFO | Simulation Time: 2026-02-28 21:51:16.392963
+[codecarbon WARNING @ 21:51:16] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 21:51:18 | INFO | --- [Step 1] Starting ETL Pipeline ---
+2026-02-28 21:51:40 | INFO | Saved: training_2026-02-28_21-51-16.pt
+2026-02-28 21:51:46 | INFO | Saved: test_2026-02-28_21-51-16.pt
+2026-02-28 21:51:46 | INFO | [Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+2026-02-28 21:51:46 | INFO | [Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 21:59:57,584][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 21:59:57,584][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 21:59:57,602][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 21:59:57,602][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 22:00:04 | INFO | Simulation Time: 2026-02-28 22:00:04.013801
+[codecarbon WARNING @ 22:00:04] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 22:00:06 | INFO | --- [Step 1] Starting ETL Pipeline ---
+2026-02-28 22:00:25 | INFO | Saved: training_2026-02-28_22-00-04.pt
+2026-02-28 22:00:31 | INFO | Saved: test_2026-02-28_22-00-04.pt
+[2026-02-28 22:00:31,726][perun.monitoring.monitor][_run_python_app][ERROR] - Rank 0:  Found error on monitored script: etl
+[2026-02-28 22:00:31,727][perun.monitoring.monitor][_run_python_app][ERROR] - Rank 0: [Errno 13] Permission denied: 'E:\\Thesis\\HANSAL\\apps\\fashion-mnist\\metrics\\etl_benchmark.csv'
+[2026-02-28 22:00:31,727][perun.monitoring.monitor][_run_python_app][ERROR] - Rank 0: PermissionError(13, 'Permission denied')
+[2026-02-28 22:00:31,728][perun.monitoring.monitor][_run_python_app][ERROR] - Rank 0:  Set start and stop event forcefully
+[2026-02-28 22:00:31,728][perun.monitoring.monitor][_handle_failed_run][ERROR] - Rank 0: Available ranks [0]
+[2026-02-28 22:00:32,407][perun.core][monitor_application][ERROR] - Rank 0: Script error
+[2026-02-28 22:00:32,409][perun.core][monitor_application][ERROR] - Storing failed run under ./perun_results/etl
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 22:00:41,765][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 22:00:41,765][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 22:00:41,786][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 22:00:41,786][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 22:00:48 | INFO | Simulation Time: 2026-02-28 22:00:48.341664
+[codecarbon WARNING @ 22:00:48] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 22:00:50 | INFO | --- [Step 1] Starting ETL Pipeline ---
+2026-02-28 22:01:08 | INFO | Saved: training_2026-02-28_22-00-48.pt
+2026-02-28 22:01:14 | INFO | Saved: test_2026-02-28_22-00-48.pt
+2026-02-28 22:01:14 | INFO | [Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+2026-02-28 22:01:14 | INFO | [Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl.py
+[2026-02-28 22:05:08,395][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 22:05:08,396][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 22:05:08,415][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 22:05:08,415][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 22:05:19 | INFO | Simulation Time: 2026-02-28 22:05:19.110984
+[codecarbon WARNING @ 22:05:19] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 22:05:21 | INFO | --- [Step 1] Starting ETL Pipeline ---
+2026-02-28 22:05:53 | INFO | Saved: training_2026-02-28_22-05-19.pt
+2026-02-28 22:06:04 | INFO | Saved: test_2026-02-28_22-05-19.pt
+2026-02-28 22:06:04 | INFO | [Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark.csv
+2026-02-28 22:06:04 | INFO | [Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\etl_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor train.py
+[2026-02-28 22:06:31,415][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 22:06:31,415][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 22:06:31,435][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 22:06:31,436][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 22:06:37 | INFO | Cutoff Date: 2026-02-28 22:06:37.434232+00:00
+[codecarbon WARNING @ 22:06:37] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 22:06:40 | INFO | Training on: cuda
+2026-02-28 22:06:40 | INFO | Train: training_2026-02-28_22-05-19.pt
+2026-02-28 22:06:40 | INFO | Test:  test_2026-02-28_22-05-19.pt
+2026-02-28 22:06:43 | INFO | --- Starting Training ---
+2026-02-28 22:06:46 | INFO | Epoch 1/50 | Loss: 0.9528 | GPU Energy: 78.30J
+2026-02-28 22:06:48 | INFO | Epoch 2/50 | Loss: 0.7097 | GPU Energy: 51.37J
+2026-02-28 22:06:50 | INFO | Epoch 3/50 | Loss: 0.6428 | GPU Energy: 64.60J
+2026-02-28 22:06:52 | INFO | Epoch 4/50 | Loss: 0.6048 | GPU Energy: 56.01J
+2026-02-28 22:06:55 | INFO | Epoch 5/50 | Loss: 0.5766 | GPU Energy: 46.30J
+2026-02-28 22:06:57 | INFO | Epoch 6/50 | Loss: 0.5503 | GPU Energy: 60.10J
+2026-02-28 22:06:59 | INFO | Epoch 7/50 | Loss: 0.5306 | GPU Energy: 59.40J
+2026-02-28 22:07:02 | INFO | Epoch 8/50 | Loss: 0.5135 | GPU Energy: 50.80J
+2026-02-28 22:07:04 | INFO | Epoch 9/50 | Loss: 0.4977 | GPU Energy: 47.62J
+2026-02-28 22:07:06 | INFO | Epoch 10/50 | Loss: 0.4831 | GPU Energy: 52.35J
+2026-02-28 22:07:09 | INFO | Epoch 11/50 | Loss: 0.4708 | GPU Energy: 48.71J
+2026-02-28 22:07:11 | INFO | Epoch 12/50 | Loss: 0.4590 | GPU Energy: 59.02J
+2026-02-28 22:07:13 | INFO | Epoch 13/50 | Loss: 0.4478 | GPU Energy: 57.24J
+2026-02-28 22:07:16 | INFO | Epoch 14/50 | Loss: 0.4379 | GPU Energy: 55.90J
+2026-02-28 22:07:18 | INFO | Epoch 15/50 | Loss: 0.4317 | GPU Energy: 48.54J
+2026-02-28 22:07:20 | INFO | Epoch 16/50 | Loss: 0.4198 | GPU Energy: 61.96J
+2026-02-28 22:07:23 | INFO | Epoch 17/50 | Loss: 0.4116 | GPU Energy: 50.62J
+2026-02-28 22:07:25 | INFO | Epoch 18/50 | Loss: 0.4055 | GPU Energy: 67.86J
+2026-02-28 22:07:28 | INFO | Epoch 19/50 | Loss: 0.3973 | GPU Energy: 68.30J
+2026-02-28 22:07:30 | INFO | Epoch 20/50 | Loss: 0.3902 | GPU Energy: 71.38J
+2026-02-28 22:07:32 | INFO | Epoch 21/50 | Loss: 0.3811 | GPU Energy: 71.93J
+2026-02-28 22:07:35 | INFO | Epoch 22/50 | Loss: 0.3789 | GPU Energy: 51.92J
+2026-02-28 22:07:37 | INFO | Epoch 23/50 | Loss: 0.3714 | GPU Energy: 73.84J
+2026-02-28 22:07:39 | INFO | Epoch 24/50 | Loss: 0.3661 | GPU Energy: 68.73J
+2026-02-28 22:07:42 | INFO | Epoch 25/50 | Loss: 0.3585 | GPU Energy: 59.53J
+2026-02-28 22:07:44 | INFO | Epoch 26/50 | Loss: 0.3579 | GPU Energy: 63.95J
+2026-02-28 22:07:47 | INFO | Epoch 27/50 | Loss: 0.3507 | GPU Energy: 62.57J
+2026-02-28 22:07:49 | INFO | Epoch 28/50 | Loss: 0.3455 | GPU Energy: 56.21J
+2026-02-28 22:07:51 | INFO | Epoch 29/50 | Loss: 0.3376 | GPU Energy: 46.93J
+2026-02-28 22:07:54 | INFO | Epoch 30/50 | Loss: 0.3344 | GPU Energy: 63.11J
+2026-02-28 22:07:56 | INFO | Epoch 31/50 | Loss: 0.3308 | GPU Energy: 67.80J
+2026-02-28 22:07:59 | INFO | Epoch 32/50 | Loss: 0.3252 | GPU Energy: 82.16J
+2026-02-28 22:08:02 | INFO | Epoch 33/50 | Loss: 0.3230 | GPU Energy: 54.01J
+2026-02-28 22:08:04 | INFO | Epoch 34/50 | Loss: 0.3156 | GPU Energy: 50.07J
+2026-02-28 22:08:06 | INFO | Epoch 35/50 | Loss: 0.3147 | GPU Energy: 51.93J
+2026-02-28 22:08:09 | INFO | Epoch 36/50 | Loss: 0.3132 | GPU Energy: 65.08J
+2026-02-28 22:08:10 | INFO | Epoch 37/50 | Loss: 0.3038 | GPU Energy: 45.14J
+2026-02-28 22:08:11 | INFO | Epoch 38/50 | Loss: 0.3021 | GPU Energy: 56.10J
+2026-02-28 22:08:12 | INFO | Epoch 39/50 | Loss: 0.2949 | GPU Energy: 49.04J
+2026-02-28 22:08:13 | INFO | Epoch 40/50 | Loss: 0.2943 | GPU Energy: 53.08J
+2026-02-28 22:08:14 | INFO | Epoch 41/50 | Loss: 0.2922 | GPU Energy: 52.06J
+2026-02-28 22:08:15 | INFO | Epoch 42/50 | Loss: 0.2864 | GPU Energy: 51.14J
+2026-02-28 22:08:17 | INFO | Epoch 43/50 | Loss: 0.2845 | GPU Energy: 63.52J
+2026-02-28 22:08:18 | INFO | Epoch 44/50 | Loss: 0.2798 | GPU Energy: 49.50J
+2026-02-28 22:08:19 | INFO | Epoch 45/50 | Loss: 0.2812 | GPU Energy: 64.82J
+2026-02-28 22:08:20 | INFO | Epoch 46/50 | Loss: 0.2747 | GPU Energy: 51.97J
+2026-02-28 22:08:21 | INFO | Epoch 47/50 | Loss: 0.2709 | GPU Energy: 58.56J
+2026-02-28 22:08:22 | INFO | Epoch 48/50 | Loss: 0.2701 | GPU Energy: 53.51J
+2026-02-28 22:08:23 | INFO | Epoch 49/50 | Loss: 0.2657 | GPU Energy: 57.18J
+2026-02-28 22:08:24 | INFO | Epoch 50/50 | Loss: 0.2591 | GPU Energy: 62.57J
+2026-02-28 22:08:25 | INFO | Model saved: model_2026-02-28_22-08-25.pth
+2026-02-28 22:08:25 | INFO | [Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\train_benchmark.csv
+2026-02-28 22:08:25 | INFO | [Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\train_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor train.py
+[2026-02-28 22:15:05,361][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 22:15:05,362][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 22:15:05,381][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 22:15:05,381][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+2026-02-28 22:15:13 | INFO | Cutoff Date: 2026-02-28 22:15:13.992444+00:00
+[codecarbon WARNING @ 22:15:14] Multiple instances of codecarbon are allowed to run at the same time.
+2026-02-28 22:15:16 | INFO | Training on: cuda
+2026-02-28 22:15:16 | INFO | Train: training_2026-02-28_22-05-19.pt
+2026-02-28 22:15:16 | INFO | Test:  test_2026-02-28_22-05-19.pt
+2026-02-28 22:15:16 | INFO | --- Starting Training ---
+2026-02-28 22:15:42 | INFO | Epoch 1/50 | Loss: 0.5590 | GPU Energy: 1985.07J
+2026-02-28 22:16:08 | INFO | Epoch 2/50 | Loss: 0.3299 | GPU Energy: 2027.17J
+2026-02-28 22:16:33 | INFO | Epoch 3/50 | Loss: 0.2684 | GPU Energy: 2034.41J
+2026-02-28 22:16:59 | INFO | Epoch 4/50 | Loss: 0.2308 | GPU Energy: 2040.54J
+2026-02-28 22:17:24 | INFO | Epoch 5/50 | Loss: 0.2003 | GPU Energy: 2070.17J
+2026-02-28 22:17:49 | INFO | Epoch 6/50 | Loss: 0.1780 | GPU Energy: 2045.72J
+2026-02-28 22:18:15 | INFO | Epoch 7/50 | Loss: 0.1517 | GPU Energy: 2054.36J
+2026-02-28 22:18:40 | INFO | Epoch 8/50 | Loss: 0.1301 | GPU Energy: 2064.55J
+2026-02-28 22:19:05 | INFO | Epoch 9/50 | Loss: 0.1044 | GPU Energy: 2042.36J
+2026-02-28 22:19:31 | INFO | Epoch 10/50 | Loss: 0.0889 | GPU Energy: 2064.24J
+2026-02-28 22:19:56 | INFO | Epoch 11/50 | Loss: 0.0751 | GPU Energy: 2038.24J
+2026-02-28 22:20:21 | INFO | Epoch 12/50 | Loss: 0.0563 | GPU Energy: 2071.60J
+2026-02-28 22:20:46 | INFO | Epoch 13/50 | Loss: 0.0543 | GPU Energy: 2076.95J
+2026-02-28 22:21:12 | INFO | Epoch 14/50 | Loss: 0.0391 | GPU Energy: 2064.15J
+2026-02-28 22:21:37 | INFO | Epoch 15/50 | Loss: 0.0395 | GPU Energy: 2068.20J
+2026-02-28 22:22:02 | INFO | Epoch 16/50 | Loss: 0.0271 | GPU Energy: 2059.86J
+2026-02-28 22:22:27 | INFO | Epoch 17/50 | Loss: 0.0301 | GPU Energy: 2058.01J
+2026-02-28 22:22:53 | INFO | Epoch 18/50 | Loss: 0.0269 | GPU Energy: 2070.48J
+2026-02-28 22:23:18 | INFO | Epoch 19/50 | Loss: 0.0204 | GPU Energy: 2054.30J
+2026-02-28 22:23:43 | INFO | Epoch 20/50 | Loss: 0.0215 | GPU Energy: 2068.69J
+2026-02-28 22:24:09 | INFO | Epoch 21/50 | Loss: 0.0242 | GPU Energy: 2061.02J
+2026-02-28 22:24:34 | INFO | Epoch 22/50 | Loss: 0.0269 | GPU Energy: 2084.12J
+2026-02-28 22:24:59 | INFO | Epoch 23/50 | Loss: 0.0175 | GPU Energy: 2098.45J
+2026-02-28 22:25:24 | INFO | Epoch 24/50 | Loss: 0.0138 | GPU Energy: 2101.21J
+2026-02-28 22:25:50 | INFO | Epoch 25/50 | Loss: 0.0181 | GPU Energy: 2078.46J
+2026-02-28 22:26:15 | INFO | Epoch 26/50 | Loss: 0.0168 | GPU Energy: 2068.32J
+2026-02-28 22:26:40 | INFO | Epoch 27/50 | Loss: 0.0162 | GPU Energy: 2062.65J
+2026-02-28 22:27:06 | INFO | Epoch 28/50 | Loss: 0.0180 | GPU Energy: 2092.72J
+2026-02-28 22:27:31 | INFO | Epoch 29/50 | Loss: 0.0148 | GPU Energy: 2090.85J
+2026-02-28 22:27:56 | INFO | Epoch 30/50 | Loss: 0.0137 | GPU Energy: 2081.85J
+2026-02-28 22:28:22 | INFO | Epoch 31/50 | Loss: 0.0162 | GPU Energy: 2096.83J
+2026-02-28 22:28:47 | INFO | Epoch 32/50 | Loss: 0.0132 | GPU Energy: 2081.28J
+2026-02-28 22:29:12 | INFO | Epoch 33/50 | Loss: 0.0137 | GPU Energy: 2067.35J
+2026-02-28 22:29:38 | INFO | Epoch 34/50 | Loss: 0.0126 | GPU Energy: 2090.81J
+2026-02-28 22:30:03 | INFO | Epoch 35/50 | Loss: 0.0114 | GPU Energy: 2104.69J
+2026-02-28 22:30:28 | INFO | Epoch 36/50 | Loss: 0.0116 | GPU Energy: 2034.81J
+2026-02-28 22:30:53 | INFO | Epoch 37/50 | Loss: 0.0131 | GPU Energy: 2086.07J
+2026-02-28 22:31:19 | INFO | Epoch 38/50 | Loss: 0.0155 | GPU Energy: 2078.52J
+2026-02-28 22:31:44 | INFO | Epoch 39/50 | Loss: 0.0152 | GPU Energy: 2069.80J
+2026-02-28 22:32:09 | INFO | Epoch 40/50 | Loss: 0.0076 | GPU Energy: 2068.71J
+2026-02-28 22:32:35 | INFO | Epoch 41/50 | Loss: 0.0059 | GPU Energy: 2023.17J
+2026-02-28 22:33:00 | INFO | Epoch 42/50 | Loss: 0.0120 | GPU Energy: 2084.49J
+2026-02-28 22:33:25 | INFO | Epoch 43/50 | Loss: 0.0117 | GPU Energy: 2081.65J
+2026-02-28 22:33:50 | INFO | Epoch 44/50 | Loss: 0.0072 | GPU Energy: 2058.01J
+2026-02-28 22:34:16 | INFO | Epoch 45/50 | Loss: 0.0085 | GPU Energy: 2087.27J
+2026-02-28 22:34:41 | INFO | Epoch 46/50 | Loss: 0.0101 | GPU Energy: 2085.62J
+2026-02-28 22:35:06 | INFO | Epoch 47/50 | Loss: 0.0110 | GPU Energy: 2067.81J
+2026-02-28 22:35:32 | INFO | Epoch 48/50 | Loss: 0.0096 | GPU Energy: 2088.30J
+2026-02-28 22:35:57 | INFO | Epoch 49/50 | Loss: 0.0084 | GPU Energy: 2064.52J
+2026-02-28 22:36:22 | INFO | Epoch 50/50 | Loss: 0.0061 | GPU Energy: 2091.23J
+2026-02-28 22:36:33 | INFO | Model saved: model_2026-02-28_22-36-33.pth
+2026-02-28 22:36:33 | INFO | [Metrics] CSV  → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\train_benchmark.csv
+2026-02-28 22:36:33 | INFO | [Metrics] JSON → E:\Thesis\HANSAL\apps\fashion-mnist\metrics\train_benchmark_latest.json
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> Manage-bde -protectors -disable C:
+BitLocker Drive Encryption: Configuration Tool version 10.0.26100
+Copyright (C) 2013 Microsoft Corporation. All rights reserved.
+
+ERROR: An attempt to access a required resource was denied.
+
+Check that you have administrative rights on the computer.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src>

@@ -1,0 +1,716 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\heans> cd E:\Thesis\HANSAL\apps\fashion-mnist\src
+PS E:\Thesis\HANSAL\apps\fashion-mnist\src> cd ../../..
+PS E:\Thesis\HANSAL> cd ..
+PS E:\Thesis> ls
+
+
+    Directory: E:\Thesis
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/22/2026  12:35 AM                HANSAL
+d-----         2/22/2026  12:34 AM                venv
+-a----         1/26/2026   2:57 PM          78617 kepler_log.txt
+-a----         2/16/2026   3:38 PM        6305125 MasterThesis.pptx
+-a----         1/23/2026   2:20 AM         186649 ps.txt
+
+
+PS E:\Thesis> cd venv
+PS E:\Thesis\venv> ls
+
+
+    Directory: E:\Thesis\venv
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/22/2026  12:36 AM                hansal
+
+
+PS E:\Thesis\venv> hansal\scripts\activate
+(hansal) PS E:\Thesis\venv> cd E:\Thesis\HANSAL\apps\fashion-mnist\src
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl_full.py
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\etl_full.py", line 13, in <module>
+    from zeus.monitor import ZeusMonitor
+ModuleNotFoundError: No module named 'zeus'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install zeus
+Collecting zeus
+  Downloading zeus-0.15.0-py3-none-any.whl.metadata (9.4 kB)
+Requirement already satisfied: numpy in e:\thesis\venv\hansal\lib\site-packages (from zeus) (2.4.2)
+Requirement already satisfied: pandas in e:\thesis\venv\hansal\lib\site-packages (from zeus) (3.0.1)
+Collecting scikit-learn (from zeus)
+  Downloading scikit_learn-1.8.0-cp313-cp313-win_amd64.whl.metadata (11 kB)
+Requirement already satisfied: nvidia-ml-py in e:\thesis\venv\hansal\lib\site-packages (from zeus) (13.590.48)
+Requirement already satisfied: pydantic in e:\thesis\venv\hansal\lib\site-packages (from zeus) (2.12.5)
+Requirement already satisfied: rich in e:\thesis\venv\hansal\lib\site-packages (from zeus) (14.3.3)
+Collecting tyro (from zeus)
+  Downloading tyro-1.0.8-py3-none-any.whl.metadata (12 kB)
+Requirement already satisfied: httpx in e:\thesis\venv\hansal\lib\site-packages (from zeus) (0.27.2)
+Collecting amdsmi (from zeus)
+  Downloading amdsmi-7.0.2-py3-none-any.whl.metadata (2.8 kB)
+Requirement already satisfied: python-dateutil in e:\thesis\venv\hansal\lib\site-packages (from zeus) (2.9.0.post0)
+Requirement already satisfied: anyio in e:\thesis\venv\hansal\lib\site-packages (from httpx->zeus) (4.12.1)
+Requirement already satisfied: certifi in e:\thesis\venv\hansal\lib\site-packages (from httpx->zeus) (2026.1.4)
+Requirement already satisfied: httpcore==1.* in e:\thesis\venv\hansal\lib\site-packages (from httpx->zeus) (1.0.9)
+Requirement already satisfied: idna in e:\thesis\venv\hansal\lib\site-packages (from httpx->zeus) (3.11)
+Requirement already satisfied: sniffio in e:\thesis\venv\hansal\lib\site-packages (from httpx->zeus) (1.3.1)
+Requirement already satisfied: h11>=0.16 in e:\thesis\venv\hansal\lib\site-packages (from httpcore==1.*->httpx->zeus) (0.16.0)
+Requirement already satisfied: tzdata in e:\thesis\venv\hansal\lib\site-packages (from pandas->zeus) (2025.3)
+Requirement already satisfied: six>=1.5 in e:\thesis\venv\hansal\lib\site-packages (from python-dateutil->zeus) (1.17.0)
+Requirement already satisfied: annotated-types>=0.6.0 in e:\thesis\venv\hansal\lib\site-packages (from pydantic->zeus) (0.7.0)
+Requirement already satisfied: pydantic-core==2.41.5 in e:\thesis\venv\hansal\lib\site-packages (from pydantic->zeus) (2.41.5)
+Requirement already satisfied: typing-extensions>=4.14.1 in e:\thesis\venv\hansal\lib\site-packages (from pydantic->zeus) (4.15.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in e:\thesis\venv\hansal\lib\site-packages (from pydantic->zeus) (0.4.2)
+Requirement already satisfied: markdown-it-py>=2.2.0 in e:\thesis\venv\hansal\lib\site-packages (from rich->zeus) (4.0.0)
+Requirement already satisfied: pygments<3.0.0,>=2.13.0 in e:\thesis\venv\hansal\lib\site-packages (from rich->zeus) (2.19.2)
+Requirement already satisfied: mdurl~=0.1 in e:\thesis\venv\hansal\lib\site-packages (from markdown-it-py>=2.2.0->rich->zeus) (0.1.2)
+Collecting scipy>=1.10.0 (from scikit-learn->zeus)
+  Downloading scipy-1.17.1-cp313-cp313-win_amd64.whl.metadata (60 kB)
+Collecting joblib>=1.3.0 (from scikit-learn->zeus)
+  Downloading joblib-1.5.3-py3-none-any.whl.metadata (5.5 kB)
+Collecting threadpoolctl>=3.2.0 (from scikit-learn->zeus)
+  Using cached threadpoolctl-3.6.0-py3-none-any.whl.metadata (13 kB)
+Collecting docstring-parser>=0.15 (from tyro->zeus)
+  Downloading docstring_parser-0.17.0-py3-none-any.whl.metadata (3.5 kB)
+Collecting typeguard>=4.0.0 (from tyro->zeus)
+  Downloading typeguard-4.5.1-py3-none-any.whl.metadata (3.8 kB)
+Downloading zeus-0.15.0-py3-none-any.whl (277 kB)
+Downloading amdsmi-7.0.2-py3-none-any.whl (64 kB)
+Downloading scikit_learn-1.8.0-cp313-cp313-win_amd64.whl (8.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 8.0/8.0 MB 7.3 MB/s  0:00:01
+Downloading joblib-1.5.3-py3-none-any.whl (309 kB)
+Downloading scipy-1.17.1-cp313-cp313-win_amd64.whl (36.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 36.5/36.5 MB 8.1 MB/s  0:00:04
+Using cached threadpoolctl-3.6.0-py3-none-any.whl (18 kB)
+Downloading tyro-1.0.8-py3-none-any.whl (181 kB)
+Downloading docstring_parser-0.17.0-py3-none-any.whl (36 kB)
+Downloading typeguard-4.5.1-py3-none-any.whl (36 kB)
+Installing collected packages: typeguard, threadpoolctl, scipy, joblib, docstring-parser, amdsmi, tyro, scikit-learn, zeus
+Successfully installed amdsmi-7.0.2 docstring-parser-0.17.0 joblib-1.5.3 scikit-learn-1.8.0 scipy-1.17.1 threadpoolctl-3.6.0 typeguard-4.5.1 tyro-1.0.8 zeus-0.15.0
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> $ pip install perun
+$ : The term '$' is not recognized as the name of a cmdlet, function, script file, or operable program. Check the
+spelling of the name, or if a path was included, verify that the path is correct and try again.
+At line:1 char:1
++ $ pip install perun
++ ~
+    + CategoryInfo          : ObjectNotFound: ($:String) [], CommandNotFoundException
+    + FullyQualifiedErrorId : CommandNotFoundException
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl_full.py
+Traceback (most recent call last):
+  File "E:\Thesis\HANSAL\apps\fashion-mnist\src\etl_full.py", line 14, in <module>
+    from perun import monitor
+ModuleNotFoundError: No module named 'perun'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install perun
+Collecting perun
+  Downloading perun-0.9.1-py3-none-any.whl.metadata (11 kB)
+Collecting h5py>=3.5.9 (from perun)
+  Downloading h5py-3.15.1-cp313-cp313-win_amd64.whl.metadata (3.1 kB)
+Requirement already satisfied: numpy>=1.20.0 in e:\thesis\venv\hansal\lib\site-packages (from perun) (2.4.2)
+Requirement already satisfied: pandas>=1.3 in e:\thesis\venv\hansal\lib\site-packages (from perun) (3.0.1)
+Requirement already satisfied: psutil>=5.9.0 in e:\thesis\venv\hansal\lib\site-packages (from perun) (7.2.2)
+Requirement already satisfied: py-cpuinfo>=5.0.0 in e:\thesis\venv\hansal\lib\site-packages (from perun) (9.0.0)
+Collecting tabulate>=0.9 (from perun)
+  Using cached tabulate-0.9.0-py3-none-any.whl.metadata (34 kB)
+Requirement already satisfied: python-dateutil>=2.8.2 in e:\thesis\venv\hansal\lib\site-packages (from pandas>=1.3->perun) (2.9.0.post0)
+Requirement already satisfied: tzdata in e:\thesis\venv\hansal\lib\site-packages (from pandas>=1.3->perun) (2025.3)
+Requirement already satisfied: six>=1.5 in e:\thesis\venv\hansal\lib\site-packages (from python-dateutil>=2.8.2->pandas>=1.3->perun) (1.17.0)
+Downloading perun-0.9.1-py3-none-any.whl (63 kB)
+Downloading h5py-3.15.1-cp313-cp313-win_amd64.whl (2.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.9/2.9 MB 2.5 MB/s  0:00:01
+Using cached tabulate-0.9.0-py3-none-any.whl (35 kB)
+Installing collected packages: tabulate, h5py, perun
+Successfully installed h5py-3.15.1 perun-0.9.1 tabulate-0.9.0
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl_full.py
+Simulation Time: 2026-02-28 07:23:48.344182
+[codecarbon WARNING @ 07:23:48] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_07-23-48.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0
+timestamp           2026-02-28T07:23:48.344182
+dataset                           FashionMNIST
+stage                                      etl
+total_etl_time_s                       14.1445
+data_load_time_s                       13.6311
+save_time_s                             0.3814
+n_samples                                60000
+throughput_sps                         4241.94
+image_shape                        (1, 28, 28)
+dataset_size_mb                         188.16
+peak_gpu_memory_mb                         0.0
+zeus_gpu_energy_J                      202.722
+zeus_wall_time_s                       14.1955
+codecarbon_co2_kg                     0.000001
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> python etl_full.py
+Simulation Time: 2026-02-28 07:38:38.912890
+True
+[codecarbon WARNING @ 07:38:38] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_07-38-38.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890
+dataset                           FashionMNIST                FashionMNIST
+stage                                      etl                         etl
+total_etl_time_s                       14.1445                     13.3486
+data_load_time_s                       13.6311                     12.9699
+save_time_s                             0.3814                      0.3353
+n_samples                                60000                       60000
+throughput_sps                         4241.94                     4494.85
+image_shape                        (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626
+zeus_wall_time_s                       14.1955                     13.3626
+codecarbon_co2_kg                     0.000001                     0.00011
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 07:40:30,817][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 07:40:30,817][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 07:40:30,835][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 07:40:30,836][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 07:40:37.008575
+True
+[codecarbon WARNING @ 07:40:37] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_07-40-37.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1                           2
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575
+dataset                           FashionMNIST                FashionMNIST                FashionMNIST
+stage                                      etl                         etl                         etl
+total_etl_time_s                       14.1445                     13.3486                     20.4748
+data_load_time_s                       13.6311                     12.9699                     19.9416
+save_time_s                             0.3814                      0.3353                      0.4938
+n_samples                                60000                       60000                       60000
+throughput_sps                         4241.94                     4494.85                     2930.43
+image_shape                        (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626                     296.992
+zeus_wall_time_s                       14.1955                     13.3626                     20.5076
+codecarbon_co2_kg                     0.000001                     0.00011                    0.000166
+[2026-02-28 07:41:03,371][perun.io.io][exportTo][WARNING] - Output directory does not exist. Creating it.
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 255, in cli
+    args.func(args)
+    ~~~~~~~~~^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 376, in monitor
+    perun.monitor_application(app)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 390, in monitor_application
+    self._export_multirun(multirun_node)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 429, in _export_multirun
+    self.export_to(data_out, app_data, out_format, multirun_id)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 490, in export_to
+    exportTo(dataOut, dataNode, format, mr_id)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\io\io.py", line 149, in exportTo
+    with open(output_path, fileType, encoding="utf-8") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'perun_results\\etl_full_2026-02-28T07:40:30.836719.txt'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun sensors
+[2026-02-28 07:55:33,804][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 07:55:33,804][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 07:55:33,823][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 07:55:33,824][perun.core][backends][ERROR] - 'libamd_smi.so'
+|                Sensor |   Source |          Device |   Unit |
+|----------------------:|---------:|----------------:|-------:|
+| CUDA:0_CLOCK_GRAPHICS |     nvlm |  DeviceType.GPU |     Hz |
+|      CUDA:0_CLOCK_MEM |     nvlm |  DeviceType.GPU |     Hz |
+|       CUDA:0_CLOCK_SM |     nvlm |  DeviceType.GPU |     Hz |
+|            CUDA:0_MEM |     nvlm |  DeviceType.GPU |      B |
+|          CUDA:0_POWER |     nvlm |  DeviceType.GPU |      W |
+|            CPU_FREQ_0 |   psutil |  DeviceType.CPU |     Hz |
+|           CPU_USAGE_0 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_1 |   psutil |  DeviceType.CPU |      % |
+|          CPU_USAGE_10 |   psutil |  DeviceType.CPU |      % |
+|          CPU_USAGE_11 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_2 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_3 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_4 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_5 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_6 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_7 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_8 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_9 |   psutil |  DeviceType.CPU |      % |
+|       DISK_READ_BYTES |   psutil | DeviceType.DISK |      B |
+|      DISK_WRITE_BYTES |   psutil | DeviceType.DISK |      B |
+|        NET_READ_BYTES |   psutil |  DeviceType.NET |      B |
+|       NET_WRITE_BYTES |   psutil |  DeviceType.NET |      B |
+|             RAM_USAGE |   psutil |  DeviceType.RAM |      B |
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor --run-id fashion_etl_20260228 python etl.py
+[2026-02-28 07:58:25,918][perun.api.cli][monitor][ERROR] - Invalid script path. File fashion_etl_20260228 does not exist or is not a python script.
+[2026-02-28 07:58:25,918][perun.monitoring.application][__init__][ERROR] - perun could not find the file fashion_etl_20260228. Please check the path.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun sensors
+[2026-02-28 07:58:31,242][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 07:58:31,242][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 07:58:31,262][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 07:58:31,262][perun.core][backends][ERROR] - 'libamd_smi.so'
+|                Sensor |   Source |          Device |   Unit |
+|----------------------:|---------:|----------------:|-------:|
+| CUDA:0_CLOCK_GRAPHICS |     nvlm |  DeviceType.GPU |     Hz |
+|      CUDA:0_CLOCK_MEM |     nvlm |  DeviceType.GPU |     Hz |
+|       CUDA:0_CLOCK_SM |     nvlm |  DeviceType.GPU |     Hz |
+|            CUDA:0_MEM |     nvlm |  DeviceType.GPU |      B |
+|          CUDA:0_POWER |     nvlm |  DeviceType.GPU |      W |
+|            CPU_FREQ_0 |   psutil |  DeviceType.CPU |     Hz |
+|           CPU_USAGE_0 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_1 |   psutil |  DeviceType.CPU |      % |
+|          CPU_USAGE_10 |   psutil |  DeviceType.CPU |      % |
+|          CPU_USAGE_11 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_2 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_3 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_4 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_5 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_6 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_7 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_8 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_9 |   psutil |  DeviceType.CPU |      % |
+|       DISK_READ_BYTES |   psutil | DeviceType.DISK |      B |
+|      DISK_WRITE_BYTES |   psutil | DeviceType.DISK |      B |
+|        NET_READ_BYTES |   psutil |  DeviceType.NET |      B |
+|       NET_WRITE_BYTES |   psutil |  DeviceType.NET |      B |
+|             RAM_USAGE |   psutil |  DeviceType.RAM |      B |
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor --run-id fashion_etl_20260228 python etl.py
+[2026-02-28 08:05:39,783][perun.api.cli][monitor][ERROR] - Invalid script path. File fashion_etl_20260228 does not exist or is not a python script.
+[2026-02-28 08:05:39,783][perun.monitoring.application][__init__][ERROR] - perun could not find the file fashion_etl_20260228. Please check the path.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 08:05:44,990][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 08:05:44,990][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 08:05:45,009][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 08:05:45,009][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 08:05:51.299413
+True
+[codecarbon WARNING @ 08:05:51] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_08-05-51.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1                           2                           3
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413
+dataset                           FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST
+stage                                      etl                         etl                         etl                         etl
+total_etl_time_s                       14.1445                     13.3486                     20.4748                     10.7573
+data_load_time_s                       13.6311                     12.9699                     19.9416                     10.3666
+save_time_s                             0.3814                      0.3353                      0.4938                      0.3463
+n_samples                                60000                       60000                       60000                       60000
+throughput_sps                         4241.94                     4494.85                     2930.43                     5577.62
+image_shape                        (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16                      188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626                     296.992                     178.615
+zeus_wall_time_s                       14.1955                     13.3626                     20.5076                     10.7846
+codecarbon_co2_kg                     0.000001                     0.00011                    0.000166                    0.000091
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 255, in cli
+    args.func(args)
+    ~~~~~~~~~^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 376, in monitor
+    perun.monitor_application(app)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 390, in monitor_application
+    self._export_multirun(multirun_node)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 429, in _export_multirun
+    self.export_to(data_out, app_data, out_format, multirun_id)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 490, in export_to
+    exportTo(dataOut, dataNode, format, mr_id)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\io\io.py", line 149, in exportTo
+    with open(output_path, fileType, encoding="utf-8") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'perun_results\\etl_full_2026-02-28T08:05:45.009425.txt'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 08:09:46,956][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 08:09:46,956][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 08:09:46,978][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 08:09:46,978][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 08:09:53.098905
+True
+[codecarbon WARNING @ 08:09:53] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_08-09-53.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1                           2                           3                           4
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413  2026-02-28T08:09:53.098905
+dataset                           FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST
+stage                                      etl                         etl                         etl                         etl                         etl
+total_etl_time_s                       14.1445                     13.3486                     20.4748                     10.7573                     10.3642
+data_load_time_s                       13.6311                     12.9699                     19.9416                     10.3666                     10.0071
+save_time_s                             0.3814                      0.3353                      0.4938                      0.3463                      0.3131
+n_samples                                60000                       60000                       60000                       60000                       60000
+throughput_sps                         4241.94                     4494.85                     2930.43                     5577.62                     5789.17
+image_shape                        (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16                      188.16                      188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0                         0.0                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626                     296.992                     178.615                       173.0
+zeus_wall_time_s                       14.1955                     13.3626                     20.5076                     10.7846                     10.3842
+codecarbon_co2_kg                     0.000001                     0.00011                    0.000166                    0.000091                    0.000087
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 255, in cli
+    args.func(args)
+    ~~~~~~~~~^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 376, in monitor
+    perun.monitor_application(app)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 390, in monitor_application
+    self._export_multirun(multirun_node)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 429, in _export_multirun
+    self.export_to(data_out, app_data, out_format, multirun_id)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 490, in export_to
+    exportTo(dataOut, dataNode, format, mr_id)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\io\io.py", line 150, in exportTo
+    with open(output_path, fileType, encoding="utf-8") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'perun_results\\etl_full_2026-02-28T08:09:46.978733.txt'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install perun[mpi, nvidia, rocm]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+ERROR: Invalid requirement: 'perun[mpi': Expected matching RIGHT_BRACKET for LEFT_BRACKET, after extras
+    perun[mpi
+         ~~~~^
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install perun[nvidia, rocm, mpi]
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+ERROR: Invalid requirement: 'perun[nvidia': Expected matching RIGHT_BRACKET for LEFT_BRACKET, after extras
+    perun[nvidia
+         ~~~~~~~^
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install "perun[nvidia,rocm,mpi]"
+Requirement already satisfied: perun[mpi,nvidia,rocm] in e:\thesis\venv\hansal\lib\site-packages (0.9.1)
+Requirement already satisfied: h5py>=3.5.9 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (3.15.1)
+Requirement already satisfied: numpy>=1.20.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (2.4.2)
+Requirement already satisfied: pandas>=1.3 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (3.0.1)
+Requirement already satisfied: psutil>=5.9.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (7.2.2)
+Requirement already satisfied: py-cpuinfo>=5.0.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (9.0.0)
+Requirement already satisfied: tabulate>=0.9 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (0.9.0)
+Collecting mpi4py>=3.1 (from perun[mpi,nvidia,rocm])
+  Downloading mpi4py-4.1.1-cp313-cp313-win_amd64.whl.metadata (17 kB)
+Requirement already satisfied: nvidia-ml-py>=12.535.77 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (13.590.48)
+Requirement already satisfied: amdsmi>=6.2.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[mpi,nvidia,rocm]) (7.0.2)
+Requirement already satisfied: python-dateutil>=2.8.2 in e:\thesis\venv\hansal\lib\site-packages (from pandas>=1.3->perun[mpi,nvidia,rocm]) (2.9.0.post0)
+Requirement already satisfied: tzdata in e:\thesis\venv\hansal\lib\site-packages (from pandas>=1.3->perun[mpi,nvidia,rocm]) (2025.3)
+Requirement already satisfied: six>=1.5 in e:\thesis\venv\hansal\lib\site-packages (from python-dateutil>=2.8.2->pandas>=1.3->perun[mpi,nvidia,rocm]) (1.17.0)
+Downloading mpi4py-4.1.1-cp313-cp313-win_amd64.whl (1.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.7/1.7 MB 3.4 MB/s  0:00:00
+Installing collected packages: mpi4py
+Successfully installed mpi4py-4.1.1
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 251, in cli
+    set_logger_config(config)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\logging.py", line 59, in set_logger_config
+    from mpi4py import MPI
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1322, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1262, in _find_spec
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 290, in find_spec
+    mpiabi_suffix = _get_mpiabi_suffix(fullname)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 276, in _get_mpiabi_suffix
+    mpiabi = _get_mpiabi()
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 258, in _get_mpiabi
+    mpiabi = _get_mpiabi_from_libmpi(libmpi)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 217, in _get_mpiabi_from_libmpi
+    lib = _dlopen_libmpi(libmpi)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 210, in _dlopen_libmpi
+    raise RuntimeError("\n".join(errors))
+RuntimeError: cannot load MPI library
+Could not find module 'E:\Thesis\venv\hansal\DLLs' (or one of its dependencies). Try using the full path with constructor syntax.
+Could not find module 'E:\Thesis\venv\hansal\Library\bin' (or one of its dependencies). Try using the full path with constructor syntax.
+Could not find module 'impi.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+Could not find module 'msmpi.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun sensors
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 251, in cli
+    set_logger_config(config)
+    ~~~~~~~~~~~~~~~~~^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\logging.py", line 59, in set_logger_config
+    from mpi4py import MPI
+  File "<frozen importlib._bootstrap>", line 1360, in _find_and_load
+  File "<frozen importlib._bootstrap>", line 1322, in _find_and_load_unlocked
+  File "<frozen importlib._bootstrap>", line 1262, in _find_spec
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 290, in find_spec
+    mpiabi_suffix = _get_mpiabi_suffix(fullname)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 276, in _get_mpiabi_suffix
+    mpiabi = _get_mpiabi()
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 258, in _get_mpiabi
+    mpiabi = _get_mpiabi_from_libmpi(libmpi)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 217, in _get_mpiabi_from_libmpi
+    lib = _dlopen_libmpi(libmpi)
+  File "E:\Thesis\venv\hansal\Lib\site-packages\mpi4py\_mpiabi.py", line 210, in _dlopen_libmpi
+    raise RuntimeError("\n".join(errors))
+RuntimeError: cannot load MPI library
+Could not find module 'E:\Thesis\venv\hansal\DLLs' (or one of its dependencies). Try using the full path with constructor syntax.
+Could not find module 'E:\Thesis\venv\hansal\Library\bin' (or one of its dependencies). Try using the full path with constructor syntax.
+Could not find module 'impi.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+Could not find module 'msmpi.dll' (or one of its dependencies). Try using the full path with constructor syntax.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip uninstall mpi4py -y
+Found existing installation: mpi4py 4.1.1
+Uninstalling mpi4py-4.1.1:
+  Successfully uninstalled mpi4py-4.1.1
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> pip install "perun[nvidia]"
+Requirement already satisfied: perun[nvidia] in e:\thesis\venv\hansal\lib\site-packages (0.9.1)
+Requirement already satisfied: h5py>=3.5.9 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (3.15.1)
+Requirement already satisfied: numpy>=1.20.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (2.4.2)
+Requirement already satisfied: pandas>=1.3 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (3.0.1)
+Requirement already satisfied: psutil>=5.9.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (7.2.2)
+Requirement already satisfied: py-cpuinfo>=5.0.0 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (9.0.0)
+Requirement already satisfied: tabulate>=0.9 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (0.9.0)
+Requirement already satisfied: nvidia-ml-py>=12.535.77 in e:\thesis\venv\hansal\lib\site-packages (from perun[nvidia]) (13.590.48)
+Requirement already satisfied: python-dateutil>=2.8.2 in e:\thesis\venv\hansal\lib\site-packages (from pandas>=1.3->perun[nvidia]) (2.9.0.post0)
+Requirement already satisfied: tzdata in e:\thesis\venv\hansal\lib\site-packages (from pandas>=1.3->perun[nvidia]) (2025.3)
+Requirement already satisfied: six>=1.5 in e:\thesis\venv\hansal\lib\site-packages (from python-dateutil>=2.8.2->pandas>=1.3->perun[nvidia]) (1.17.0)
+
+[notice] A new release of pip is available: 25.3 -> 26.0.1
+[notice] To update, run: python.exe -m pip install --upgrade pip
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun sensors
+[2026-02-28 08:15:53,358][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 08:15:53,358][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 08:15:53,378][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 08:15:53,378][perun.core][backends][ERROR] - 'libamd_smi.so'
+|                Sensor |   Source |          Device |   Unit |
+|----------------------:|---------:|----------------:|-------:|
+| CUDA:0_CLOCK_GRAPHICS |     nvlm |  DeviceType.GPU |     Hz |
+|      CUDA:0_CLOCK_MEM |     nvlm |  DeviceType.GPU |     Hz |
+|       CUDA:0_CLOCK_SM |     nvlm |  DeviceType.GPU |     Hz |
+|            CUDA:0_MEM |     nvlm |  DeviceType.GPU |      B |
+|          CUDA:0_POWER |     nvlm |  DeviceType.GPU |      W |
+|            CPU_FREQ_0 |   psutil |  DeviceType.CPU |     Hz |
+|           CPU_USAGE_0 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_1 |   psutil |  DeviceType.CPU |      % |
+|          CPU_USAGE_10 |   psutil |  DeviceType.CPU |      % |
+|          CPU_USAGE_11 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_2 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_3 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_4 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_5 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_6 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_7 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_8 |   psutil |  DeviceType.CPU |      % |
+|           CPU_USAGE_9 |   psutil |  DeviceType.CPU |      % |
+|       DISK_READ_BYTES |   psutil | DeviceType.DISK |      B |
+|      DISK_WRITE_BYTES |   psutil | DeviceType.DISK |      B |
+|        NET_READ_BYTES |   psutil |  DeviceType.NET |      B |
+|       NET_WRITE_BYTES |   psutil |  DeviceType.NET |      B |
+|             RAM_USAGE |   psutil |  DeviceType.RAM |      B |
+
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 08:16:16,162][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 08:16:16,163][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 08:16:16,188][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 08:16:16,188][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 08:16:23.452092
+True
+[codecarbon WARNING @ 08:16:23] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_08-16-23.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1                           2                           3                           4                           5
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413  2026-02-28T08:09:53.098905  2026-02-28T08:16:23.452092
+dataset                           FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST
+stage                                      etl                         etl                         etl                         etl                         etl                         etl
+total_etl_time_s                       14.1445                     13.3486                     20.4748                     10.7573                     10.3642                     24.4137
+data_load_time_s                       13.6311                     12.9699                     19.9416                     10.3666                     10.0071                     23.9703
+save_time_s                             0.3814                      0.3353                      0.4938                      0.3463                      0.3131                       0.374
+n_samples                                60000                       60000                       60000                       60000                       60000                       60000
+throughput_sps                         4241.94                     4494.85                     2930.43                     5577.62                     5789.17                     2457.64
+image_shape                        (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16                      188.16                      188.16                      188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626                     296.992                     178.615                       173.0                     280.207
+zeus_wall_time_s                       14.1955                     13.3626                     20.5076                     10.7846                     10.3842                     24.4408
+codecarbon_co2_kg                     0.000001                     0.00011                    0.000166                    0.000091                    0.000087                    0.000189
+Traceback (most recent call last):
+  File "<frozen runpy>", line 198, in _run_module_as_main
+  File "<frozen runpy>", line 88, in _run_code
+  File "E:\Thesis\venv\hansal\scripts\perun.exe\__main__.py", line 6, in <module>
+    sys.exit(cli())
+             ~~~^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 255, in cli
+    args.func(args)
+    ~~~~~~~~~^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\api\cli.py", line 376, in monitor
+    perun.monitor_application(app)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 390, in monitor_application
+    self._export_multirun(multirun_node)
+    ~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 429, in _export_multirun
+    self.export_to(data_out, app_data, out_format, multirun_id)
+    ~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\core.py", line 490, in export_to
+    exportTo(dataOut, dataNode, format, mr_id)
+    ~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "E:\Thesis\venv\hansal\Lib\site-packages\perun\io\io.py", line 150, in exportTo
+    with open(output_path, fileType, encoding="utf-8") as file:
+         ~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+OSError: [Errno 22] Invalid argument: 'perun_results\\etl_full_2026-02-28T08:16:16.188474.txt'
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor -o perun_results/etl_full_results.txt etl_full.py
+[2026-02-28 08:16:58,323][perun.api.cli][monitor][ERROR] - Invalid script path. File perun_results\etl_full_results.txt does not exist or is not a python script.
+[2026-02-28 08:16:58,323][perun.monitoring.application][__init__][ERROR] - perun could not find the file perun_results\etl_full_results.txt. Please check the path.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor -o perun_results/etl_full_results.txt etl_full.py
+[2026-02-28 08:27:56,567][perun.api.cli][monitor][ERROR] - Invalid script path. File perun_results\etl_full_results.txt does not exist or is not a python script.
+[2026-02-28 08:27:56,568][perun.monitoring.application][__init__][ERROR] - perun could not find the file perun_results\etl_full_results.txt. Please check the path.
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 08:28:01,249][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 08:28:01,250][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 08:28:01,279][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 08:28:01,279][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 08:28:11.797902
+True
+[codecarbon WARNING @ 08:28:11] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_08-28-11.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1                           2                           3                           4                           5                           6
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413  2026-02-28T08:09:53.098905  2026-02-28T08:16:23.452092  2026-02-28T08:28:11.797902
+dataset                           FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST
+stage                                      etl                         etl                         etl                         etl                         etl                         etl                         etl
+total_etl_time_s                       14.1445                     13.3486                     20.4748                     10.7573                     10.3642                     24.4137                     11.3157
+data_load_time_s                       13.6311                     12.9699                     19.9416                     10.3666                     10.0071                     23.9703                     10.8763
+save_time_s                             0.3814                      0.3353                      0.4938                      0.3463                      0.3131                       0.374                      0.3314
+n_samples                                60000                       60000                       60000                       60000                       60000                       60000                       60000
+throughput_sps                         4241.94                     4494.85                     2930.43                     5577.62                     5789.17                     2457.64                     5302.38
+image_shape                        (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626                     296.992                     178.615                       173.0                     280.207                     177.322
+zeus_wall_time_s                       14.1955                     13.3626                     20.5076                     10.7846                     10.3842                     24.4408                     11.3486
+codecarbon_co2_kg                     0.000001                     0.00011                    0.000166                    0.000091                    0.000087                    0.000189                    0.000094
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> perun monitor etl_full.py
+[2026-02-28 08:36:08,402][perun.core][backends][ERROR] - Unknown error loading dependecy PowercapRAPLBackend
+[2026-02-28 08:36:08,403][perun.core][backends][ERROR] - No powercap interface
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+[2026-02-28 08:36:08,423][perun.core][backends][ERROR] - Unknown error loading dependecy ROCMBackend
+[2026-02-28 08:36:08,423][perun.core][backends][ERROR] - 'libamd_smi.so'
+Could not find module 'E:\opt\rocm\lib\libamd_smi.so' (or one of its dependencies). Try using the full path with constructor syntax.
+Unable to find libamd_smi.so library try installing amd-smi-lib from your package manager
+Simulation Time: 2026-02-28 08:36:15.458318
+True
+[codecarbon WARNING @ 08:36:15] Multiple instances of codecarbon are allowed to run at the same time.
+--- [Step 1] Starting ETL Pipeline ---
+Saving versioned dataset: training_2026-02-28_08-36-15.pt
+
+[Metrics] Saved to E:\Thesis\HANSAL\apps\fashion-mnist\src\../metrics\etl_benchmark.csv
+                                             0                           1                           2                           3                           4                           5                           6                           7
+timestamp           2026-02-28T07:23:48.344182  2026-02-28T07:38:38.912890  2026-02-28T07:40:37.008575  2026-02-28T08:05:51.299413  2026-02-28T08:09:53.098905  2026-02-28T08:16:23.452092  2026-02-28T08:28:11.797902  2026-02-28T08:36:15.458318
+dataset                           FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST                FashionMNIST
+stage                                      etl                         etl                         etl                         etl                         etl                         etl                         etl                         etl
+total_etl_time_s                       14.1445                     13.3486                     20.4748                     10.7573                     10.3642                     24.4137                     11.3157                     13.3968
+data_load_time_s                       13.6311                     12.9699                     19.9416                     10.3666                     10.0071                     23.9703                     10.8763                     12.9776
+save_time_s                             0.3814                      0.3353                      0.4938                      0.3463                      0.3131                       0.374                      0.3314                      0.3141
+n_samples                                60000                       60000                       60000                       60000                       60000                       60000                       60000                       60000
+throughput_sps                         4241.94                     4494.85                     2930.43                     5577.62                     5789.17                     2457.64                     5302.38                     4478.69
+image_shape                        (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)                 (1, 28, 28)
+dataset_size_mb                         188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16                      188.16
+peak_gpu_memory_mb                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0                         0.0
+zeus_gpu_energy_J                      202.722                     213.626                     296.992                     178.615                       173.0                     280.207                     177.322                     191.231
+zeus_wall_time_s                       14.1955                     13.3626                     20.5076                     10.7846                     10.3842                     24.4408                     11.3486                     13.4166
+codecarbon_co2_kg                     0.000001                     0.00011                    0.000166                    0.000091                    0.000087                    0.000189                    0.000094                    0.000109
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> cd E:
+(hansal) PS E:\Thesis\HANSAL\apps\fashion-mnist\src> cd E:/
+(hansal) PS E:\> mkdir actions-runner; cd actions-runner
+
+
+    Directory: E:\
+
+
+Mode                 LastWriteTime         Length Name
+----                 -------------         ------ ----
+d-----         2/28/2026   6:09 PM                actions-runner
+
+
+(hansal) PS E:\actions-runner> Invoke-WebRequest -Uri https://github.com/actions/runner/releases/download/v2.331.0/actions-runner-win-x64-2.331.0.zip -OutFile actions-runner-win-x64-2.331.0.zip
+Invoke-WebRequest : Received an unexpected EOF or 0 bytes from the transport stream.
+At line:1 char:1
++ Invoke-WebRequest -Uri https://github.com/actions/runner/releases/dow ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (:) [Invoke-WebRequest], IOException
+    + FullyQualifiedErrorId : System.IO.IOException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+(hansal) PS E:\actions-runner>
