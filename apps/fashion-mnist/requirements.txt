@@ -1,5 +1,5 @@
-torch==2.10.0+cu126
-torchvision==0.25.0+cu126
+torch
+torchvision
 codecarbon==3.2.2
 zeus==0.15.0
 perun==0.9.1
