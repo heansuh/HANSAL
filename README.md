@@ -7,6 +7,8 @@
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)
 
+</div>
+
 ## Background
 Recent advances in AI demand significant computational resources, which presents cost and sustainability barriers for small and medium-sized enterprises (SMEs).
 
@@ -36,4 +38,4 @@ This project is a benchmarking framework that is also featured in the Master's T
 Copyright (c) 2025 Heansuh Lee. All rights reserved.  
 This GitHub repositoy, its associated software, the documentation and its content are proprietary to Heansuh Lee.  
 No part of this work may be reproduced, modified, or distributed in any form or by any means without prior written permission from the copyright holder.
-</div>
+
