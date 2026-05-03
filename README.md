@@ -1,21 +1,24 @@
 <div align="center">
 
-# HANSAL
-## Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
+## HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
+<img src="Logo.png" width="400">  
 
-![License](https://img.shields.io/github/license/heansuh/HANSAL)
+![License](https://img.shields.io/github/license/hiemso/HANSAL)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
 ![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
 ![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)
 
 </div>
 
-## Background
+## Introduction
+
 Recent advances in AI demand significant computational resources, which presents cost and sustainability barriers for small and medium-sized enterprises (SMEs).
 
-HANSAL benchmarking framework directly addresses these challenges, offering a framework that balances accuracy, runtime, cost, and energy consumption.
+Project HANSAL addresses these challenges, offering a benchmarking framework that balances accuracy, runtime, cost, and energy consumption for a DL solution.
 
-This project is a benchmarking framework that is also featured in the Master's Thesis @ HAW Kiel: **Study on Proof-of-Concept Benchmarking Framework for Resource-Optimised AI: Efficient Performance, Cost, and Sustainability for Small-Medium Enterprises (SMEs)**
+This project is a benchmarking framework that is also featured in the Master's Thesis @ HAW Kiel:
+
+**Study on Proof-of-Concept Benchmarking Framework for Resource-Optimised AI: Efficient Performance, Cost, and Sustainability for Small-Medium Enterprises (SMEs)**
 
 ## Project Scope
 * Exploration and testing of AI benchmarking tools suitable for SMEs.
@@ -27,16 +30,4 @@ This project is a benchmarking framework that is also featured in the Master's T
 * Provide SMEs with the tools and know-how to adopt AI cost-efficiently and sustainably.
 * Serve as both an academic contribution and an actionable industry guide.
 * Structure data pipelines for transparent performance, allowing resource optimization tailored to SMEs.
-
-## Research Timeline
-* Literature Review & Data Collection: Oct 2025 – Dec 2025
-* Benchmarking & PoC Development: Dec 2025 – Jan 2026
-* Thesis Writing: Jan 2026 - Feb 2026
-* Colloquium: Mar 2026
-
-## License
-
-Copyright (c) 2025 Heansuh Lee. All rights reserved.  
-This GitHub repositoy, its associated software, the documentation and its content are proprietary to Heansuh Lee.  
-No part of this work may be reproduced, modified, or distributed in any form or by any means without prior written permission from the copyright holder.
 
