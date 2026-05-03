@@ -2,6 +2,9 @@
 Project HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
 
 ![License](https://img.shields.io/github/license/heansuh/HANSAL)
+![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Ubuntu](https://img.shields.io/badge/Ubuntu-E95420?logo=ubuntu&logoColor=white)
 
 ## Background
 Recent advances in AI demand significant computational resources, which presents cost and sustainability barriers for small and medium-sized enterprises (SMEs).
