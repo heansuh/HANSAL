@@ -1,4 +1,4 @@
-# Project HANSAL
+<p align="center">
 Project HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
 
 ![License](https://img.shields.io/github/license/heansuh/HANSAL)
@@ -35,3 +35,4 @@ This project is a benchmarking framework that is also featured in the Master's T
 Copyright (c) 2025 Heansuh Lee. All rights reserved.  
 This GitHub repositoy, its associated software, the documentation and its content are proprietary to Heansuh Lee.  
 No part of this work may be reproduced, modified, or distributed in any form or by any means without prior written permission from the copyright holder.
+</p>
