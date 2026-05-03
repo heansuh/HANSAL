@@ -1,6 +1,6 @@
 <p align="center">
 
-# Project HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
+# HANSAL: Hybrid AI for Next-gen: Sustainable, Affordable, and Lightweight
 
 ![License](https://img.shields.io/github/license/heansuh/HANSAL)
 ![Python](https://img.shields.io/badge/Python-3776AB?logo=python&logoColor=white)
